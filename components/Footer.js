@@ -11,12 +11,7 @@ const styles = {
 
 const Footer = () => (
     <div style={styles.footer}>
-        <Link href="/">
-            <a>Home</a>
-        </Link>
-        <Link href="/about">
-            <a>About</a>
-        </Link>
+        Footer goes here.
     </div>
 )
 

@@ -16,6 +16,7 @@
     "express": "^4.16.2",
     "feedme": "^1.2.0",
     "isomorphic-unfetch": "^2.0.0",
+    "marked": "^0.3.17",
     "moment": "^2.21.0",
     "next": "^5.0.0",
     "postcss-loader": "^2.1.1",

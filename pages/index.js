@@ -27,7 +27,7 @@ class Index extends Component {
         const jobCards = this.props.jobs.map((job, i) => {
             return (
                 <article style={styles.jobCards} key={`job-item-${i}`}>
-                    <Link href={job.link} as={`/job/${job.id}`}>
+                    <Link as={`/job/${job.id}`} href={`/job?id=${job.id}`}>
                         <h3 style={styles.jobTitle}>{job.title} <span style={styles.muted}>at</span> {job.company}</h3>
                     </Link>
                     <div style={styles.muted}>

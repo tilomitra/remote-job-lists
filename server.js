@@ -14,12 +14,14 @@ app.prepare()
     .then(() => {
         const server = express()
 
-        // server.get('/p/:id', (req, res) => {
-        //     const actualPage = '/post'
-        //     const queryParams = { title: req.params.id }
-        //     app.render(req, res, actualPage, queryParams)
-        // });
-        server.get('/api/jobs', api.jobs);
+        server.get('/job/:id', (req, res) => {
+            const actualPage = '/job'
+            const queryParams = { id: req.params.id }
+            app.render(req, res, actualPage, queryParams)
+        });
+
+        server.get('/api/jobs', api.jobs.find);
+        server.get('/api/jobs/:id', api.jobs.findOne);
 
         server.get('/api/findJobs/weworkremotely', api.weworkremotely);
         server.get('/api/findJobs/stackoverflow', api.stackoverflow);

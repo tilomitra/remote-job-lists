@@ -2,7 +2,7 @@ module.exports =
 
         __NEXT_REGISTER_PAGE('/', function() {
           var comp = 
-      webpackJsonp([4],{
+      webpackJsonp([5],{
 
 /***/ "./components/Footer.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -12,7 +12,7 @@ module.exports =
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link__ = __webpack_require__("./node_modules/next/link.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
-var _jsxFileName = "/Applications/MAMP/code/sandbox/remote-job-lists/components/Footer.js";
+var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/components/Footer.js';
 
 
 (function () {
@@ -25,56 +25,21 @@ var _jsxFileName = "/Applications/MAMP/code/sandbox/remote-job-lists/components/
 
 var styles = {
     footer: {
-        background: "url(data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB2aWV3Q\u2026kiPjwvcGF0aD4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+) no-repeat",
-        backgroundSize: "cover",
+        background: 'url(data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB2aWV3Q\u2026kiPjwvcGF0aD4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+) no-repeat',
+        backgroundSize: 'cover',
         height: 500
     }
 };
 
 var Footer = function Footer() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        "div",
+        'div',
         { style: styles.footer, __source: {
                 fileName: _jsxFileName,
                 lineNumber: 13
             }
         },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_1_next_link___default.a,
-            { href: "/", __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 14
-                }
-            },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                "a",
-                {
-                    __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 15
-                    }
-                },
-                "Home"
-            )
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_1_next_link___default.a,
-            { href: "/about", __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 17
-                }
-            },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                "a",
-                {
-                    __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 18
-                    }
-                },
-                "About"
-            )
-        )
+        'Footer goes here.'
     );
 };
 
@@ -91,9 +56,9 @@ var _default = Footer;
         return;
     }
 
-    reactHotLoader.register(styles, "styles", "/Applications/MAMP/code/sandbox/remote-job-lists/components/Footer.js");
-    reactHotLoader.register(Footer, "Footer", "/Applications/MAMP/code/sandbox/remote-job-lists/components/Footer.js");
-    reactHotLoader.register(_default, "default", "/Applications/MAMP/code/sandbox/remote-job-lists/components/Footer.js");
+    reactHotLoader.register(styles, 'styles', '/Applications/MAMP/code/sandbox/remote-job-lists/components/Footer.js');
+    reactHotLoader.register(Footer, 'Footer', '/Applications/MAMP/code/sandbox/remote-job-lists/components/Footer.js');
+    reactHotLoader.register(_default, 'default', '/Applications/MAMP/code/sandbox/remote-job-lists/components/Footer.js');
     leaveModule(module);
 })();
 
@@ -27354,7 +27319,7 @@ var Index = function (_Component) {
                     },
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                         __WEBPACK_IMPORTED_MODULE_2_next_link___default.a,
-                        { href: job.link, as: '/job/' + job.id, __source: {
+                        { as: '/job/' + job.id, href: '/job?id=' + job.id, __source: {
                                 fileName: _jsxFileName,
                                 lineNumber: 30
                             }
@@ -27499,7 +27464,7 @@ var _default = Index;
 
 /***/ }),
 
-/***/ 2:
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/index.js");
@@ -27507,7 +27472,7 @@ module.exports = __webpack_require__("./pages/index.js");
 
 /***/ })
 
-},[2])
+},[3])
           return { page: comp.default }
         })
       ;

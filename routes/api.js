@@ -6,17 +6,31 @@ const models = require('../connections/models');
 const getRss = require('./getRss');
 
 const apiRoutes = {
-    jobs: (req, res) => {
-        models.job.findAll({
-            limit: 200,
-            group: ["link"],
-            attributes: ['title', 'link', 'publishDate', 'referrer', 'company'],
-            order: [["publishDate", "DESC"]]
-        }).then((jobs) => {
-            return res.json(jobs);
-        }).catch((err) => {
-            return res.status(500).send(err);
-        });
+
+    jobs: {
+        find: (req, res) => {
+            models.job.findAll({
+                limit: 200,
+                group: ["link"],
+                attributes: ['id', 'title', 'link', 'publishDate', 'referrer', 'company'],
+                order: [["publishDate", "DESC"]]
+            }).then((jobs) => {
+                return res.json(jobs);
+            }).catch((err) => {
+                return res.status(500).send(err);
+            });
+        },
+        findOne: (req, res) => {
+            models.job.findAll({
+                where: {
+                    id: parseInt(req.params.id)
+                }
+            }).then((job) => {
+                return res.json(job);
+            }).catch((err) => {
+                return res.status(500).send(err);
+            });
+        }
     },
 
     weworkremotely: (req, res) => {

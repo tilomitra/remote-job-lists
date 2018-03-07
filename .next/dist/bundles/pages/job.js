@@ -67,17 +67,10 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
-
-/***/ "./assets/css/app.css":
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
 
 /***/ "./components/Footer.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -229,7 +222,7 @@ var Layout = function Layout(props) {
 
 /***/ }),
 
-/***/ "./pages/index.js":
+/***/ "./pages/job.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -243,12 +236,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_isomorphic_unfetch__ = __webpack_require__("isomorphic-unfetch");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_isomorphic_unfetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_isomorphic_unfetch__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Layout__ = __webpack_require__("./components/Layout.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment__ = __webpack_require__("moment");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__assets_css_app_css__ = __webpack_require__("./assets/css/app.css");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__assets_css_app_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__assets_css_app_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_marked__ = __webpack_require__("marked");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_marked___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_marked__);
 
-var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/pages/index.js';
+var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/pages/job.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -268,151 +259,112 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+var styles = {};
 
+var Job = function (_Component) {
+    _inherits(Job, _Component);
 
-var styles = {
-    jobCards: {
-        margin: 5
-    },
-    jobTitle: {
-        fontWeight: 'normal',
-        marginBottom: 0,
-        paddingBottom: 0
-    },
-    muted: {
-        color: 'grey'
-    }
-};
+    function Job() {
+        _classCallCheck(this, Job);
 
-var Index = function (_Component) {
-    _inherits(Index, _Component);
-
-    function Index() {
-        _classCallCheck(this, Index);
-
-        return _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (Job.__proto__ || Object.getPrototypeOf(Job)).apply(this, arguments));
     }
 
-    _createClass(Index, [{
+    _createClass(Job, [{
         key: 'render',
         value: function render() {
+            var job = this.props.job;
 
-            var jobCards = this.props.jobs.map(function (job, i) {
-                return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-                    'article',
-                    { style: styles.jobCards, key: 'job-item-' + i, __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 29
-                        }
-                    },
-                    __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-                        __WEBPACK_IMPORTED_MODULE_2_next_link___default.a,
-                        { as: '/job/' + job.id, href: '/job?id=' + job.id, __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 30
-                            }
-                        },
-                        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-                            'h3',
-                            { style: styles.jobTitle, __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 31
-                                }
-                            },
-                            job.title,
-                            ' ',
-                            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-                                'span',
-                                { style: styles.muted, __source: {
-                                        fileName: _jsxFileName,
-                                        lineNumber: 31
-                                    }
-                                },
-                                'at'
-                            ),
-                            ' ',
-                            job.company
-                        )
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-                        'div',
-                        { style: styles.muted, __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 33
-                            }
-                        },
-                        'Published ',
-                        __WEBPACK_IMPORTED_MODULE_5_moment___default()(job.publishDate).startOf('day').fromNow(),
-                        ', Referred by ',
-                        job.referrer
-                    )
-                );
-            });
+            var htmlDescription = job.description;
+
+            if (job.referrer === 'remoteok') {
+                htmlDescription = __WEBPACK_IMPORTED_MODULE_5_marked___default()(job.description);
+            }
 
             return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_4__components_Layout__["a" /* default */],
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 41
+                        lineNumber: 20
                     }
                 },
                 __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                     'div',
                     { className: 'content', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 42
+                            lineNumber: 21
                         }
                     },
-                    jobCards
-                )
+                    __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                        'h2',
+                        {
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 22
+                            }
+                        },
+                        job.title
+                    )
+                ),
+                __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('div', { className: 'job-body', dangerouslySetInnerHTML: { __html: htmlDescription }, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 24
+                    }
+                })
             );
         }
     }]);
 
-    return Index;
+    return Job;
 }(__WEBPACK_IMPORTED_MODULE_1_react__["Component"]);
 
-Index.getInitialProps = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
-    var res, data;
-    return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
-        while (1) {
-            switch (_context.prev = _context.next) {
-                case 0:
-                    _context.next = 2;
-                    return __WEBPACK_IMPORTED_MODULE_3_isomorphic_unfetch___default()('http://localhost:3000/api/jobs');
+Job.getInitialProps = function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(_ref) {
+        var query = _ref.query;
+        var res, data;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+            while (1) {
+                switch (_context.prev = _context.next) {
+                    case 0:
+                        _context.next = 2;
+                        return __WEBPACK_IMPORTED_MODULE_3_isomorphic_unfetch___default()('http://localhost:3000/api/jobs/' + query.id);
 
-                case 2:
-                    res = _context.sent;
-                    _context.next = 5;
-                    return res.json();
+                    case 2:
+                        res = _context.sent;
+                        _context.next = 5;
+                        return res.json();
 
-                case 5:
-                    data = _context.sent;
+                    case 5:
+                        data = _context.sent;
 
 
-                    console.log('Show data fetched. Count: ' + data.length);
+                        console.log('Show data fetched. Count: ' + data.length);
+                        return _context.abrupt('return', {
+                            job: data[0]
+                        });
 
-                    return _context.abrupt('return', {
-                        jobs: data
-                    });
-
-                case 8:
-                case 'end':
-                    return _context.stop();
+                    case 8:
+                    case 'end':
+                        return _context.stop();
+                }
             }
-        }
-    }, _callee, this);
-}));
+        }, _callee, this);
+    }));
 
-/* harmony default export */ __webpack_exports__["default"] = (Index);
+    return function (_x) {
+        return _ref2.apply(this, arguments);
+    };
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (Job);
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("./pages/index.js");
+module.exports = __webpack_require__("./pages/job.js");
 
 
 /***/ }),
@@ -431,10 +383,10 @@ module.exports = require("isomorphic-unfetch");
 
 /***/ }),
 
-/***/ "moment":
+/***/ "marked":
 /***/ (function(module, exports) {
 
-module.exports = require("moment");
+module.exports = require("marked");
 
 /***/ }),
 
@@ -453,4 +405,4 @@ module.exports = require("react");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=job.js.map
