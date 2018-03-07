@@ -31,15 +31,16 @@ const getRss = ({ url, jobsite }) => {
                 }
 
                 // If stackoverflow job does not have `remote` in the title, return an empty promise.
-                //if (jobsite === 'stackoverflow' && title.indexOf('remote') === -1) {
-                batchUpdates.push({
-                    title: title,
-                    company: company,
-                    description: item.description,
-                    link: item.link,
-                    referrer: jobsite,
-                    publishDate: new Date(item.pubdate)
-                })
+                if (!(jobsite === 'stackoverflow' && title.indexOf('remote') === -1)) {
+                    batchUpdates.push({
+                        title: title,
+                        company: company,
+                        description: item.description,
+                        link: item.link,
+                        referrer: jobsite,
+                        publishDate: new Date(item.pubdate)
+                    })
+                }
             });
 
             parser.on('end', () => {

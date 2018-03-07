@@ -2,7 +2,7 @@ module.exports =
 
         __NEXT_REGISTER_PAGE('/', function() {
           var comp = 
-      webpackJsonp([5],{
+      webpackJsonp([4],{
 
 /***/ "./components/Footer.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -598,6 +598,62 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./node_modules/regenerator-runtime/runtime-module.js");
+
+
+/***/ }),
+
+/***/ "./node_modules/classnames/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+  Copyright (c) 2016 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg)) {
+				classes.push(classNames.apply(null, arg));
+			} else if (argType === 'object') {
+				for (var key in arg) {
+					if (hasOwn.call(arg, key) && arg[key]) {
+						classes.push(key);
+					}
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if (typeof module !== 'undefined' && module.exports) {
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+			return classNames;
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {
+		window.classNames = classNames;
+	}
+}());
 
 
 /***/ }),
@@ -22401,6 +22457,14 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./node_modules/next/router.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("./node_modules/next/dist/lib/router/index.js")
+
+
+/***/ }),
+
 /***/ "./node_modules/node-libs-browser/node_modules/process/browser.js":
 /***/ (function(module, exports) {
 
@@ -24505,6 +24569,360 @@ exports.encode = exports.stringify = __webpack_require__("./node_modules/queryst
 
 /***/ }),
 
+/***/ "./node_modules/react-addons-create-fragment/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2015-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var React = __webpack_require__("./node_modules/react/cjs/react.development.js");
+
+var REACT_ELEMENT_TYPE =
+  (typeof Symbol === 'function' && Symbol.for && Symbol.for('react.element')) ||
+  0xeac7;
+
+var emptyFunction = __webpack_require__("./node_modules/fbjs/lib/emptyFunction.js");
+var invariant = __webpack_require__("./node_modules/fbjs/lib/invariant.js");
+var warning = __webpack_require__("./node_modules/fbjs/lib/warning.js");
+
+var SEPARATOR = '.';
+var SUBSEPARATOR = ':';
+
+var didWarnAboutMaps = false;
+
+var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+
+function getIteratorFn(maybeIterable) {
+  var iteratorFn =
+    maybeIterable &&
+    ((ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL]) ||
+      maybeIterable[FAUX_ITERATOR_SYMBOL]);
+  if (typeof iteratorFn === 'function') {
+    return iteratorFn;
+  }
+}
+
+function escape(key) {
+  var escapeRegex = /[=:]/g;
+  var escaperLookup = {
+    '=': '=0',
+    ':': '=2'
+  };
+  var escapedString = ('' + key).replace(escapeRegex, function(match) {
+    return escaperLookup[match];
+  });
+
+  return '$' + escapedString;
+}
+
+function getComponentKey(component, index) {
+  // Do some typechecking here since we call this blindly. We want to ensure
+  // that we don't block potential future ES APIs.
+  if (component && typeof component === 'object' && component.key != null) {
+    // Explicit key
+    return escape(component.key);
+  }
+  // Implicit key determined by the index in the set
+  return index.toString(36);
+}
+
+function traverseAllChildrenImpl(
+  children,
+  nameSoFar,
+  callback,
+  traverseContext
+) {
+  var type = typeof children;
+
+  if (type === 'undefined' || type === 'boolean') {
+    // All of the above are perceived as null.
+    children = null;
+  }
+
+  if (
+    children === null ||
+    type === 'string' ||
+    type === 'number' ||
+    // The following is inlined from ReactElement. This means we can optimize
+    // some checks. React Fiber also inlines this logic for similar purposes.
+    (type === 'object' && children.$$typeof === REACT_ELEMENT_TYPE)
+  ) {
+    callback(
+      traverseContext,
+      children,
+      // If it's the only child, treat the name as if it was wrapped in an array
+      // so that it's consistent if the number of children grows.
+      nameSoFar === '' ? SEPARATOR + getComponentKey(children, 0) : nameSoFar
+    );
+    return 1;
+  }
+
+  var child;
+  var nextName;
+  var subtreeCount = 0; // Count of children found in the current subtree.
+  var nextNamePrefix = nameSoFar === '' ? SEPARATOR : nameSoFar + SUBSEPARATOR;
+
+  if (Array.isArray(children)) {
+    for (var i = 0; i < children.length; i++) {
+      child = children[i];
+      nextName = nextNamePrefix + getComponentKey(child, i);
+      subtreeCount += traverseAllChildrenImpl(
+        child,
+        nextName,
+        callback,
+        traverseContext
+      );
+    }
+  } else {
+    var iteratorFn = getIteratorFn(children);
+    if (iteratorFn) {
+      if (true) {
+        // Warn about using Maps as children
+        if (iteratorFn === children.entries) {
+          warning(
+            didWarnAboutMaps,
+            'Using Maps as children is unsupported and will likely yield ' +
+              'unexpected results. Convert it to a sequence/iterable of keyed ' +
+              'ReactElements instead.'
+          );
+          didWarnAboutMaps = true;
+        }
+      }
+
+      var iterator = iteratorFn.call(children);
+      var step;
+      var ii = 0;
+      while (!(step = iterator.next()).done) {
+        child = step.value;
+        nextName = nextNamePrefix + getComponentKey(child, ii++);
+        subtreeCount += traverseAllChildrenImpl(
+          child,
+          nextName,
+          callback,
+          traverseContext
+        );
+      }
+    } else if (type === 'object') {
+      var addendum = '';
+      if (true) {
+        addendum =
+          ' If you meant to render a collection of children, use an array ' +
+          'instead or wrap the object using createFragment(object) from the ' +
+          'React add-ons.';
+      }
+      var childrenString = '' + children;
+      invariant(
+        false,
+        'Objects are not valid as a React child (found: %s).%s',
+        childrenString === '[object Object]'
+          ? 'object with keys {' + Object.keys(children).join(', ') + '}'
+          : childrenString,
+        addendum
+      );
+    }
+  }
+
+  return subtreeCount;
+}
+
+function traverseAllChildren(children, callback, traverseContext) {
+  if (children == null) {
+    return 0;
+  }
+
+  return traverseAllChildrenImpl(children, '', callback, traverseContext);
+}
+
+var userProvidedKeyEscapeRegex = /\/+/g;
+function escapeUserProvidedKey(text) {
+  return ('' + text).replace(userProvidedKeyEscapeRegex, '$&/');
+}
+
+function cloneAndReplaceKey(oldElement, newKey) {
+  return React.cloneElement(
+    oldElement,
+    {key: newKey},
+    oldElement.props !== undefined ? oldElement.props.children : undefined
+  );
+}
+
+var DEFAULT_POOL_SIZE = 10;
+var DEFAULT_POOLER = oneArgumentPooler;
+
+var oneArgumentPooler = function(copyFieldsFrom) {
+  var Klass = this;
+  if (Klass.instancePool.length) {
+    var instance = Klass.instancePool.pop();
+    Klass.call(instance, copyFieldsFrom);
+    return instance;
+  } else {
+    return new Klass(copyFieldsFrom);
+  }
+};
+
+var addPoolingTo = function addPoolingTo(CopyConstructor, pooler) {
+  // Casting as any so that flow ignores the actual implementation and trusts
+  // it to match the type we declared
+  var NewKlass = CopyConstructor;
+  NewKlass.instancePool = [];
+  NewKlass.getPooled = pooler || DEFAULT_POOLER;
+  if (!NewKlass.poolSize) {
+    NewKlass.poolSize = DEFAULT_POOL_SIZE;
+  }
+  NewKlass.release = standardReleaser;
+  return NewKlass;
+};
+
+var standardReleaser = function standardReleaser(instance) {
+  var Klass = this;
+  invariant(
+    instance instanceof Klass,
+    'Trying to release an instance into a pool of a different type.'
+  );
+  instance.destructor();
+  if (Klass.instancePool.length < Klass.poolSize) {
+    Klass.instancePool.push(instance);
+  }
+};
+
+var fourArgumentPooler = function fourArgumentPooler(a1, a2, a3, a4) {
+  var Klass = this;
+  if (Klass.instancePool.length) {
+    var instance = Klass.instancePool.pop();
+    Klass.call(instance, a1, a2, a3, a4);
+    return instance;
+  } else {
+    return new Klass(a1, a2, a3, a4);
+  }
+};
+
+function MapBookKeeping(mapResult, keyPrefix, mapFunction, mapContext) {
+  this.result = mapResult;
+  this.keyPrefix = keyPrefix;
+  this.func = mapFunction;
+  this.context = mapContext;
+  this.count = 0;
+}
+MapBookKeeping.prototype.destructor = function() {
+  this.result = null;
+  this.keyPrefix = null;
+  this.func = null;
+  this.context = null;
+  this.count = 0;
+};
+addPoolingTo(MapBookKeeping, fourArgumentPooler);
+
+function mapSingleChildIntoContext(bookKeeping, child, childKey) {
+  var result = bookKeeping.result;
+  var keyPrefix = bookKeeping.keyPrefix;
+  var func = bookKeeping.func;
+  var context = bookKeeping.context;
+
+  var mappedChild = func.call(context, child, bookKeeping.count++);
+  if (Array.isArray(mappedChild)) {
+    mapIntoWithKeyPrefixInternal(
+      mappedChild,
+      result,
+      childKey,
+      emptyFunction.thatReturnsArgument
+    );
+  } else if (mappedChild != null) {
+    if (React.isValidElement(mappedChild)) {
+      mappedChild = cloneAndReplaceKey(
+        mappedChild,
+        // Keep both the (mapped) and old keys if they differ, just as
+        // traverseAllChildren used to do for objects as children
+        keyPrefix +
+          (mappedChild.key && (!child || child.key !== mappedChild.key)
+            ? escapeUserProvidedKey(mappedChild.key) + '/'
+            : '') +
+          childKey
+      );
+    }
+    result.push(mappedChild);
+  }
+}
+
+function mapIntoWithKeyPrefixInternal(children, array, prefix, func, context) {
+  var escapedPrefix = '';
+  if (prefix != null) {
+    escapedPrefix = escapeUserProvidedKey(prefix) + '/';
+  }
+  var traverseContext = MapBookKeeping.getPooled(
+    array,
+    escapedPrefix,
+    func,
+    context
+  );
+  traverseAllChildren(children, mapSingleChildIntoContext, traverseContext);
+  MapBookKeeping.release(traverseContext);
+}
+
+var numericPropertyRegex = /^\d+$/;
+
+var warnedAboutNumeric = false;
+
+function createReactFragment(object) {
+  if (typeof object !== 'object' || !object || Array.isArray(object)) {
+    warning(
+      false,
+      'React.addons.createFragment only accepts a single object. Got: %s',
+      object
+    );
+    return object;
+  }
+  if (React.isValidElement(object)) {
+    warning(
+      false,
+      'React.addons.createFragment does not accept a ReactElement ' +
+        'without a wrapper object.'
+    );
+    return object;
+  }
+
+  invariant(
+    object.nodeType !== 1,
+    'React.addons.createFragment(...): Encountered an invalid child; DOM ' +
+      'elements are not valid children of React components.'
+  );
+
+  var result = [];
+
+  for (var key in object) {
+    if (true) {
+      if (!warnedAboutNumeric && numericPropertyRegex.test(key)) {
+        warning(
+          false,
+          'React.addons.createFragment(...): Child objects should have ' +
+            'non-numeric keys so ordering is preserved.'
+        );
+        warnedAboutNumeric = true;
+      }
+    }
+    mapIntoWithKeyPrefixInternal(
+      object[key],
+      result,
+      key,
+      emptyFunction.thatReturnsArgument
+    );
+  }
+
+  return result;
+}
+
+module.exports = createReactFragment;
+
+
+/***/ }),
+
 /***/ "./node_modules/react-hot-loader/lib/global/generation.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -24895,6 +25313,432 @@ var resetProxies = exports.resetProxies = function resetProxies() {
 /* eslint-disable import/no-unresolved */
 module.exports = __webpack_require__("./node_modules/react-hot-loader/lib/patch.js")
 
+
+/***/ }),
+
+/***/ "./node_modules/react-paginate/dist/BreakView.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__("./node_modules/react/cjs/react.development.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var BreakView = function BreakView(props) {
+  var label = props.breakLabel;
+  var className = props.breakClassName || 'break';
+
+  return _react2.default.createElement(
+    'li',
+    { className: className },
+    label
+  );
+};
+
+exports.default = BreakView;
+//# sourceMappingURL=BreakView.js.map
+
+/***/ }),
+
+/***/ "./node_modules/react-paginate/dist/PageView.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__("./node_modules/react/cjs/react.development.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PageView = function PageView(props) {
+  var cssClassName = props.pageClassName;
+  var linkClassName = props.pageLinkClassName;
+  var onClick = props.onClick;
+  var href = props.href;
+  var ariaLabel = 'Page ' + props.page + (props.extraAriaContext ? ' ' + props.extraAriaContext : '');
+  var ariaCurrent = null;
+
+  if (props.selected) {
+    ariaCurrent = 'page';
+    ariaLabel = 'Page ' + props.page + ' is your current page';
+    if (typeof cssClassName !== 'undefined') {
+      cssClassName = cssClassName + ' ' + props.activeClassName;
+    } else {
+      cssClassName = props.activeClassName;
+    }
+  }
+
+  return _react2.default.createElement(
+    'li',
+    { className: cssClassName },
+    _react2.default.createElement(
+      'a',
+      { onClick: onClick,
+        className: linkClassName,
+        href: href,
+        tabIndex: '0',
+        'aria-label': ariaLabel,
+        'aria-current': ariaCurrent,
+        onKeyPress: onClick },
+      props.page
+    )
+  );
+};
+
+exports.default = PageView;
+//# sourceMappingURL=PageView.js.map
+
+/***/ }),
+
+/***/ "./node_modules/react-paginate/dist/PaginationBoxView.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__("./node_modules/react/cjs/react.development.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__("./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _classnames = __webpack_require__("./node_modules/classnames/index.js");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _reactAddonsCreateFragment = __webpack_require__("./node_modules/react-addons-create-fragment/index.js");
+
+var _reactAddonsCreateFragment2 = _interopRequireDefault(_reactAddonsCreateFragment);
+
+var _PageView = __webpack_require__("./node_modules/react-paginate/dist/PageView.js");
+
+var _PageView2 = _interopRequireDefault(_PageView);
+
+var _BreakView = __webpack_require__("./node_modules/react-paginate/dist/BreakView.js");
+
+var _BreakView2 = _interopRequireDefault(_BreakView);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var PaginationBoxView = function (_Component) {
+  _inherits(PaginationBoxView, _Component);
+
+  function PaginationBoxView(props) {
+    _classCallCheck(this, PaginationBoxView);
+
+    var _this = _possibleConstructorReturn(this, (PaginationBoxView.__proto__ || Object.getPrototypeOf(PaginationBoxView)).call(this, props));
+
+    _this.handlePreviousPage = function (evt) {
+      var selected = _this.state.selected;
+
+      evt.preventDefault ? evt.preventDefault() : evt.returnValue = false;
+      if (selected > 0) {
+        _this.handlePageSelected(selected - 1, evt);
+      }
+    };
+
+    _this.handleNextPage = function (evt) {
+      var selected = _this.state.selected;
+      var pageCount = _this.props.pageCount;
+
+
+      evt.preventDefault ? evt.preventDefault() : evt.returnValue = false;
+      if (selected < pageCount - 1) {
+        _this.handlePageSelected(selected + 1, evt);
+      }
+    };
+
+    _this.handlePageSelected = function (selected, evt) {
+      evt.preventDefault ? evt.preventDefault() : evt.returnValue = false;
+
+      if (_this.state.selected === selected) return;
+
+      _this.setState({ selected: selected });
+
+      // Call the callback with the new selected item:
+      _this.callCallback(selected);
+    };
+
+    _this.callCallback = function (selectedItem) {
+      if (typeof _this.props.onPageChange !== "undefined" && typeof _this.props.onPageChange === "function") {
+        _this.props.onPageChange({ selected: selectedItem });
+      }
+    };
+
+    _this.pagination = function () {
+      var items = {};
+      var _this$props = _this.props,
+          pageRangeDisplayed = _this$props.pageRangeDisplayed,
+          pageCount = _this$props.pageCount,
+          marginPagesDisplayed = _this$props.marginPagesDisplayed,
+          breakLabel = _this$props.breakLabel,
+          breakClassName = _this$props.breakClassName;
+      var selected = _this.state.selected;
+
+
+      if (pageCount <= pageRangeDisplayed) {
+
+        for (var index = 0; index < pageCount; index++) {
+          items['key' + index] = _this.getPageElement(index);
+        }
+      } else {
+
+        var leftSide = pageRangeDisplayed / 2;
+        var rightSide = pageRangeDisplayed - leftSide;
+
+        if (selected > pageCount - pageRangeDisplayed / 2) {
+          rightSide = pageCount - selected;
+          leftSide = pageRangeDisplayed - rightSide;
+        } else if (selected < pageRangeDisplayed / 2) {
+          leftSide = selected;
+          rightSide = pageRangeDisplayed - leftSide;
+        }
+
+        var _index = void 0;
+        var page = void 0;
+        var breakView = void 0;
+        var createPageView = function createPageView(index) {
+          return _this.getPageElement(index);
+        };
+
+        for (_index = 0; _index < pageCount; _index++) {
+
+          page = _index + 1;
+
+          if (page <= marginPagesDisplayed) {
+            items['key' + _index] = createPageView(_index);
+            continue;
+          }
+
+          if (page > pageCount - marginPagesDisplayed) {
+            items['key' + _index] = createPageView(_index);
+            continue;
+          }
+
+          if (_index >= selected - leftSide && _index <= selected + rightSide) {
+            items['key' + _index] = createPageView(_index);
+            continue;
+          }
+
+          var keys = Object.keys(items);
+          var breakLabelKey = keys[keys.length - 1];
+          var breakLabelValue = items[breakLabelKey];
+
+          if (breakLabel && breakLabelValue !== breakView) {
+            breakView = _react2.default.createElement(_BreakView2.default, {
+              breakLabel: breakLabel,
+              breakClassName: breakClassName
+            });
+
+            items['key' + _index] = breakView;
+          }
+        }
+      }
+
+      return items;
+    };
+
+    _this.state = {
+      selected: props.initialPage ? props.initialPage : props.forcePage ? props.forcePage : 0
+    };
+    return _this;
+  }
+
+  _createClass(PaginationBoxView, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _props = this.props,
+          initialPage = _props.initialPage,
+          disableInitialCallback = _props.disableInitialCallback;
+      // Call the callback with the initialPage item:
+
+      if (typeof initialPage !== 'undefined' && !disableInitialCallback) {
+        this.callCallback(initialPage);
+      }
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (typeof nextProps.forcePage !== 'undefined' && this.props.forcePage !== nextProps.forcePage) {
+        this.setState({ selected: nextProps.forcePage });
+      }
+    }
+  }, {
+    key: 'hrefBuilder',
+    value: function hrefBuilder(pageIndex) {
+      var _props2 = this.props,
+          hrefBuilder = _props2.hrefBuilder,
+          pageCount = _props2.pageCount;
+
+      if (hrefBuilder && pageIndex !== this.state.selected && pageIndex >= 0 && pageIndex < pageCount) {
+        return hrefBuilder(pageIndex + 1);
+      }
+    }
+  }, {
+    key: 'getPageElement',
+    value: function getPageElement(index) {
+      var selected = this.state.selected;
+      var _props3 = this.props,
+          pageClassName = _props3.pageClassName,
+          pageLinkClassName = _props3.pageLinkClassName,
+          activeClassName = _props3.activeClassName,
+          extraAriaContext = _props3.extraAriaContext;
+
+
+      return _react2.default.createElement(_PageView2.default, {
+        onClick: this.handlePageSelected.bind(null, index),
+        selected: selected === index,
+        pageClassName: pageClassName,
+        pageLinkClassName: pageLinkClassName,
+        activeClassName: activeClassName,
+        extraAriaContext: extraAriaContext,
+        href: this.hrefBuilder(index),
+        page: index + 1 });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props4 = this.props,
+          disabledClassName = _props4.disabledClassName,
+          previousClassName = _props4.previousClassName,
+          nextClassName = _props4.nextClassName,
+          pageCount = _props4.pageCount,
+          containerClassName = _props4.containerClassName,
+          previousLinkClassName = _props4.previousLinkClassName,
+          previousLabel = _props4.previousLabel,
+          nextLinkClassName = _props4.nextLinkClassName,
+          nextLabel = _props4.nextLabel;
+      var selected = this.state.selected;
+
+
+      var disabled = disabledClassName;
+      var previousClasses = (0, _classnames2.default)(previousClassName, _defineProperty({}, disabled, selected === 0));
+
+      var nextClasses = (0, _classnames2.default)(nextClassName, _defineProperty({}, disabled, selected === pageCount - 1));
+
+      return _react2.default.createElement(
+        'ul',
+        { className: containerClassName },
+        _react2.default.createElement(
+          'li',
+          { className: previousClasses },
+          _react2.default.createElement(
+            'a',
+            { onClick: this.handlePreviousPage,
+              className: previousLinkClassName,
+              href: this.hrefBuilder(selected - 1),
+              tabIndex: '0',
+              onKeyPress: this.handlePreviousPage },
+            previousLabel
+          )
+        ),
+        (0, _reactAddonsCreateFragment2.default)(this.pagination()),
+        _react2.default.createElement(
+          'li',
+          { className: nextClasses },
+          _react2.default.createElement(
+            'a',
+            { onClick: this.handleNextPage,
+              className: nextLinkClassName,
+              href: this.hrefBuilder(selected + 1),
+              tabIndex: '0',
+              onKeyPress: this.handleNextPage },
+            nextLabel
+          )
+        )
+      );
+    }
+  }]);
+
+  return PaginationBoxView;
+}(_react.Component);
+
+PaginationBoxView.propTypes = {
+  pageCount: _propTypes2.default.number.isRequired,
+  pageRangeDisplayed: _propTypes2.default.number.isRequired,
+  marginPagesDisplayed: _propTypes2.default.number.isRequired,
+  previousLabel: _propTypes2.default.node,
+  nextLabel: _propTypes2.default.node,
+  breakLabel: _propTypes2.default.node,
+  hrefBuilder: _propTypes2.default.func,
+  onPageChange: _propTypes2.default.func,
+  initialPage: _propTypes2.default.number,
+  forcePage: _propTypes2.default.number,
+  disableInitialCallback: _propTypes2.default.bool,
+  containerClassName: _propTypes2.default.string,
+  pageClassName: _propTypes2.default.string,
+  pageLinkClassName: _propTypes2.default.string,
+  activeClassName: _propTypes2.default.string,
+  previousClassName: _propTypes2.default.string,
+  nextClassName: _propTypes2.default.string,
+  previousLinkClassName: _propTypes2.default.string,
+  nextLinkClassName: _propTypes2.default.string,
+  disabledClassName: _propTypes2.default.string,
+  breakClassName: _propTypes2.default.string
+};
+PaginationBoxView.defaultProps = {
+  pageCount: 10,
+  pageRangeDisplayed: 2,
+  marginPagesDisplayed: 3,
+  activeClassName: "selected",
+  previousClassName: "previous",
+  nextClassName: "next",
+  previousLabel: "Previous",
+  nextLabel: "Next",
+  breakLabel: "...",
+  disabledClassName: "disabled",
+  disableInitialCallback: false
+};
+exports.default = PaginationBoxView;
+;
+//# sourceMappingURL=PaginationBoxView.js.map
+
+/***/ }),
+
+/***/ "./node_modules/react-paginate/dist/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _PaginationBoxView = __webpack_require__("./node_modules/react-paginate/dist/PaginationBoxView.js");
+
+var _PaginationBoxView2 = _interopRequireDefault(_PaginationBoxView);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+module.exports = _PaginationBoxView2.default;
+//# sourceMappingURL=index.js.map
 
 /***/ }),
 
@@ -27246,13 +28090,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_next_link__ = __webpack_require__("./node_modules/next/link.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_next_link__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_isomorphic_unfetch__ = __webpack_require__("./node_modules/isomorphic-unfetch/browser.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_isomorphic_unfetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_isomorphic_unfetch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Layout__ = __webpack_require__("./components/Layout.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment__ = __webpack_require__("./node_modules/moment/moment.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__assets_css_app_css__ = __webpack_require__("./assets/css/app.css");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__assets_css_app_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__assets_css_app_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_next_router__ = __webpack_require__("./node_modules/next/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_next_router___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_next_router__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_isomorphic_unfetch__ = __webpack_require__("./node_modules/isomorphic-unfetch/browser.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_isomorphic_unfetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_isomorphic_unfetch__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Layout__ = __webpack_require__("./components/Layout.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_paginate__ = __webpack_require__("./node_modules/react-paginate/dist/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_paginate___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react_paginate__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__assets_css_app_css__ = __webpack_require__("./assets/css/app.css");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__assets_css_app_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__assets_css_app_css__);
 
 var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/pages/index.js';
 
@@ -27282,6 +28130,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+
+
+var LIMIT = 50;
+
 var styles = {
     jobCards: {
         margin: 5
@@ -27300,9 +28152,27 @@ var Index = function (_Component) {
     _inherits(Index, _Component);
 
     function Index() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Index);
 
-        return _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).apply(this, arguments));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.onPageChange = function (page) {
+            var selected = page.selected;
+
+            __WEBPACK_IMPORTED_MODULE_3_next_router___default.a.push({
+                pathname: '/',
+                query: {
+                    limit: LIMIT,
+                    offset: selected * LIMIT
+                }
+            });
+        }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(Index, [{
@@ -27314,21 +28184,21 @@ var Index = function (_Component) {
                     'article',
                     { style: styles.jobCards, key: 'job-item-' + i, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 29
+                            lineNumber: 43
                         }
                     },
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                         __WEBPACK_IMPORTED_MODULE_2_next_link___default.a,
                         { as: '/job/' + job.id, href: '/job?id=' + job.id, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 30
+                                lineNumber: 44
                             }
                         },
                         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                             'h3',
                             { style: styles.jobTitle, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 31
+                                    lineNumber: 45
                                 }
                             },
                             job.title,
@@ -27337,7 +28207,7 @@ var Index = function (_Component) {
                                 'span',
                                 { style: styles.muted, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 31
+                                        lineNumber: 45
                                     }
                                 },
                                 'at'
@@ -27350,11 +28220,11 @@ var Index = function (_Component) {
                         'div',
                         { style: styles.muted, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 33
+                                lineNumber: 47
                             }
                         },
                         'Published ',
-                        __WEBPACK_IMPORTED_MODULE_5_moment___default()(job.publishDate).startOf('day').fromNow(),
+                        __WEBPACK_IMPORTED_MODULE_6_moment___default()(job.publishDate).startOf('day').fromNow(),
                         ', Referred by ',
                         job.referrer
                     )
@@ -27362,22 +28232,32 @@ var Index = function (_Component) {
             });
 
             return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_4__components_Layout__["a" /* default */],
+                __WEBPACK_IMPORTED_MODULE_5__components_Layout__["a" /* default */],
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 41
+                        lineNumber: 55
                     }
                 },
                 __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                     'div',
                     { className: 'content', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 42
+                            lineNumber: 56
                         }
                     },
                     jobCards
-                )
+                ),
+                __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_react_paginate___default.a, {
+                    pageCount: Math.ceil(this.props.count / 50),
+                    marginPagesDisplayed: 2,
+                    onPageChange: this.onPageChange,
+                    pageRangeDisplayed: 5,
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 60
+                    }
+                })
             );
         }
     }, {
@@ -27390,37 +28270,54 @@ var Index = function (_Component) {
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_1_react__["Component"]);
 
-Index.getInitialProps = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
-    var res, data;
-    return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
-        while (1) {
-            switch (_context.prev = _context.next) {
-                case 0:
-                    _context.next = 2;
-                    return __WEBPACK_IMPORTED_MODULE_3_isomorphic_unfetch___default()('http://localhost:3000/api/jobs');
+Index.getInitialProps = function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(_ref2) {
+        var query = _ref2.query;
+        var findJobsUrl, params, res, data;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+            while (1) {
+                switch (_context.prev = _context.next) {
+                    case 0:
+                        findJobsUrl = 'http://localhost:3000/api/jobs';
+                        params = void 0;
 
-                case 2:
-                    res = _context.sent;
-                    _context.next = 5;
-                    return res.json();
+                        if (query.limit || query.offset) {
+                            params = '?limit=' + (query.limit || LIMIT) + '&offset=' + (query.offset || 0);
+                        } else {
+                            params = '';
+                        }
 
-                case 5:
-                    data = _context.sent;
+                        _context.next = 5;
+                        return __WEBPACK_IMPORTED_MODULE_4_isomorphic_unfetch___default()(findJobsUrl + params);
+
+                    case 5:
+                        res = _context.sent;
+                        _context.next = 8;
+                        return res.json();
+
+                    case 8:
+                        data = _context.sent;
 
 
-                    console.log('Show data fetched. Count: ' + data.length);
+                        console.log('Show data fetched. Count: ' + data.rows.length + '/' + data.count.length);
 
-                    return _context.abrupt('return', {
-                        jobs: data
-                    });
+                        return _context.abrupt('return', {
+                            jobs: data.rows,
+                            count: data.count.length
+                        });
 
-                case 8:
-                case 'end':
-                    return _context.stop();
+                    case 11:
+                    case 'end':
+                        return _context.stop();
+                }
             }
-        }
-    }, _callee, this);
-}));
+        }, _callee, this);
+    }));
+
+    return function (_x) {
+        return _ref3.apply(this, arguments);
+    };
+}();
 
 var _default = Index;
 /* harmony default export */ __webpack_exports__["default"] = (_default);
@@ -27435,6 +28332,7 @@ var _default = Index;
         return;
     }
 
+    reactHotLoader.register(LIMIT, 'LIMIT', '/Applications/MAMP/code/sandbox/remote-job-lists/pages/index.js');
     reactHotLoader.register(styles, 'styles', '/Applications/MAMP/code/sandbox/remote-job-lists/pages/index.js');
     reactHotLoader.register(Index, 'Index', '/Applications/MAMP/code/sandbox/remote-job-lists/pages/index.js');
     reactHotLoader.register(_default, 'default', '/Applications/MAMP/code/sandbox/remote-job-lists/pages/index.js');
@@ -27464,7 +28362,7 @@ var _default = Index;
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/index.js");
@@ -27472,7 +28370,7 @@ module.exports = __webpack_require__("./pages/index.js");
 
 /***/ })
 
-},[3])
+},[2])
           return { page: comp.default }
         })
       ;

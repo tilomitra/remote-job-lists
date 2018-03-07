@@ -9,11 +9,12 @@ const apiRoutes = {
 
     jobs: {
         find: (req, res) => {
-            models.job.findAll({
-                limit: 200,
+            models.job.findAndCountAll({
                 group: ["link"],
                 attributes: ['id', 'title', 'link', 'publishDate', 'referrer', 'company'],
-                order: [["publishDate", "DESC"]]
+                order: [["publishDate", "DESC"]],
+                offset: req.query.offset || 0,
+                limit: req.query.limit || 25
             }).then((jobs) => {
                 return res.json(jobs);
             }).catch((err) => {

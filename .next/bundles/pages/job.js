@@ -2,7 +2,7 @@ module.exports =
 
         __NEXT_REGISTER_PAGE('/job', function() {
           var comp = 
-      webpackJsonp([4],{
+      webpackJsonp([5],{
 
 /***/ "./components/Footer.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -12238,7 +12238,7 @@ var _default = Job;
 
 /***/ }),
 
-/***/ 2:
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/job.js");
@@ -12246,7 +12246,7 @@ module.exports = __webpack_require__("./pages/job.js");
 
 /***/ })
 
-},[2])
+},[3])
           return { page: comp.default }
         })
       ;

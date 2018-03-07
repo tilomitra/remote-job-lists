@@ -1,11 +1,14 @@
 import { Component } from 'react';
-import Link from 'next/link'
+import Link from 'next/link';
+import Router from 'next/router';
 import fetch from 'isomorphic-unfetch'
 import Layout from '../components/Layout';
 import moment from 'moment';
+import ReactPaginate from 'react-paginate';
 
 import "../assets/css/app.css";
 
+const LIMIT = 50;
 
 const styles = {
     jobCards: {
@@ -22,6 +25,17 @@ const styles = {
 }
 
 class Index extends Component {
+
+    onPageChange = (page) => {
+        const { selected } = page;
+        Router.push({
+            pathname: '/',
+            query: {
+                limit: LIMIT,
+                offset: selected * LIMIT
+            }
+        })
+    }
     render() {
 
         const jobCards = this.props.jobs.map((job, i) => {
@@ -42,19 +56,36 @@ class Index extends Component {
                 <div className="content">
                     {jobCards}
                 </div>
+
+                <ReactPaginate
+                    pageCount={Math.ceil(this.props.count / 50)}
+                    marginPagesDisplayed={2}
+                    onPageChange={this.onPageChange}
+                    pageRangeDisplayed={5}
+                />
             </Layout>
         )
     }
 }
 
-Index.getInitialProps = async function () {
-    const res = await fetch('http://localhost:3000/api/jobs')
+Index.getInitialProps = async function ({ query }) {
+
+    const findJobsUrl = 'http://localhost:3000/api/jobs';
+    let params;
+    if (query.limit || query.offset) {
+        params = `?limit=${query.limit || LIMIT}&offset=${query.offset || 0}`;
+    } else {
+        params = '';
+    }
+
+    const res = await fetch(findJobsUrl + params);
     const data = await res.json()
 
-    console.log(`Show data fetched. Count: ${data.length}`)
+    console.log(`Show data fetched. Count: ${data.rows.length}/${data.count.length}`)
 
     return {
-        jobs: data
+        jobs: data.rows,
+        count: data.count.length
     }
 }
 

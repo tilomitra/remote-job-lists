@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -240,13 +240,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_next_link__ = __webpack_require__("next/link");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_next_link__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_isomorphic_unfetch__ = __webpack_require__("isomorphic-unfetch");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_isomorphic_unfetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_isomorphic_unfetch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Layout__ = __webpack_require__("./components/Layout.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment__ = __webpack_require__("moment");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__assets_css_app_css__ = __webpack_require__("./assets/css/app.css");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__assets_css_app_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__assets_css_app_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_next_router__ = __webpack_require__("next/router");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_next_router___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_next_router__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_isomorphic_unfetch__ = __webpack_require__("isomorphic-unfetch");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_isomorphic_unfetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_isomorphic_unfetch__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Layout__ = __webpack_require__("./components/Layout.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment__ = __webpack_require__("moment");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_paginate__ = __webpack_require__("react-paginate");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_paginate___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react_paginate__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__assets_css_app_css__ = __webpack_require__("./assets/css/app.css");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__assets_css_app_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__assets_css_app_css__);
 
 var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/pages/index.js';
 
@@ -270,6 +274,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+
+
+var LIMIT = 50;
+
 var styles = {
     jobCards: {
         margin: 5
@@ -288,9 +296,27 @@ var Index = function (_Component) {
     _inherits(Index, _Component);
 
     function Index() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Index);
 
-        return _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).apply(this, arguments));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.onPageChange = function (page) {
+            var selected = page.selected;
+
+            __WEBPACK_IMPORTED_MODULE_3_next_router___default.a.push({
+                pathname: '/',
+                query: {
+                    limit: LIMIT,
+                    offset: selected * LIMIT
+                }
+            });
+        }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(Index, [{
@@ -302,21 +328,21 @@ var Index = function (_Component) {
                     'article',
                     { style: styles.jobCards, key: 'job-item-' + i, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 29
+                            lineNumber: 43
                         }
                     },
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                         __WEBPACK_IMPORTED_MODULE_2_next_link___default.a,
                         { as: '/job/' + job.id, href: '/job?id=' + job.id, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 30
+                                lineNumber: 44
                             }
                         },
                         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                             'h3',
                             { style: styles.jobTitle, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 31
+                                    lineNumber: 45
                                 }
                             },
                             job.title,
@@ -325,7 +351,7 @@ var Index = function (_Component) {
                                 'span',
                                 { style: styles.muted, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 31
+                                        lineNumber: 45
                                     }
                                 },
                                 'at'
@@ -338,11 +364,11 @@ var Index = function (_Component) {
                         'div',
                         { style: styles.muted, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 33
+                                lineNumber: 47
                             }
                         },
                         'Published ',
-                        __WEBPACK_IMPORTED_MODULE_5_moment___default()(job.publishDate).startOf('day').fromNow(),
+                        __WEBPACK_IMPORTED_MODULE_6_moment___default()(job.publishDate).startOf('day').fromNow(),
                         ', Referred by ',
                         job.referrer
                     )
@@ -350,22 +376,32 @@ var Index = function (_Component) {
             });
 
             return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_4__components_Layout__["a" /* default */],
+                __WEBPACK_IMPORTED_MODULE_5__components_Layout__["a" /* default */],
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 41
+                        lineNumber: 55
                     }
                 },
                 __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                     'div',
                     { className: 'content', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 42
+                            lineNumber: 56
                         }
                     },
                     jobCards
-                )
+                ),
+                __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_react_paginate___default.a, {
+                    pageCount: Math.ceil(this.props.count / 50),
+                    marginPagesDisplayed: 2,
+                    onPageChange: this.onPageChange,
+                    pageRangeDisplayed: 5,
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 60
+                    }
+                })
             );
         }
     }]);
@@ -373,43 +409,60 @@ var Index = function (_Component) {
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_1_react__["Component"]);
 
-Index.getInitialProps = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
-    var res, data;
-    return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
-        while (1) {
-            switch (_context.prev = _context.next) {
-                case 0:
-                    _context.next = 2;
-                    return __WEBPACK_IMPORTED_MODULE_3_isomorphic_unfetch___default()('http://localhost:3000/api/jobs');
+Index.getInitialProps = function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(_ref2) {
+        var query = _ref2.query;
+        var findJobsUrl, params, res, data;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+            while (1) {
+                switch (_context.prev = _context.next) {
+                    case 0:
+                        findJobsUrl = 'http://localhost:3000/api/jobs';
+                        params = void 0;
 
-                case 2:
-                    res = _context.sent;
-                    _context.next = 5;
-                    return res.json();
+                        if (query.limit || query.offset) {
+                            params = '?limit=' + (query.limit || LIMIT) + '&offset=' + (query.offset || 0);
+                        } else {
+                            params = '';
+                        }
 
-                case 5:
-                    data = _context.sent;
+                        _context.next = 5;
+                        return __WEBPACK_IMPORTED_MODULE_4_isomorphic_unfetch___default()(findJobsUrl + params);
+
+                    case 5:
+                        res = _context.sent;
+                        _context.next = 8;
+                        return res.json();
+
+                    case 8:
+                        data = _context.sent;
 
 
-                    console.log('Show data fetched. Count: ' + data.length);
+                        console.log('Show data fetched. Count: ' + data.rows.length + '/' + data.count.length);
 
-                    return _context.abrupt('return', {
-                        jobs: data
-                    });
+                        return _context.abrupt('return', {
+                            jobs: data.rows,
+                            count: data.count.length
+                        });
 
-                case 8:
-                case 'end':
-                    return _context.stop();
+                    case 11:
+                    case 'end':
+                        return _context.stop();
+                }
             }
-        }
-    }, _callee, this);
-}));
+        }, _callee, this);
+    }));
+
+    return function (_x) {
+        return _ref3.apply(this, arguments);
+    };
+}();
 
 /* harmony default export */ __webpack_exports__["default"] = (Index);
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/index.js");
@@ -445,10 +498,24 @@ module.exports = require("next/link");
 
 /***/ }),
 
+/***/ "next/router":
+/***/ (function(module, exports) {
+
+module.exports = require("next/router");
+
+/***/ }),
+
 /***/ "react":
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "react-paginate":
+/***/ (function(module, exports) {
+
+module.exports = require("react-paginate");
 
 /***/ })
 
