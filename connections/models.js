@@ -7,10 +7,17 @@ let models = {
         title: Sequelize.STRING,
         description: Sequelize.TEXT,
         company: Sequelize.TEXT,
-        link: Sequelize.STRING,
+        link: {
+            type: Sequelize.STRING,
+            unique: true
+        },
+        slug: {
+            type: Sequelize.STRING,
+            unique: true
+        },
         referrer: Sequelize.TEXT,
         publishDate: {
-            type: 'TIMESTAMP',
+            type: Sequelize.DATE,
             defaultValue: Sequelize.NOW
         }
     }),

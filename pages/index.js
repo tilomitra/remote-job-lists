@@ -1,24 +1,51 @@
+import { Component } from 'react';
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import Layout from '../components/Layout';
+import moment from 'moment';
+
+import "../assets/css/app.css";
 
 
-const Index = (props) => (
-    <Layout>
-        <div>
-            <ul>
-                {props.jobs.map((job) => (
-                    <li key={job.id}>
-                        <Link href={job.link}>
-                            <span><a>{job.title}</a>: {job.publishDate}</span>
-                        </Link>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    </Layout>
-)
+const styles = {
+    jobCards: {
+        margin: 5
+    },
+    jobTitle: {
+        fontWeight: 'normal',
+        marginBottom: 0,
+        paddingBottom: 0
+    },
+    muted: {
+        color: 'grey'
+    }
+}
 
+class Index extends Component {
+    render() {
+
+        const jobCards = this.props.jobs.map((job, i) => {
+            return (
+                <article style={styles.jobCards} key={`job-item-${i}`}>
+                    <Link href={job.link} as={`/job/${job.id}`}>
+                        <h3 style={styles.jobTitle}>{job.title} <span style={styles.muted}>at</span> {job.company}</h3>
+                    </Link>
+                    <div style={styles.muted}>
+                        Published {moment(job.publishDate).startOf('day').fromNow()}, Referred by {job.referrer}
+                    </div>
+                </article>
+            )
+        })
+
+        return (
+            <Layout>
+                <div className="content">
+                    {jobCards}
+                </div>
+            </Layout>
+        )
+    }
+}
 
 Index.getInitialProps = async function () {
     const res = await fetch('http://localhost:3000/api/jobs')

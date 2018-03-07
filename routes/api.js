@@ -1,78 +1,18 @@
-const FeedMe = require('feedme');
-const https = require('https');
+const request = require('request');
+
 const sequelize = require('../connections/db');
 const models = require('../connections/models');
 
-const Job = models.job;
-
-
-const getRss = ({ url, jobsite }) => {
-    return new Promise((resolve, reject) => {
-        https.get(url, (response) => {
-            if (response.statusCode != 200) {
-                const err = new Error(`status code ${response.statusCode}`);
-                return reject(err);
-            }
-            var parser = new FeedMe(true);
-            var promises = [];
-
-            parser.on('title', (title) => {
-                console.log('title of feed is', title);
-            });
-            parser.on('item', (item) => {
-
-                let title;
-                let company;
-                if (jobsite === 'weworkremotely') {
-                    title = item.title.split(':')[1].trim();
-                    company = item.title.split(':')[0].trim();
-                } else {
-                    title = item.title;
-                    company = item.name;
-                }
-
-                promises.push(
-                    Job.findOrCreate({
-                        where: {
-                            title: title,
-                            referrer: jobsite,
-                            publishDate: item.pubdate
-                        },
-                        defaults: {
-                            title: title,
-                            company: company,
-                            description: item.description,
-                            link: item.link,
-                            referrer: jobsite,
-                            publishDate: item.pubdate
-                        }
-                    })
-                        .then((job) => {
-                            var created = job[1];
-                            job = job[0]; //new or found
-                            if (created) {
-                                console.log('created job:', item.title);
-                            } else {
-                                console.log('found job:', item.title);
-                            }
-                        })
-                )
-
-            });
-
-            parser.on('end', () => {
-                Promise.all(promises).then(resolve());
-            });
-            response.pipe(parser);
-        });
-    });
-
-}
-
+const getRss = require('./getRss');
 
 const apiRoutes = {
     jobs: (req, res) => {
-        Job.findAll({ limit: 200 }).then((jobs) => {
+        models.job.findAll({
+            limit: 200,
+            group: ["link"],
+            attributes: ['title', 'link', 'publishDate', 'referrer', 'company'],
+            order: [["publishDate", "DESC"]]
+        }).then((jobs) => {
             return res.json(jobs);
         }).catch((err) => {
             return res.status(500).send(err);
@@ -123,6 +63,47 @@ const apiRoutes = {
                 console.error(err);
                 return res.status(500).send(err);
             })
+    },
+
+    remoteok: (req, res) => {
+        request({
+            url: 'https://remoteok.io/remote-jobs.json',
+            json: true
+        }, (err, response, body) => {
+
+            let batchUpdates = [];
+
+            if (err) {
+                return res.status(500).send(err);
+            } else {
+                body.forEach(d => {
+                    batchUpdates.push({
+                        title: d.position,
+                        company: d.company,
+                        description: d.description,
+                        link: d.url,
+                        referrer: 'remoteok',
+                        publishDate: new Date(d.date),
+                        slug: d.slug
+                    });
+                });
+            }
+
+            models.job.bulkCreate(batchUpdates, {
+                fields: ["title", "company", "description", "link", "referrer", "slug", "publishDate"]
+            }).then(() => {
+                console.log('Updated RemoteOK Jobs.');
+                return res.status(200).json({
+                    success: true,
+                    message: 'Updated RemoteOK Jobs'
+                });
+            }).catch((err) => {
+                console.error(err);
+                return res.status(500).send(err);
+            })
+        });
+
+
     }
 }
 

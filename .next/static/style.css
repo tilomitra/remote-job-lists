@@ -1,0 +1,11 @@
+
+.content {
+    color: red;
+    background: blue;
+}
+
+.footer {
+    background: url(data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB2aWV3Q…kiPjwvcGF0aD4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+) no-repeat;
+    background-size: cover;
+}
+/*# sourceMappingURL=style.css.map*/
