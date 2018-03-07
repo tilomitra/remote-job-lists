@@ -21,7 +21,7 @@ const sequelize = new Sequelize('database', null, null, {
 
 //  SYNC SCHEMA
 sequelize
-  .sync({ force: true })
+  .sync({ force: false })
   .then(function (err) {
     console.log('Connected to Sqlite.');
   }, function (err) {
