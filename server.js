@@ -26,7 +26,7 @@ app.prepare()
         server.get('/api/findJobs/weworkremotely', api.weworkremotely);
         server.get('/api/findJobs/stackoverflow', api.stackoverflow);
         server.get('/api/findJobs/remoteok', api.remoteok);
-
+        server.get('/api/findJobs/github', api.github);
 
         server.get('*', (req, res) => {
             return handle(req, res)

@@ -1,8 +1,12 @@
 
-body, h1, h2, h3, h4, h5, .job-meta, p, ul, li {
-    font-family: 'Roboto', sans-serif;
+body, h1, h2, h3, h4, h5, .btn, .job-meta, .app-jumbotron, p.lead {
+
 }
 
+p, ul, li  {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+}
 
 .app {
     line-height: 1.7;
@@ -12,21 +16,44 @@ body, h1, h2, h3, h4, h5, .job-meta, p, ul, li {
     padding: 1em;
 }
 
+.app-jumbotron {
+    /* background: url('https://images.unsplash.com/photo-1460794418188-1bb7dba2720d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d2bfe8be765e57893fa314522a14050c&auto=format&fit=crop&w=1950&q=80') no-repeat;
+    background-size: cover; */
+}
+
+.card {
+    margin-bottom: 1em;
+}
+
+.app-search-input {
+    width: 360px !important;
+}
+
 .job-list-item {
     cursor: pointer;
-    padding: 0.5em 1em;
-    border-radius: 12px;
-    transition: background 0.3s ease-out;
+    padding: 1em;
+    border-radius: 5px;
+    transition: background 0.12s ease-out;
 }
 
-.job-list-item:hover {
-    background: #e0f1ff;
+
+.job-list-item:hover .job-title {
+    color: blue;
 }
 
-.job-list-item-title {
+.job-title {
     margin: 0;
     padding: 0;
-    font-size: 1.3em;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.job-title-expanded {
+    font-size: 2em;
+    padding-top: 1em;
+}
+
+.job-sidebar {
+    padding-top: 1em;
 }
 
 
@@ -54,6 +81,12 @@ body, h1, h2, h3, h4, h5, .job-meta, p, ul, li {
     display: none;
 }
 
+.job-description h1,
+.job-description h2,
+.job-description h3,
+.job-description h4 {
+    font-size: 1.3em;
+}
 
 
 

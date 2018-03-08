@@ -5,10 +5,12 @@ import fetch from 'isomorphic-unfetch'
 import moment from 'moment';
 import ReactPaginate from 'react-paginate';
 import qs from 'query-string';
+import Typing from 'react-typing-animation';
 
 import Layout from '../components/Layout';
 import JobTitle from '../components/JobTitle';
 import SearchBar from '../components/SearchBar';
+import Jumbotron from '../components/Jumbotron';
 
 const LIMIT = 50;
 
@@ -59,18 +61,7 @@ class Index extends Component {
 
         return (
             <Layout>
-                <div className="jumbotron jumbotron-fluid">
-                    <div className="container">
-                        <h1 className="display-4">Hello, world!</h1>
-                        <p className="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                        <hr className="my-4" />
-                        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-                        <p className="lead">
-                            <SearchBar term={this.props.url.query.search} onSearch={this.onSearch} />
-                        </p>
-                    </div>
-                </div>
-
+                <Jumbotron searchTerm={this.props.url.query.search} onSearch={this.onSearch} />
                 <section className="container">
                     <div className="job-list">
                         {jobCards}

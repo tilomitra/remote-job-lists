@@ -1,6 +1,6 @@
 const request = require('request');
 const Sequelize = require('sequelize');
-
+const encoding = require('encoding');
 
 const sequelize = require('../connections/db');
 const models = require('../connections/models');
@@ -23,9 +23,15 @@ const apiRoutes = {
 
             if (req.query.search) {
                 opts.where = {
-                    title: {
-                        [Op.like]: `%${req.query.search}%`
+                    [Op.or]: {
+                        title: {
+                            [Op.like]: `%${req.query.search}%`
+                        },
+                        company: {
+                            [Op.like]: `%${req.query.search}%`
+                        }
                     }
+
                 }
             }
 
@@ -93,7 +99,22 @@ const apiRoutes = {
                 return res.status(500).send(err);
             })
     },
-
+    github: (req, res) => {
+        getRss({
+            url: 'https://jobs.github.com/positions.atom',
+            jobsite: 'github'
+        })
+            .then(() => {
+                return res.status(200).send({
+                    success: true,
+                    message: "Updated Github Jobs."
+                });
+            })
+            .catch((err) => {
+                console.error(err);
+                return res.status(500).send(err);
+            })
+    },
     remoteok: (req, res) => {
         request({
             url: 'https://remoteok.io/remote-jobs.json',
@@ -105,11 +126,14 @@ const apiRoutes = {
             if (err) {
                 return res.status(500).send(err);
             } else {
+
                 body.forEach(d => {
+                    // Convert the ISO-8859-1 format that is in these feeds to UTF-8.
+                    const descBuffer = encoding.convert(d.description, 'ISO-8859-1', 'UTF-8');
                     batchUpdates.push({
                         title: d.position,
                         company: d.company,
-                        description: d.description,
+                        description: descBuffer.toString(),
                         link: `http://remoteok.io/l/${d.id}`,
                         referrer: 'remoteok',
                         publishDate: new Date(d.date),

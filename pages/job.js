@@ -6,6 +6,8 @@ import marked from 'marked';
 import Layout from '../components/Layout';
 import JobTitle from '../components/JobTitle';
 import ApplyButton from '../components/ApplyButton';
+import Company from '../components/Company';
+import Email from '../components/Email';
 
 class Job extends Component {
     render() {
@@ -21,11 +23,14 @@ class Job extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-12 col-md-8">
-                            <JobTitle job={job} />
-                            <div className="job-description" dangerouslySetInnerHTML={{ __html: htmlDescription }}></div>
+                            <JobTitle job={job} expanded={true} />
+                            <div className="job-description"
+                                dangerouslySetInnerHTML={{ __html: htmlDescription }}></div>
                         </div>
-                        <div className="col-sm-12 col-md-4">
+                        <div className="col-sm-12 col-md-4 job-sidebar">
                             <ApplyButton job={job} />
+                            <Company companyName={job.company} />
+                            <Email job={job} />
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 const FeedMe = require('feedme');
 const https = require('https');
-
+const encoding = require('encoding');
 const models = require('../connections/models');
 
 
@@ -31,11 +31,13 @@ const getRss = ({ url, jobsite }) => {
                 }
 
                 // If stackoverflow job does not have `remote` in the title, return an empty promise.
-                if (!(jobsite === 'stackoverflow' && title.indexOf('remote') === -1)) {
+                if (!((jobsite === 'stackoverflow' && title.indexOf('remote') === -1) || jobsite === 'github' && title.indexOf('remote') === -1)) {
+                    const descBuffer = encoding.convert(item.description, 'ISO-8859-1', 'UTF-8');
+
                     batchUpdates.push({
                         title: title,
                         company: company,
-                        description: item.description,
+                        description: descBuffer.toString(),
                         link: item.link,
                         referrer: jobsite,
                         publishDate: new Date(item.pubdate)
