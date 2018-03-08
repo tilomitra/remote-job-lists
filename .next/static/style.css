@@ -1,11 +1,85 @@
 
-.content {
-    color: red;
-    background: blue;
+body, h1, h2, h3, h4, h5, .job-meta, p, ul, li {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.app {
+    line-height: 1.7;
+}
+
+.app-content {
+    padding: 1em;
+}
+
+.job-list-item {
+    cursor: pointer;
+    padding: 0.5em 1em;
+    border-radius: 12px;
+    transition: background 0.3s ease-out;
+}
+
+.job-list-item:hover {
+    background: #e0f1ff;
+}
+
+.job-list-item-title {
+    margin: 0;
+    padding: 0;
+    font-size: 1.3em;
+}
+
+
+.job-apply-button {
+    background: #0087E0;
+    color: white;
+    padding: 0.5em 2em;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.job-apply-button:hover {
+    background: #36AAEB;
+}
+
+.job-description ul {
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.job-description br {
+    display: none;
+}
+
+
+
+
+.muted {
+    color: #6c718a;
+    font-weight: 100;
+}
+
+
+
+.paginate ul {
+    display: inline-block;
+}
+
+.paginate li {
+    display: inline-block;
+    padding: 0.5em;
+}
+
+.paginate .break a {
+    cursor: default;
 }
 
 .footer {
-    background: url(data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB2aWV3Q…kiPjwvcGF0aD4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+) no-repeat;
+    background: url('data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB2aWV3Q…kiPjwvcGF0aD4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+') no-repeat;
     background-size: cover;
+    height: 300px;
 }
 /*# sourceMappingURL=style.css.map*/

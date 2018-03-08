@@ -1,18 +1,13 @@
 import Link from 'next/link'
 
-const linkStyle = {
-    marginRight: 15
-}
+
 
 const Header = () => (
-    <div>
+    <nav className="navbar navbar-light bg-light">
         <Link href="/">
-            <a style={linkStyle}>Home</a>
+            <a className="navbar-brand" href="/">Remote Job Lists</a>
         </Link>
-        <Link href="/about">
-            <a style={linkStyle}>About</a>
-        </Link>
-    </div>
+    </nav>
 )
 
 export default Header

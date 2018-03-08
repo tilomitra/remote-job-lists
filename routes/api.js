@@ -1,21 +1,35 @@
 const request = require('request');
+const Sequelize = require('sequelize');
+
 
 const sequelize = require('../connections/db');
 const models = require('../connections/models');
 
+const Op = Sequelize.Op;
 const getRss = require('./getRss');
 
 const apiRoutes = {
 
     jobs: {
         find: (req, res) => {
-            models.job.findAndCountAll({
+
+            let opts = {
                 group: ["link"],
                 attributes: ['id', 'title', 'link', 'publishDate', 'referrer', 'company'],
                 order: [["publishDate", "DESC"]],
                 offset: req.query.offset || 0,
                 limit: req.query.limit || 25
-            }).then((jobs) => {
+            }
+
+            if (req.query.search) {
+                opts.where = {
+                    title: {
+                        [Op.like]: `%${req.query.search}%`
+                    }
+                }
+            }
+
+            models.job.findAndCountAll(opts).then((jobs) => {
                 return res.json(jobs);
             }).catch((err) => {
                 return res.status(500).send(err);
@@ -96,7 +110,7 @@ const apiRoutes = {
                         title: d.position,
                         company: d.company,
                         description: d.description,
-                        link: d.url,
+                        link: `http://remoteok.io/l/${d.id}`,
                         referrer: 'remoteok',
                         publishDate: new Date(d.date),
                         slug: d.slug

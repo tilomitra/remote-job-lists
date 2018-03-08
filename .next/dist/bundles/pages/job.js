@@ -72,6 +72,37 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./assets/css/app.css":
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./components/ApplyButton.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+var _jsxFileName = "/Applications/MAMP/code/sandbox/remote-job-lists/components/ApplyButton.js";
+
+var ApplyButton = function ApplyButton(props) {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "a",
+        { className: "btn btn-primary job-apply-button", href: props.job.link, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 2
+            }
+        },
+        "Apply"
+    );
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (ApplyButton);
+
+/***/ }),
+
 /***/ "./components/Footer.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -120,57 +151,126 @@ var _jsxFileName = "/Applications/MAMP/code/sandbox/remote-job-lists/components/
 
 
 
-var linkStyle = {
-    marginRight: 15
-};
-
 var Header = function Header() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        "div",
-        {
-            __source: {
+        "nav",
+        { className: "navbar navbar-light bg-light", __source: {
                 fileName: _jsxFileName,
-                lineNumber: 8
+                lineNumber: 6
             }
         },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             __WEBPACK_IMPORTED_MODULE_1_next_link___default.a,
             { href: "/", __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 9
+                    lineNumber: 7
                 }
             },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "a",
-                { style: linkStyle, __source: {
+                { className: "navbar-brand", href: "/", __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 10
+                        lineNumber: 8
                     }
                 },
-                "Home"
-            )
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_1_next_link___default.a,
-            { href: "/about", __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 12
-                }
-            },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                "a",
-                { style: linkStyle, __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 13
-                    }
-                },
-                "About"
+                "Remote Job Lists"
             )
         )
     );
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (Header);
+
+/***/ }),
+
+/***/ "./components/JobTitle.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link__ = __webpack_require__("next/link");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__("moment");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_moment__);
+var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/components/JobTitle.js';
+
+
+
+
+var JobTitle = function JobTitle(props) {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'article',
+        { className: 'job-list-item', __source: {
+                fileName: _jsxFileName,
+                lineNumber: 5
+            }
+        },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            __WEBPACK_IMPORTED_MODULE_1_next_link___default.a,
+            { prefetch: true, as: '/job/' + props.job.id, href: '/job?id=' + props.job.id, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 6
+                }
+            },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 7
+                    }
+                },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'h2',
+                    { className: 'job-list-item-title', __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 8
+                        }
+                    },
+                    props.job.title,
+                    ' ',
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'span',
+                        { className: 'muted', __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 8
+                            }
+                        },
+                        'at'
+                    ),
+                    ' ',
+                    props.job.company
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'span',
+                    { className: 'muted', __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 9
+                        }
+                    },
+                    'Published'
+                ),
+                ' ',
+                __WEBPACK_IMPORTED_MODULE_2_moment___default()(props.job.publishDate).startOf('day').fromNow(),
+                ', ',
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'span',
+                    { className: 'muted', __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 9
+                        }
+                    },
+                    'Referred by'
+                ),
+                ' ',
+                props.job.referrer
+            )
+        )
+    );
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (JobTitle);
 
 /***/ }),
 
@@ -182,37 +282,43 @@ var Header = function Header() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Header__ = __webpack_require__("./components/Header.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Footer__ = __webpack_require__("./components/Footer.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_css_app_css__ = __webpack_require__("./assets/css/app.css");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_css_app_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__assets_css_app_css__);
 var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/components/Layout.js';
 
 
 
 
-var layoutStyle = {
-    margin: 20,
-    padding: 20,
-    fontFamily: 'sans-serif',
-    lineHeight: 1.6
-};
+
 
 var Layout = function Layout(props) {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        { style: layoutStyle, __source: {
+        { className: 'app', __source: {
                 fileName: _jsxFileName,
-                lineNumber: 12
+                lineNumber: 7
             }
         },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Header__["a" /* default */], {
             __source: {
                 fileName: _jsxFileName,
-                lineNumber: 13
+                lineNumber: 8
             }
         }),
-        props.children,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'section',
+            {
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 9
+                }
+            },
+            props.children
+        ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Footer__["a" /* default */], {
             __source: {
                 fileName: _jsxFileName,
-                lineNumber: 15
+                lineNumber: 12
             }
         })
     );
@@ -235,9 +341,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_next_link__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_isomorphic_unfetch__ = __webpack_require__("isomorphic-unfetch");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_isomorphic_unfetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_isomorphic_unfetch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Layout__ = __webpack_require__("./components/Layout.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_marked__ = __webpack_require__("marked");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_marked___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_marked__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_marked__ = __webpack_require__("marked");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_marked___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_marked__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Layout__ = __webpack_require__("./components/Layout.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_JobTitle__ = __webpack_require__("./components/JobTitle.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_ApplyButton__ = __webpack_require__("./components/ApplyButton.js");
 
 var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/pages/job.js';
 
@@ -259,7 +367,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-var styles = {};
+
+
 
 var Job = function (_Component) {
     _inherits(Job, _Component);
@@ -278,11 +387,11 @@ var Job = function (_Component) {
             var htmlDescription = job.description;
 
             if (job.referrer === 'remoteok') {
-                htmlDescription = __WEBPACK_IMPORTED_MODULE_5_marked___default()(job.description);
+                htmlDescription = __WEBPACK_IMPORTED_MODULE_4_marked___default()(job.description);
             }
 
             return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_4__components_Layout__["a" /* default */],
+                __WEBPACK_IMPORTED_MODULE_5__components_Layout__["a" /* default */],
                 {
                     __source: {
                         fileName: _jsxFileName,
@@ -291,27 +400,51 @@ var Job = function (_Component) {
                 },
                 __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                     'div',
-                    { className: 'content', __source: {
+                    { className: 'container', __source: {
                             fileName: _jsxFileName,
                             lineNumber: 21
                         }
                     },
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-                        'h2',
-                        {
-                            __source: {
+                        'div',
+                        { className: 'row', __source: {
                                 fileName: _jsxFileName,
                                 lineNumber: 22
                             }
                         },
-                        job.title
+                        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                            'div',
+                            { className: 'col-sm-12 col-md-8', __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 23
+                                }
+                            },
+                            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__components_JobTitle__["a" /* default */], { job: job, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 24
+                                }
+                            }),
+                            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('div', { className: 'job-description', dangerouslySetInnerHTML: { __html: htmlDescription }, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 25
+                                }
+                            })
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                            'div',
+                            { className: 'col-sm-12 col-md-4', __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 27
+                                }
+                            },
+                            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__components_ApplyButton__["a" /* default */], { job: job, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 28
+                                }
+                            })
+                        )
                     )
-                ),
-                __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('div', { className: 'job-body', dangerouslySetInnerHTML: { __html: htmlDescription }, __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 24
-                    }
-                })
+                )
             );
         }
     }]);
@@ -337,14 +470,11 @@ Job.getInitialProps = function () {
 
                     case 5:
                         data = _context.sent;
-
-
-                        console.log('Show data fetched. Count: ' + data.length);
                         return _context.abrupt('return', {
                             job: data[0]
                         });
 
-                    case 8:
+                    case 7:
                     case 'end':
                         return _context.stop();
                 }
@@ -387,6 +517,13 @@ module.exports = require("isomorphic-unfetch");
 /***/ (function(module, exports) {
 
 module.exports = require("marked");
+
+/***/ }),
+
+/***/ "moment":
+/***/ (function(module, exports) {
+
+module.exports = require("moment");
 
 /***/ }),
 

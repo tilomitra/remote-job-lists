@@ -1,11 +1,11 @@
 import { Component } from 'react';
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
-import Layout from '../components/Layout';
 import marked from 'marked';
 
-const styles = {
-}
+import Layout from '../components/Layout';
+import JobTitle from '../components/JobTitle';
+import ApplyButton from '../components/ApplyButton';
 
 class Job extends Component {
     render() {
@@ -18,10 +18,20 @@ class Job extends Component {
 
         return (
             <Layout>
-                <div className="content">
-                    <h2>{job.title}</h2>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-12 col-md-8">
+                            <JobTitle job={job} />
+                            <div className="job-description" dangerouslySetInnerHTML={{ __html: htmlDescription }}></div>
+                        </div>
+                        <div className="col-sm-12 col-md-4">
+                            <ApplyButton job={job} />
+                        </div>
+                    </div>
                 </div>
-                <div className="job-body" dangerouslySetInnerHTML={{ __html: htmlDescription }}></div>
+
+
+
             </Layout >
         )
     }
@@ -31,7 +41,6 @@ Job.getInitialProps = async function ({ query }) {
     const res = await fetch(`http://localhost:3000/api/jobs/${query.id}`)
     const data = await res.json()
 
-    console.log(`Show data fetched. Count: ${data.length}`)
     return {
         job: data[0]
     }

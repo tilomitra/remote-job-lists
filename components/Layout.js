@@ -1,17 +1,14 @@
 import Header from './Header'
 import Footer from './Footer'
 
-const layoutStyle = {
-    margin: 20,
-    padding: 20,
-    fontFamily: 'sans-serif',
-    lineHeight: 1.6
-}
+import "../assets/css/app.css";
 
 const Layout = (props) => (
-    <div style={layoutStyle}>
+    <div className="app">
         <Header />
-        {props.children}
+        <section>
+            {props.children}
+        </section>
         <Footer />
     </div>
 )
