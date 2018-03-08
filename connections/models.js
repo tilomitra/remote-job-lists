@@ -28,7 +28,14 @@ let models = {
             primaryKey: true,
             unique: true
         }
-    })
+    }),
+
+    // user: sequelize.define('User', {
+    //     email: {
+    //         type: Sequelize.STRING,
+    //         unique: true
+    //     }
+    // })
 }
 
 models.job.belongsToMany(models.tag, { as: "Tags", through: "JobTags", foreignKey: 'jobId' });

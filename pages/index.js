@@ -12,7 +12,7 @@ import JobTitle from '../components/JobTitle';
 import SearchBar from '../components/SearchBar';
 import Jumbotron from '../components/Jumbotron';
 
-const LIMIT = 50;
+const LIMIT = 20;
 
 const FIND_JOBS_URL = 'http://localhost:3000/api/jobs';
 
@@ -67,12 +67,20 @@ class Index extends Component {
                         {jobCards}
                     </div>
 
+                    <hr style={{ margin: '30px 0' }} />
                     <ReactPaginate
                         pageCount={Math.ceil(this.props.count / 50)}
                         marginPagesDisplayed={2}
                         onPageChange={this.onPageChange}
                         pageRangeDisplayed={5}
-                        containerClassName={"paginate"}
+                        containerClassName={"pagination pagination-lg justify-content-center"}
+                        pageClassName={"page-item"}
+                        activeClassName={"active"}
+                        pageLinkClassName={"page-link"}
+                        previousClassName={"page-link"}
+                        breakClassName={"page-link disabled"}
+                        nextClassName={"page-link"}
+
                     />
                 </section>
             </Layout>

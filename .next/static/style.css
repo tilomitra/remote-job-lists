@@ -48,8 +48,13 @@ p, ul, li  {
     font-weight: bold;
 }
 .job-title-expanded {
+    color: blue;
     font-size: 2em;
     padding-top: 1em;
+}
+
+.job-company {
+    color: black;
 }
 
 .job-sidebar {

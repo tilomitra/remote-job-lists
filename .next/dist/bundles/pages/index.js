@@ -123,23 +123,35 @@ var Footer = function Footer() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link__ = __webpack_require__("next/link");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
-var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/components/Header.js';
+var _jsxFileName = "/Applications/MAMP/code/sandbox/remote-job-lists/components/Header.js";
 
 
 
 var Header = function Header() {
-    return (
-        // <nav className="navbar navbar-light bg-light">
-        //     <Link href="/">
-        //         <a className="navbar-brand" href="/">Remote Job Lists</a>
-        //     </Link>
-        // </nav>
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', {
-            __source: {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "nav",
+        { className: "navbar navbar-light bg-light", __source: {
                 fileName: _jsxFileName,
-                lineNumber: 11
+                lineNumber: 6
             }
-        })
+        },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            __WEBPACK_IMPORTED_MODULE_1_next_link___default.a,
+            { href: "/", __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 7
+                }
+            },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "a",
+                { className: "navbar-brand", href: "/", __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 8
+                    }
+                },
+                "Remote Job Lists"
+            )
+        )
     );
 };
 
@@ -235,7 +247,15 @@ var JobTitle = function (_Component) {
                             'at'
                         ),
                         ' ',
-                        this.props.job.company
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'span',
+                            { className: 'job-company', __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 19
+                                }
+                            },
+                            this.props.job.company
+                        )
                     )
                 );
             }
@@ -288,7 +308,15 @@ var JobTitle = function (_Component) {
                                             'at'
                                         ),
                                         ' ',
-                                        this.props.job.company
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'span',
+                                            { className: 'job-company', __source: {
+                                                    fileName: _jsxFileName,
+                                                    lineNumber: 31
+                                                }
+                                            },
+                                            this.props.job.company
+                                        )
                                     )
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -732,7 +760,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-var LIMIT = 50;
+var LIMIT = 20;
 
 var FIND_JOBS_URL = 'http://localhost:3000/api/jobs';
 
@@ -836,15 +864,27 @@ var Index = function (_Component) {
                         },
                         jobCards
                     ),
+                    __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('hr', { style: { margin: '30px 0' }, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 70
+                        }
+                    }),
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_react_paginate___default.a, {
                         pageCount: Math.ceil(this.props.count / 50),
                         marginPagesDisplayed: 2,
                         onPageChange: this.onPageChange,
                         pageRangeDisplayed: 5,
-                        containerClassName: "paginate",
+                        containerClassName: "pagination pagination-lg justify-content-center",
+                        pageClassName: "page-item",
+                        activeClassName: "active",
+                        pageLinkClassName: "page-link",
+                        previousClassName: "page-link",
+                        breakClassName: "page-link disabled",
+                        nextClassName: "page-link",
+
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 70
+                            lineNumber: 71
                         }
                     })
                 )

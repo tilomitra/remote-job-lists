@@ -16,7 +16,7 @@ class JobTitle extends Component {
             contents = (
                 <section>
                     <h2 className="job-title job-title-expanded">{this.props.job.title}</h2>
-                    <p className="lead"><span className="muted">at</span> {this.props.job.company}</p>
+                    <p className="lead"><span className="muted">at</span> <span className="job-company">{this.props.job.company}</span></p>
                 </section>
             )
         }
@@ -28,7 +28,7 @@ class JobTitle extends Component {
                     <div className="row">
                         <div className="col-sm-6 col-md-8">
                             <Link prefetch as={`/job/${this.props.job.id}`} href={`/job?id=${this.props.job.id}`}>
-                                <h2 className="job-title job-title-compact">{this.props.job.title} <span className="muted">at</span> {this.props.job.company}</h2>
+                                <h2 className="job-title job-title-compact">{this.props.job.title} <span className="muted">at</span> <span className="job-company">{this.props.job.company}</span></h2>
                             </Link>
                             <span className="muted">Published</span> {moment(this.props.job.publishDate).startOf('day').fromNow()}, <span className="muted">Referred by</span> {this.props.job.tags}{this.props.job.referrer}
                         </div>
