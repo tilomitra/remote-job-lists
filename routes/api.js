@@ -7,52 +7,13 @@ const models = require('../connections/models');
 
 const Op = Sequelize.Op;
 const getRss = require('./getRss');
+const bulkCreateJobsAndTags = require('./bulkCreateJobsAndTags');
 
 const apiRoutes = {
 
-    jobs: {
-        find: (req, res) => {
+    jobs: require('./jobs'),
 
-            let opts = {
-                group: ["link"],
-                attributes: ['id', 'title', 'link', 'publishDate', 'referrer', 'company'],
-                order: [["publishDate", "DESC"]],
-                offset: req.query.offset || 0,
-                limit: req.query.limit || 25
-            }
-
-            if (req.query.search) {
-                opts.where = {
-                    [Op.or]: {
-                        title: {
-                            [Op.like]: `%${req.query.search}%`
-                        },
-                        company: {
-                            [Op.like]: `%${req.query.search}%`
-                        }
-                    }
-
-                }
-            }
-
-            models.job.findAndCountAll(opts).then((jobs) => {
-                return res.json(jobs);
-            }).catch((err) => {
-                return res.status(500).send(err);
-            });
-        },
-        findOne: (req, res) => {
-            models.job.findAll({
-                where: {
-                    id: parseInt(req.params.id)
-                }
-            }).then((job) => {
-                return res.json(job);
-            }).catch((err) => {
-                return res.status(500).send(err);
-            });
-        }
-    },
+    tags: require('./tags'),
 
     weworkremotely: (req, res) => {
         const urls = [
@@ -130,6 +91,7 @@ const apiRoutes = {
                 body.forEach(d => {
                     // Convert the ISO-8859-1 format that is in these feeds to UTF-8.
                     const descBuffer = encoding.convert(d.description, 'ISO-8859-1', 'UTF-8');
+
                     batchUpdates.push({
                         title: d.position,
                         company: d.company,
@@ -142,9 +104,7 @@ const apiRoutes = {
                 });
             }
 
-            models.job.bulkCreate(batchUpdates, {
-                fields: ["title", "company", "description", "link", "referrer", "slug", "publishDate"]
-            }).then(() => {
+            bulkCreateJobsAndTags({ batchUpdates, jobsite: 'remoteok' }).then(() => {
                 console.log('Updated RemoteOK Jobs.');
                 return res.status(200).json({
                     success: true,

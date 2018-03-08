@@ -186,6 +186,19 @@ var JobTitle = function (_Component) {
         key: 'render',
         value: function render() {
             var contents = void 0;
+
+            var tagList = this.props.job.Tags.map(function (t) {
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'span',
+                    { className: 'badge', __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 11
+                        }
+                    },
+                    t.id
+                );
+            });
+
             //render the expanded view
             if (this.props.expanded) {
                 contents = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -193,14 +206,14 @@ var JobTitle = function (_Component) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 12
+                            lineNumber: 17
                         }
                     },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'h2',
                         { className: 'job-title job-title-expanded', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 13
+                                lineNumber: 18
                             }
                         },
                         this.props.job.title
@@ -209,14 +222,14 @@ var JobTitle = function (_Component) {
                         'p',
                         { className: 'lead', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 14
+                                lineNumber: 19
                             }
                         },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'span',
                             { className: 'muted', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 14
+                                    lineNumber: 19
                                 }
                             },
                             'at'
@@ -229,63 +242,89 @@ var JobTitle = function (_Component) {
             // Render the compact view
             else {
                     contents = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        __WEBPACK_IMPORTED_MODULE_1_next_link___default.a,
-                        { prefetch: true, as: '/job/' + this.props.job.id, href: '/job?id=' + this.props.job.id, __source: {
+                        'div',
+                        { className: 'job-list-item', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 21
+                                lineNumber: 27
                             }
                         },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
-                            { className: 'job-list-item', __source: {
+                            { className: 'row', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 22
+                                    lineNumber: 28
                                 }
                             },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'h2',
-                                { className: 'job-title job-title-compact', __source: {
+                                'div',
+                                { className: 'col-sm-6 col-md-8', __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 23
+                                        lineNumber: 29
                                     }
                                 },
-                                this.props.job.title,
-                                ' ',
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    __WEBPACK_IMPORTED_MODULE_1_next_link___default.a,
+                                    { prefetch: true, as: '/job/' + this.props.job.id, href: '/job?id=' + this.props.job.id, __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 30
+                                        }
+                                    },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'h2',
+                                        { className: 'job-title job-title-compact', __source: {
+                                                fileName: _jsxFileName,
+                                                lineNumber: 31
+                                            }
+                                        },
+                                        this.props.job.title,
+                                        ' ',
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'span',
+                                            { className: 'muted', __source: {
+                                                    fileName: _jsxFileName,
+                                                    lineNumber: 31
+                                                }
+                                            },
+                                            'at'
+                                        ),
+                                        ' ',
+                                        this.props.job.company
+                                    )
+                                ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'span',
                                     { className: 'muted', __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 23
+                                            lineNumber: 33
                                         }
                                     },
-                                    'at'
+                                    'Published'
                                 ),
                                 ' ',
-                                this.props.job.company
+                                __WEBPACK_IMPORTED_MODULE_2_moment___default()(this.props.job.publishDate).startOf('day').fromNow(),
+                                ', ',
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'span',
+                                    { className: 'muted', __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 33
+                                        }
+                                    },
+                                    'Referred by'
+                                ),
+                                ' ',
+                                this.props.job.tags,
+                                this.props.job.referrer
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'span',
-                                { className: 'muted', __source: {
+                                'div',
+                                { className: 'col-sm-6 col-md-4', __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 24
+                                        lineNumber: 35
                                     }
                                 },
-                                'Published'
-                            ),
-                            ' ',
-                            __WEBPACK_IMPORTED_MODULE_2_moment___default()(this.props.job.publishDate).startOf('day').fromNow(),
-                            ', ',
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'span',
-                                { className: 'muted', __source: {
-                                        fileName: _jsxFileName,
-                                        lineNumber: 24
-                                    }
-                                },
-                                'Referred by'
-                            ),
-                            ' ',
-                            this.props.job.referrer
+                                tagList
+                            )
                         )
                     );
                 }
@@ -295,7 +334,7 @@ var JobTitle = function (_Component) {
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 31
+                        lineNumber: 44
                     }
                 },
                 contents

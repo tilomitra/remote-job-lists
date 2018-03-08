@@ -1,5 +1,10 @@
 const express = require('express')
 const next = require('next')
+const sequelize = require('./connections/db');
+const models = require('./connections/models');
+const tags = require('./connections/tags');
+const _ = require('lodash');
+
 
 const api = require('./routes/api');
 
@@ -12,6 +17,23 @@ const handle = app.getRequestHandler()
 
 app.prepare()
     .then(() => {
+        sequelize
+            .sync({ force: false })
+            .then(function (err) {
+                console.log('Connected to Sqlite.');
+                let tagPromises = [];
+                _.forEach(tags, (keywords, tag) => {
+                    console.log(tag);
+                    tagPromises.push(models.tag.upsert({ id: tag }));
+                });
+                console.log(tagPromises.length);
+                return Promise.all(tagPromises)
+            }).then(() => {
+                console.log("Tables loaded. Tags created.")
+            }).catch((err) => {
+                console.error("Error in Sequelize syncing: ", err);
+            });
+
         const server = express()
 
         server.get('/job/:id', (req, res) => {
@@ -22,6 +44,9 @@ app.prepare()
 
         server.get('/api/jobs', api.jobs.find);
         server.get('/api/jobs/:id', api.jobs.findOne);
+
+        server.get('/api/tags', api.tags.find);
+        server.get('/api/tags/:id', api.tags.findOne);
 
         server.get('/api/findJobs/weworkremotely', api.weworkremotely);
         server.get('/api/findJobs/stackoverflow', api.stackoverflow);

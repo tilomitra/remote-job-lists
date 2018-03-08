@@ -1,8 +1,7 @@
 const FeedMe = require('feedme');
 const https = require('https');
 const encoding = require('encoding');
-const models = require('../connections/models');
-
+const bulkCreateJobsAndTags = require('./bulkCreateJobsAndTags');
 
 const getRss = ({ url, jobsite }) => {
     return new Promise((resolve, reject) => {
@@ -33,25 +32,22 @@ const getRss = ({ url, jobsite }) => {
                 // If stackoverflow job does not have `remote` in the title, return an empty promise.
                 if (!((jobsite === 'stackoverflow' && title.indexOf('remote') === -1) || jobsite === 'github' && title.indexOf('remote') === -1)) {
                     const descBuffer = encoding.convert(item.description, 'ISO-8859-1', 'UTF-8');
-
+                    const description = descBuffer.toString();
                     batchUpdates.push({
                         title: title,
                         company: company,
-                        description: descBuffer.toString(),
+                        description: description,
                         link: item.link,
                         referrer: jobsite,
                         publishDate: new Date(item.pubdate)
-                    })
+                    });
                 }
             });
 
             parser.on('end', () => {
-                models.job.bulkCreate(batchUpdates, {
-                    fields: ["title", "company", "description", "link", "referrer", "publishDate"]
-                }).then(() => {
+                bulkCreateJobsAndTags({ batchUpdates, jobsite }).then(() => {
+                    console.log(`Updated jobs for ${jobsite}.`);
                     return resolve();
-                }).catch((err) => {
-                    console.error(err);
                 })
             });
             response.pipe(parser);

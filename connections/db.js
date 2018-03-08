@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize');
 const path = require('path');
+
+
 const sequelize = new Sequelize('database', null, null, {
   host: 'localhost',
   dialect: 'sqlite',
@@ -17,16 +19,5 @@ const sequelize = new Sequelize('database', null, null, {
   // http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
   operatorsAliases: false
 });
-
-
-//  SYNC SCHEMA
-sequelize
-  .sync({ force: false })
-  .then(function (err) {
-    console.log('Connected to Sqlite.');
-  }, function (err) {
-    console.log('An error occurred while creating the table:', err);
-  });
-
 
 module.exports = sequelize;

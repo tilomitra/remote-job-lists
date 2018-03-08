@@ -23,10 +23,16 @@ let models = {
     }),
 
     tag: sequelize.define('Tag', {
-        name: Sequelize.STRING
+        id: {
+            type: Sequelize.STRING,
+            primaryKey: true,
+            unique: true
+        }
     })
 }
 
-models.job.hasMany(models.tag, { as: 'Tags' });
+models.job.belongsToMany(models.tag, { as: "Tags", through: "JobTags", foreignKey: 'jobId' });
+models.tag.belongsToMany(models.job, { as: "Jobs", through: "JobTags", foreignKey: 'tagId' });
+
 
 module.exports = models;
