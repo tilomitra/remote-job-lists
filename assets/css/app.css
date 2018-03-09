@@ -4,12 +4,12 @@ body, h1, h2, h3, h4, h5, .btn, .job-meta, .app-jumbotron, p.lead {
 }
 
 p, ul, li  {
-    font-family: 'Source Sans Pro', sans-serif;
     font-size: 18px;
 }
 
+
 .app {
-    line-height: 1.7;
+    line-height: 1.8;
 }
 
 .app-content {
@@ -21,12 +21,27 @@ p, ul, li  {
     background-size: cover; */
 }
 
+.btn {
+    font-weight: bold;
+}
+
+.btn.btn-primary {
+    background: blue;
+    border-color: blue;
+}
+
 .card {
     margin-bottom: 1em;
 }
 
 .app-search-input {
     width: 360px !important;
+}
+
+.app-email {
+    margin: 1em;
+    border-color: transparent;
+    background: #e6f0ff;
 }
 
 .job-list-item {
@@ -36,10 +51,21 @@ p, ul, li  {
     transition: background 0.12s ease-out;
 }
 
-
+.app-jumbotron-typing,
 .job-list-item:hover .job-title {
     color: blue;
+    font-weight: bold;
 }
+
+.job-list-item-apply {
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+}
+
+.job-list-item:hover .job-list-item-apply {
+    opacity: 1;
+}
+
 
 .job-title {
     margin: 0;
@@ -49,8 +75,40 @@ p, ul, li  {
 }
 .job-title-expanded {
     color: blue;
-    font-size: 2em;
+    font-size: 3em;
     padding-top: 1em;
+}
+
+.job-title-lead, 
+.job-list-lead {
+    font-size: 2em;
+}
+
+.job-list-lead {
+    padding: 1em 0;
+    border-bottom: 1px solid #ddd;
+    line-height: 1;
+}
+.job-list-lead .title {
+    margin: 0;
+    padding: 0;
+    font-size: 1.75rem;
+}
+.job-list-lead .reset {
+    font-size: 17px;
+    color: blue;
+    text-decoration: underline;
+}
+.job-list-lead .count,
+.job-list-lead .term,
+.app-email .term,
+.job-company {
+    font-weight: bold;
+}
+.job-list-lead .term,
+.app-email .term {
+    color: blue;
+    text-decoration: underline;
 }
 
 .job-company {
@@ -61,9 +119,25 @@ p, ul, li  {
     padding-top: 1em;
 }
 
+.job-tag {
+    font-size: 1em;
+    margin: 0.3em;
+    font-weight: 400;
+    text-transform: capitalize;
+    padding: 0.3em 1em;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    transition: all 0.2s ease-out;
+}
+
+.job-tag:hover {
+    color: blue;
+    border-color: blue;
+    border-radius: 30px;
+}
 
 .job-apply-button {
-    background: #0087E0;
+    background: blue;
     color: white;
     padding: 0.5em 2em;
     border-radius: 5px;

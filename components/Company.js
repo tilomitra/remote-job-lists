@@ -34,10 +34,11 @@ class Company extends Component {
         if (this.state.domain && this.state.name) {
             return (
                 <div className="card">
-                    <div className="card-body">
-                        <img src={this.state.logo} className="float-left" width="72" height="auto" style={{ padding: 10 }} />
-                        <h5 className="card-title">About {this.state.name}</h5>
-                        <a href={this.state.domain} className="card-link" rel="_blank">Visit Website</a>
+                    <div className="card-body text-center">
+                        <img src={this.state.logo} width="72" height="auto" style={{ padding: 10 }} />
+                        <h5 className="card-title">
+                            <a href={this.state.domain} className="card-link" rel="_blank">
+                                Visit {this.state.name}'s Website</a></h5>
                     </div>
                 </div >
             )

@@ -17,7 +17,7 @@ const sequelize = new Sequelize('database', null, null, {
   storage: path.join(__dirname, '../db/database.sqlite'),
 
   // http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
-  operatorsAliases: false
+  operatorsAliases: true
 });
 
 module.exports = sequelize;

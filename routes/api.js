@@ -7,6 +7,8 @@ const models = require('../connections/models');
 
 const Op = Sequelize.Op;
 const getRss = require('./getRss');
+
+const getRelatedTags = require('./getRelatedTags');
 const bulkCreateJobsAndTags = require('./bulkCreateJobsAndTags');
 
 const apiRoutes = {
@@ -91,7 +93,7 @@ const apiRoutes = {
                 body.forEach(d => {
                     // Convert the ISO-8859-1 format that is in these feeds to UTF-8.
                     const descBuffer = encoding.convert(d.description, 'ISO-8859-1', 'UTF-8');
-
+                    const relatedTags = getRelatedTags({ title: d.position });
                     batchUpdates.push({
                         title: d.position,
                         company: d.company,
@@ -99,7 +101,8 @@ const apiRoutes = {
                         link: `http://remoteok.io/l/${d.id}`,
                         referrer: 'remoteok',
                         publishDate: new Date(d.date),
-                        slug: d.slug
+                        slug: d.slug,
+                        tags: relatedTags.join(',')
                     });
                 });
             }

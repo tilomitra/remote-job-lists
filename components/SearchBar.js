@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import classnames from 'classnames';
 
 class SearchBar extends Component {
     constructor(props) {
@@ -12,12 +13,17 @@ class SearchBar extends Component {
         this.props.onSearch(this.state.searchTerm);
     }
     render() {
+
+        const { isSmall } = this.props;
+
         return (
             <form className="form-inline app-search">
-                <input className="app-search-input form-control form-control-lg mr-sm-2" type="search" placeholder="Enter a skill like 'software' or 'design'..." value={this.state.searchTerm} onChange={(e) => {
+                <input className={classnames("app-search-input form-control mr-sm-2", { 'form-control-lg': !isSmall })} type="search" placeholder="Enter a skill like 'software' or 'design'..." value={this.state.searchTerm} onChange={(e) => {
                     this.setState({ searchTerm: e.currentTarget.value })
                 }} />
-                <button className="app-search-btn btn btn-lg btn-primary my-2 my-sm-0" type="submit" onClick={this.onSearchClick}>Find Remote Jobs</button>
+                <button className={classnames("app-search-btn btn btn-primary my-2 my-sm-0", { 'form-control-lg': !isSmall })} type="submit" onClick={this.onSearchClick}>
+                    {isSmall ? 'Find' : 'Find Remote Jobs'}
+                </button>
             </form>
         )
     }

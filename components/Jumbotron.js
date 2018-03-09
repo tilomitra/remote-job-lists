@@ -4,12 +4,6 @@ import SearchBar from './SearchBar';
 import Typing from 'react-typing-animation';
 
 class Jumbotron extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            currentJob: 'Software Engineer'
-        }
-    }
 
     componentDidMount() {
 

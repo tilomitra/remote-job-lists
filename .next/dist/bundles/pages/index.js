@@ -79,6 +79,290 @@ module.exports =
 
 /***/ }),
 
+/***/ "./components/ApplyButton.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+var _jsxFileName = "/Applications/MAMP/code/sandbox/remote-job-lists/components/ApplyButton.js";
+
+var ApplyButton = function ApplyButton(props) {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "div",
+        { className: "card", __source: {
+                fileName: _jsxFileName,
+                lineNumber: 2
+            }
+        },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            { className: "card-body", __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 3
+                }
+            },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "a",
+                { className: "btn btn-primary btn-block job-apply-button", href: props.job.link, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 4
+                    }
+                },
+                "Apply to this position"
+            )
+        )
+    );
+};
+
+/* unused harmony default export */ var _unused_webpack_default_export = (ApplyButton);
+
+/***/ }),
+
+/***/ "./components/Email.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_select__ = __webpack_require__("react-select");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_select__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connections_tags__ = __webpack_require__("./connections/tags.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connections_tags___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__connections_tags__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash_forEach__ = __webpack_require__("lodash/forEach");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash_forEach___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_lodash_forEach__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_select_dist_react_select_css__ = __webpack_require__("./node_modules/react-select/dist/react-select.css");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_select_dist_react_select_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react_select_dist_react_select_css__);
+var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/components/Email.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+
+var Email = function (_Component) {
+    _inherits(Email, _Component);
+
+    function Email(props) {
+        _classCallCheck(this, Email);
+
+        var _this = _possibleConstructorReturn(this, (Email.__proto__ || Object.getPrototypeOf(Email)).call(this, props));
+
+        _this.onSubmit = function () {};
+
+        _this.handleSelectChange = function (value) {
+            console.log('You\'ve selected:', value);
+            _this.setState({ value: value });
+        };
+
+        _this.state = {
+            removeSelected: true,
+            disabled: false,
+            stayOpen: false,
+            value: _this.props.defaultValue ? [{ label: _this.props.defaultValue, value: _this.props.defaultValue }] : [],
+            rtl: false
+        };
+
+        return _this;
+    }
+
+    _createClass(Email, [{
+        key: 'render',
+        value: function render() {
+            var _state = this.state,
+                disabled = _state.disabled,
+                stayOpen = _state.stayOpen,
+                value = _state.value,
+                removeSelected = _state.removeSelected,
+                rtl = _state.rtl;
+
+            var didUserSearch = !!this.props.defaultValue;
+
+            var options = [];
+            __WEBPACK_IMPORTED_MODULE_3_lodash_forEach___default()(__WEBPACK_IMPORTED_MODULE_2__connections_tags___default.a, function (keywords, tag) {
+                options.push({ label: tag, value: tag });
+            });
+
+            var header = void 0;
+
+            if (didUserSearch) {
+                header = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'h5',
+                    { className: 'card-title', __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 42
+                        }
+                    },
+                    'Get notified for new ',
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'span',
+                        { className: 'term', __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 43
+                            }
+                        },
+                        this.props.defaultValue
+                    ),
+                    ' positions'
+                );
+            } else {
+                header = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'h5',
+                    { className: 'card-title', __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 46
+                        }
+                    },
+                    'Get Daily Job Listings'
+                );
+            }
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'card app-email', __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 53
+                    }
+                },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'card-body', __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 54
+                        }
+                    },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'h5',
+                        { className: 'card-title', __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 55
+                            }
+                        },
+                        header
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'form',
+                        {
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 56
+                            }
+                        },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'form-row align-items-center', __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 57
+                                }
+                            },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'col-sm-12 col-md-4 my-1', __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 58
+                                    }
+                                },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'label',
+                                    { className: 'mr-sm-2', __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 59
+                                        }
+                                    },
+                                    'Email me at'
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Enter your email', __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 60
+                                    }
+                                })
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'col-sm-12 col-md-6 my-1', __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 62
+                                    }
+                                },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'label',
+                                    {
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 63
+                                        }
+                                    },
+                                    'with new listings related to'
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_select___default.a, {
+                                    closeOnSelect: !stayOpen,
+                                    disabled: disabled,
+                                    multi: true,
+                                    onChange: this.handleSelectChange,
+                                    options: options,
+                                    placeholder: 'You can type "design", "engineering", or more...',
+                                    removeSelected: removeSelected,
+                                    rtl: rtl,
+                                    simpleValue: true,
+                                    value: value,
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 64
+                                    }
+                                })
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'col-sm-12 col-md-2 my-1', __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 77
+                                    }
+                                },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'button',
+                                    { className: 'btn btn-success', style: { marginTop: 35 }, __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 78
+                                        }
+                                    },
+                                    'Subscribe'
+                                )
+                            )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'small',
+                            { className: 'form-text text-muted', __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 81
+                                }
+                            },
+                            'The tags that you specify will be used to customize listings for your email. You can unsubscribe anytime.'
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Email;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (Email);
+
+/***/ }),
+
 /***/ "./components/Footer.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -123,37 +407,97 @@ var Footer = function Footer() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link__ = __webpack_require__("next/link");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
-var _jsxFileName = "/Applications/MAMP/code/sandbox/remote-job-lists/components/Header.js";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SearchBar__ = __webpack_require__("./components/SearchBar.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_reactstrap__ = __webpack_require__("reactstrap");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_reactstrap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_reactstrap__);
+var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/components/Header.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 
 
-var Header = function Header() {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        "nav",
-        { className: "navbar navbar-light bg-light", __source: {
-                fileName: _jsxFileName,
-                lineNumber: 6
-            }
-        },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_1_next_link___default.a,
-            { href: "/", __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 7
-                }
-            },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                "a",
-                { className: "navbar-brand", href: "/", __source: {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+var Header = function (_Component) {
+    _inherits(Header, _Component);
+
+    function Header(props) {
+        _classCallCheck(this, Header);
+
+        var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
+
+        _this.toggle = function () {
+            _this.setState({
+                isOpen: !_this.state.isOpen
+            });
+        };
+
+        _this.state = {
+            isOpen: false
+        };
+        return _this;
+    }
+
+    _createClass(Header, [{
+        key: 'render',
+        value: function render() {
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_3_reactstrap__["Navbar"],
+                { color: 'faded', light: true, expand: 'md', className: 'justify-content-between', __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 8
+                        lineNumber: 26
                     }
                 },
-                "Remote Job Lists"
-            )
-        )
-    );
-};
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    __WEBPACK_IMPORTED_MODULE_3_reactstrap__["NavbarBrand"],
+                    { href: '/', __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 27
+                        }
+                    },
+                    'Remote Job Lists'
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_reactstrap__["NavbarToggler"], { onClick: this.toggle, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 28
+                    }
+                }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    __WEBPACK_IMPORTED_MODULE_3_reactstrap__["Collapse"],
+                    { isOpen: this.state.isOpen, navbar: true, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 29
+                        }
+                    },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        __WEBPACK_IMPORTED_MODULE_3_reactstrap__["Nav"],
+                        { className: 'ml-auto', navbar: true, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 30
+                            }
+                        },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__SearchBar__["a" /* default */], { isSmall: true, term: this.props.searchTerm, onSearch: this.props.onSearch, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 31
+                            }
+                        })
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Header;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
 /* harmony default export */ __webpack_exports__["a"] = (Header);
 
@@ -169,6 +513,8 @@ var Header = function Header() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__("moment");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Tag__ = __webpack_require__("./components/Tag.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_ApplyButton__ = __webpack_require__("./components/ApplyButton.js");
 var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/components/JobTitle.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -180,6 +526,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
 
 
 
@@ -199,16 +547,12 @@ var JobTitle = function (_Component) {
         value: function render() {
             var contents = void 0;
 
-            var tagList = this.props.job.Tags.map(function (t) {
-                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'span',
-                    { className: 'badge', __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 11
-                        }
-                    },
-                    t.id
-                );
+            var tagList = this.props.job.tags.split(',').map(function (t, i) {
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Tag__["a" /* default */], { name: t, key: 'tag-' + t + '-' + i, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 13
+                    }
+                });
             });
 
             //render the expanded view
@@ -218,30 +562,30 @@ var JobTitle = function (_Component) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 17
+                            lineNumber: 19
                         }
                     },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'h2',
                         { className: 'job-title job-title-expanded', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 18
+                                lineNumber: 20
                             }
                         },
                         this.props.job.title
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'p',
-                        { className: 'lead', __source: {
+                        { className: 'job-title-lead', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 19
+                                lineNumber: 21
                             }
                         },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'span',
                             { className: 'muted', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 19
+                                    lineNumber: 21
                                 }
                             },
                             'at'
@@ -251,7 +595,7 @@ var JobTitle = function (_Component) {
                             'span',
                             { className: 'job-company', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 19
+                                    lineNumber: 21
                                 }
                             },
                             this.props.job.company
@@ -265,35 +609,35 @@ var JobTitle = function (_Component) {
                         'div',
                         { className: 'job-list-item', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 27
+                                lineNumber: 29
                             }
                         },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
                             { className: 'row', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 28
+                                    lineNumber: 30
                                 }
                             },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
-                                { className: 'col-sm-6 col-md-8', __source: {
+                                { className: 'col-sm-6', __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 29
+                                        lineNumber: 31
                                     }
                                 },
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     __WEBPACK_IMPORTED_MODULE_1_next_link___default.a,
                                     { prefetch: true, as: '/job/' + this.props.job.id, href: '/job?id=' + this.props.job.id, __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 30
+                                            lineNumber: 32
                                         }
                                     },
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                         'h2',
                                         { className: 'job-title job-title-compact', __source: {
                                                 fileName: _jsxFileName,
-                                                lineNumber: 31
+                                                lineNumber: 33
                                             }
                                         },
                                         this.props.job.title,
@@ -302,7 +646,7 @@ var JobTitle = function (_Component) {
                                             'span',
                                             { className: 'muted', __source: {
                                                     fileName: _jsxFileName,
-                                                    lineNumber: 31
+                                                    lineNumber: 33
                                                 }
                                             },
                                             'at'
@@ -312,7 +656,7 @@ var JobTitle = function (_Component) {
                                             'span',
                                             { className: 'job-company', __source: {
                                                     fileName: _jsxFileName,
-                                                    lineNumber: 31
+                                                    lineNumber: 33
                                                 }
                                             },
                                             this.props.job.company
@@ -323,35 +667,39 @@ var JobTitle = function (_Component) {
                                     'span',
                                     { className: 'muted', __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 33
+                                            lineNumber: 35
                                         }
                                     },
                                     'Published'
                                 ),
                                 ' ',
-                                __WEBPACK_IMPORTED_MODULE_2_moment___default()(this.props.job.publishDate).startOf('day').fromNow(),
-                                ', ',
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'span',
-                                    { className: 'muted', __source: {
-                                            fileName: _jsxFileName,
-                                            lineNumber: 33
-                                        }
-                                    },
-                                    'Referred by'
-                                ),
-                                ' ',
-                                this.props.job.tags,
-                                this.props.job.referrer
+                                __WEBPACK_IMPORTED_MODULE_2_moment___default()(this.props.job.publishDate).startOf('day').fromNow()
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
-                                { className: 'col-sm-6 col-md-4', __source: {
+                                { className: 'col-sm-4', __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 35
+                                        lineNumber: 37
                                     }
                                 },
                                 tagList
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'col-sm-2 text-right job-list-item-apply', __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 40
+                                    }
+                                },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'a',
+                                    { className: 'btn job-apply-button', href: this.props.job.link, __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 41
+                                        }
+                                    },
+                                    'Apply'
+                                )
                             )
                         )
                     );
@@ -362,7 +710,7 @@ var JobTitle = function (_Component) {
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 44
+                        lineNumber: 49
                     }
                 },
                 contents
@@ -408,15 +756,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Jumbotron = function (_Component) {
     _inherits(Jumbotron, _Component);
 
-    function Jumbotron(props) {
+    function Jumbotron() {
         _classCallCheck(this, Jumbotron);
 
-        var _this = _possibleConstructorReturn(this, (Jumbotron.__proto__ || Object.getPrototypeOf(Jumbotron)).call(this, props));
-
-        _this.state = {
-            currentJob: 'Software Engineer'
-        };
-        return _this;
+        return _possibleConstructorReturn(this, (Jumbotron.__proto__ || Object.getPrototypeOf(Jumbotron)).apply(this, arguments));
     }
 
     _createClass(Jumbotron, [{
@@ -429,21 +772,21 @@ var Jumbotron = function (_Component) {
                 'div',
                 { className: 'jumbotron jumbotron-fluid app-jumbotron', __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 20
+                        lineNumber: 14
                     }
                 },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'container', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 21
+                            lineNumber: 15
                         }
                     },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'h1',
                         { className: 'display-4', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 22
+                                lineNumber: 16
                             }
                         },
                         'Work Remotely as',
@@ -452,9 +795,47 @@ var Jumbotron = function (_Component) {
                             {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 24
+                                    lineNumber: 18
                                 }
                             },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'span',
+                                { className: 'app-jumbotron-typing', __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 19
+                                    }
+                                },
+                                'a Software Engineer'
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_typing_animation___default.a.Backspace, { count: 50, delay: 2000, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 20
+                                }
+                            }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_typing_animation___default.a.Delay, { ms: 500, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 21
+                                }
+                            }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'span',
+                                { className: 'app-jumbotron-typing', __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 22
+                                    }
+                                },
+                                'an Accountant'
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_typing_animation___default.a.Backspace, { count: 50, delay: 2000, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 23
+                                }
+                            }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_typing_animation___default.a.Delay, { ms: 500, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 24
+                                }
+                            }),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'span',
                                 { className: 'app-jumbotron-typing', __source: {
@@ -462,7 +843,7 @@ var Jumbotron = function (_Component) {
                                         lineNumber: 25
                                     }
                                 },
-                                'a Software Engineer'
+                                'a Graphic Designer'
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_typing_animation___default.a.Backspace, { count: 50, delay: 2000, __source: {
                                     fileName: _jsxFileName,
@@ -481,44 +862,6 @@ var Jumbotron = function (_Component) {
                                         lineNumber: 28
                                     }
                                 },
-                                'an Accountant'
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_typing_animation___default.a.Backspace, { count: 50, delay: 2000, __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 29
-                                }
-                            }),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_typing_animation___default.a.Delay, { ms: 500, __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 30
-                                }
-                            }),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'span',
-                                { className: 'app-jumbotron-typing', __source: {
-                                        fileName: _jsxFileName,
-                                        lineNumber: 31
-                                    }
-                                },
-                                'a Graphic Designer'
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_typing_animation___default.a.Backspace, { count: 50, delay: 2000, __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 32
-                                }
-                            }),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_typing_animation___default.a.Delay, { ms: 500, __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 33
-                                }
-                            }),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'span',
-                                { className: 'app-jumbotron-typing', __source: {
-                                        fileName: _jsxFileName,
-                                        lineNumber: 34
-                                    }
-                                },
                                 'an Android Developer'
                             )
                         )
@@ -527,14 +870,14 @@ var Jumbotron = function (_Component) {
                         'p',
                         { className: 'lead', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 37
+                                lineNumber: 31
                             }
                         },
                         'This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.'
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', { className: 'my-4', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 38
+                            lineNumber: 32
                         }
                     }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -542,7 +885,7 @@ var Jumbotron = function (_Component) {
                         {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 39
+                                lineNumber: 33
                             }
                         },
                         'It uses utility classes for typography and spacing to space content out within the larger container.'
@@ -551,12 +894,12 @@ var Jumbotron = function (_Component) {
                         'p',
                         { className: 'lead', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 40
+                                lineNumber: 34
                             }
                         },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__SearchBar__["a" /* default */], { term: this.props.searchTerm, onSearch: this.props.onSearch, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 41
+                                lineNumber: 35
                             }
                         })
                     )
@@ -597,18 +940,12 @@ var Layout = function Layout(props) {
                 lineNumber: 7
             }
         },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Header__["a" /* default */], {
-            __source: {
-                fileName: _jsxFileName,
-                lineNumber: 8
-            }
-        }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'section',
             {
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 9
+                    lineNumber: 8
                 }
             },
             props.children
@@ -616,7 +953,7 @@ var Layout = function Layout(props) {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Footer__["a" /* default */], {
             __source: {
                 fileName: _jsxFileName,
-                lineNumber: 12
+                lineNumber: 11
             }
         })
     );
@@ -632,6 +969,8 @@ var Layout = function Layout(props) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames__ = __webpack_require__("classnames");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_classnames__);
 var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/components/SearchBar.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -643,6 +982,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -670,28 +1010,31 @@ var SearchBar = function (_Component) {
         value: function render() {
             var _this2 = this;
 
+            var isSmall = this.props.isSmall;
+
+
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'form',
                 { className: 'form-inline app-search', __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 16
+                        lineNumber: 20
                     }
                 },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'app-search-input form-control form-control-lg mr-sm-2', type: 'search', placeholder: 'Enter a skill like \'software\' or \'design\'...', value: this.state.searchTerm, onChange: function onChange(e) {
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: __WEBPACK_IMPORTED_MODULE_1_classnames___default()("app-search-input form-control mr-sm-2", { 'form-control-lg': !isSmall }), type: 'search', placeholder: 'Enter a skill like \'software\' or \'design\'...', value: this.state.searchTerm, onChange: function onChange(e) {
                         _this2.setState({ searchTerm: e.currentTarget.value });
                     }, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 17
+                        lineNumber: 21
                     }
                 }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'button',
-                    { className: 'app-search-btn btn btn-lg btn-primary my-2 my-sm-0', type: 'submit', onClick: this.onSearchClick, __source: {
+                    { className: __WEBPACK_IMPORTED_MODULE_1_classnames___default()("app-search-btn btn btn-primary my-2 my-sm-0", { 'form-control-lg': !isSmall }), type: 'submit', onClick: this.onSearchClick, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 20
+                            lineNumber: 24
                         }
                     },
-                    'Find Remote Jobs'
+                    isSmall ? 'Find' : 'Find Remote Jobs'
                 )
             );
         }
@@ -701,6 +1044,79 @@ var SearchBar = function (_Component) {
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
 /* harmony default export */ __webpack_exports__["a"] = (SearchBar);
+
+/***/ }),
+
+/***/ "./components/Tag.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link__ = __webpack_require__("next/link");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
+var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/components/Tag.js';
+
+
+
+var Tag = function Tag(props) {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        __WEBPACK_IMPORTED_MODULE_1_next_link___default.a,
+        { href: {
+                pathname: '/',
+                query: { search: props.name }
+            }, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 4
+            }
+        },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'span',
+            { className: 'job-tag badge', __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 8
+                }
+            },
+            props.name
+        )
+    );
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (Tag);
+
+/***/ }),
+
+/***/ "./connections/tags.js":
+/***/ (function(module, exports) {
+
+
+
+var tags = {
+    'web': ['javascript', 'css', 'html', 'react', 'angular', 'full stack', 'seo'],
+    'backend': ['php', 'java', 'c++', 'ruby', 'ror', 'nodejs', 'full stack'],
+    'mobile': ['ios', 'android', 'java', 'objective c', 'swift'],
+    'engineering': ['engineer', 'developer'],
+    'networking': ['lan', 'wifi', 'tcp', 'devops'],
+    'management': ['project manager', 'product manager', 'supervisor', 'growth', 'scrum', 'agile', 'team lead', 'manager'],
+    'healthcare': ['pharmacy', 'health', 'therapist', 'social worker', 'nurse', 'medical', 'care'],
+    'quality assurance': ['quality', 'qa'],
+    'customer service': ['customer', 'representative', 'service'],
+    'media': ['video', 'audio', 'pr', 'public relations', 'visual', 'news', 'entertainment', 'writer', 'script'],
+    'finance': ['cash', 'accounting', 'accountant', 'investment', 'payroll', 'billable', 'analyst', 'underwriter', 'financial', 'finance', 'mortgage', 'loan', 'appraiser'],
+    'sales': ['sales', 'business', 'advertising', 'ads', 'account executive', 'account'],
+    'design': ['design', 'designer', 'graphic', 'graphics', 'graphical', 'animation', 'logo', 'illustrator', 'arts', 'art', 'sculpture', 'creative', 'digital'],
+    'administrative': ['administrative', 'assistant'],
+    'education': ['learning', 'teacher', 'college', 'trainer', 'professor', 'educational', 'education', 'educator']
+};
+
+module.exports = tags;
+
+/***/ }),
+
+/***/ "./node_modules/react-select/dist/react-select.css":
+/***/ (function(module, exports) {
+
+
 
 /***/ }),
 
@@ -728,9 +1144,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_typing_animation__ = __webpack_require__("react-typing-animation");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_typing_animation___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_react_typing_animation__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_Layout__ = __webpack_require__("./components/Layout.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_JobTitle__ = __webpack_require__("./components/JobTitle.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_SearchBar__ = __webpack_require__("./components/SearchBar.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_Jumbotron__ = __webpack_require__("./components/Jumbotron.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_Header__ = __webpack_require__("./components/Header.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_JobTitle__ = __webpack_require__("./components/JobTitle.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_SearchBar__ = __webpack_require__("./components/SearchBar.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_Jumbotron__ = __webpack_require__("./components/Jumbotron.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_Email__ = __webpack_require__("./components/Email.js");
 
 var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/pages/index.js';
 
@@ -745,6 +1163,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
 
 
 
@@ -799,13 +1219,6 @@ var Index = function (_Component) {
                                         search: searchTerm
                                     }
                                 });
-                                // const res = await fetch(FIND_JOBS_URL + `?search=${searchTerm}`);
-                                // const data = await res.json();
-
-                                // this.setState({
-                                //     jobs: data.rows,
-                                //     count: data.count.length
-                                // });
 
                             case 1:
                             case 'end':
@@ -826,47 +1239,140 @@ var Index = function (_Component) {
     _createClass(Index, [{
         key: 'render',
         value: function render() {
+            var _this3 = this;
 
             var jobCards = this.props.jobs.map(function (job, i) {
-                return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10__components_JobTitle__["a" /* default */], { job: job, key: 'job-item-' + i, __source: {
+                return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11__components_JobTitle__["a" /* default */], { job: job, key: 'job-item-' + i, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 58
+                        lineNumber: 54
                     }
                 });
             });
+
+            var leadLine = __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                'section',
+                { className: 'text-center job-list-lead', __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 59
+                    }
+                },
+                __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                    'h5',
+                    { className: 'title', __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 60
+                        }
+                    },
+                    'Showing ',
+                    __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                        'span',
+                        { className: 'count', __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 61
+                            }
+                        },
+                        this.props.count,
+                        ' jobs'
+                    ),
+                    ' across all categories'
+                )
+            );
+
+            if (this.props.url.query.search) {
+                leadLine = __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                    'section',
+                    { className: 'text-center job-list-lead', __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 70
+                        }
+                    },
+                    __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                        'h5',
+                        { className: 'title', __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 71
+                            }
+                        },
+                        'Showing ',
+                        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                            'span',
+                            { className: 'count', __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 72
+                                }
+                            },
+                            this.props.count,
+                            ' jobs'
+                        ),
+                        ' related to ',
+                        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                            'span',
+                            { className: 'term', __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 72
+                                }
+                            },
+                            this.props.url.query.search
+                        ),
+                        '.'
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                        'a',
+                        { className: 'reset', onClick: function onClick() {
+                                _this3.onSearch('');
+                            }, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 74
+                            }
+                        },
+                        'Click to reset filters.'
+                    )
+                );
+            }
 
             return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_9__components_Layout__["a" /* default */],
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 63
+                        lineNumber: 81
                     }
                 },
-                __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_12__components_Jumbotron__["a" /* default */], { searchTerm: this.props.url.query.search, onSearch: this.onSearch, __source: {
+                __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10__components_Header__["a" /* default */], { searchTerm: this.props.url.query.search, onSearch: this.onSearch, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 64
+                        lineNumber: 82
+                    }
+                }),
+                __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13__components_Jumbotron__["a" /* default */], { searchTerm: this.props.url.query.search, onSearch: this.onSearch, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 83
                     }
                 }),
                 __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                     'section',
                     { className: 'container', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 65
+                            lineNumber: 84
                         }
                     },
+                    leadLine,
+                    __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_14__components_Email__["a" /* default */], { defaultValue: this.props.url.query.search || null, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 88
+                        }
+                    }),
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                         'div',
                         { className: 'job-list', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 66
+                                lineNumber: 89
                             }
                         },
                         jobCards
                     ),
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('hr', { style: { margin: '30px 0' }, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 70
+                            lineNumber: 93
                         }
                     }),
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_react_paginate___default.a, {
@@ -884,7 +1390,7 @@ var Index = function (_Component) {
 
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 71
+                            lineNumber: 94
                         }
                     })
                 )
@@ -954,10 +1460,24 @@ module.exports = require("babel-runtime/regenerator");
 
 /***/ }),
 
+/***/ "classnames":
+/***/ (function(module, exports) {
+
+module.exports = require("classnames");
+
+/***/ }),
+
 /***/ "isomorphic-unfetch":
 /***/ (function(module, exports) {
 
 module.exports = require("isomorphic-unfetch");
+
+/***/ }),
+
+/***/ "lodash/forEach":
+/***/ (function(module, exports) {
+
+module.exports = require("lodash/forEach");
 
 /***/ }),
 
@@ -1003,10 +1523,24 @@ module.exports = require("react-paginate");
 
 /***/ }),
 
+/***/ "react-select":
+/***/ (function(module, exports) {
+
+module.exports = require("react-select");
+
+/***/ }),
+
 /***/ "react-typing-animation":
 /***/ (function(module, exports) {
 
 module.exports = require("react-typing-animation");
+
+/***/ }),
+
+/***/ "reactstrap":
+/***/ (function(module, exports) {
+
+module.exports = require("reactstrap");
 
 /***/ })
 

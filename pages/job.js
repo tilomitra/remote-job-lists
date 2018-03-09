@@ -7,7 +7,8 @@ import Layout from '../components/Layout';
 import JobTitle from '../components/JobTitle';
 import ApplyButton from '../components/ApplyButton';
 import Company from '../components/Company';
-import Email from '../components/Email';
+import Share from '../components/Share';
+import Tag from '../components/Tag';
 
 class Job extends Component {
     render() {
@@ -17,6 +18,11 @@ class Job extends Component {
         if (job.referrer === 'remoteok') {
             htmlDescription = marked(job.description);
         }
+
+        const tags = job.tags.split(',');
+        const tagsJsx = tags.map((t, i) => {
+            return <Tag name={t} key={`tag-${t}-${i}`} />
+        });
 
         return (
             <Layout>
@@ -30,7 +36,17 @@ class Job extends Component {
                         <div className="col-sm-12 col-md-4 job-sidebar">
                             <ApplyButton job={job} />
                             <Company companyName={job.company} />
-                            <Email job={job} />
+
+                            <div className="card">
+                                <div className="card-body">
+                                    <h5 className="card-title">Related Jobs</h5>
+                                    <p>Find more jobs related to:</p>
+                                    {tagsJsx}
+                                    <hr />
+                                    <p>Find more jobs at <Link href={"/?search=" + job.company} className="badge">{job.company}</Link></p>
+                                </div>
+                            </div>
+                            <Share job={job} />
                         </div>
                     </div>
                 </div>

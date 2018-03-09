@@ -21,15 +21,6 @@ app.prepare()
             .sync({ force: false })
             .then(function (err) {
                 console.log('Connected to Sqlite.');
-                let tagPromises = [];
-                _.forEach(tags, (keywords, tag) => {
-                    console.log(tag);
-                    tagPromises.push(models.tag.upsert({ id: tag }));
-                });
-                console.log(tagPromises.length);
-                return Promise.all(tagPromises)
-            }).then(() => {
-                console.log("Tables loaded. Tags created.")
             }).catch((err) => {
                 console.error("Error in Sequelize syncing: ", err);
             });

@@ -8,9 +8,12 @@ import qs from 'query-string';
 import Typing from 'react-typing-animation';
 
 import Layout from '../components/Layout';
+import Header from '../components/Header';
 import JobTitle from '../components/JobTitle';
 import SearchBar from '../components/SearchBar';
 import Jumbotron from '../components/Jumbotron';
+import Email from '../components/Email';
+
 
 const LIMIT = 20;
 
@@ -42,13 +45,6 @@ class Index extends Component {
                 search: searchTerm
             }
         })
-        // const res = await fetch(FIND_JOBS_URL + `?search=${searchTerm}`);
-        // const data = await res.json();
-
-        // this.setState({
-        //     jobs: data.rows,
-        //     count: data.count.length
-        // });
     }
 
     render() {
@@ -59,10 +55,37 @@ class Index extends Component {
             )
         })
 
+        let leadLine = (
+            <section className="text-center job-list-lead">
+                <h5 className="title">
+                    Showing <span className="count">{this.props.count} jobs</span> across all categories
+            </h5>
+            </section>
+        )
+
+            ;
+
+        if (this.props.url.query.search) {
+            leadLine = (
+                <section className="text-center job-list-lead">
+                    <h5 className="title">
+                        Showing <span className="count">{this.props.count} jobs</span> related to <span className="term">{this.props.url.query.search}</span>.
+                    </h5>
+                    <a className="reset" onClick={() => { this.onSearch(''); }}>Click to reset filters.</a>
+                </section>
+            );
+
+        }
+
         return (
             <Layout>
+                <Header searchTerm={this.props.url.query.search} onSearch={this.onSearch} />
                 <Jumbotron searchTerm={this.props.url.query.search} onSearch={this.onSearch} />
                 <section className="container">
+
+                    {leadLine}
+
+                    <Email defaultValue={this.props.url.query.search || null} />
                     <div className="job-list">
                         {jobCards}
                     </div>

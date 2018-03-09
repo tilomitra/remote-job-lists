@@ -2,6 +2,8 @@ const FeedMe = require('feedme');
 const https = require('https');
 const encoding = require('encoding');
 const bulkCreateJobsAndTags = require('./bulkCreateJobsAndTags');
+const getRelatedTags = require('./getRelatedTags');
+
 
 const getRss = ({ url, jobsite }) => {
     return new Promise((resolve, reject) => {
@@ -33,13 +35,17 @@ const getRss = ({ url, jobsite }) => {
                 if (!((jobsite === 'stackoverflow' && title.indexOf('remote') === -1) || jobsite === 'github' && title.indexOf('remote') === -1)) {
                     const descBuffer = encoding.convert(item.description, 'ISO-8859-1', 'UTF-8');
                     const description = descBuffer.toString();
+
+                    const relatedTags = getRelatedTags({ title });
+
                     batchUpdates.push({
                         title: title,
                         company: company,
                         description: description,
                         link: item.link,
                         referrer: jobsite,
-                        publishDate: new Date(item.pubdate)
+                        publishDate: new Date(item.pubdate),
+                        tags: relatedTags.join(',')
                     });
                 }
             });
