@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import Link from 'next/link'
+import Router from 'next/router';
 import fetch from 'isomorphic-unfetch'
 import marked from 'marked';
 
@@ -9,8 +10,19 @@ import ApplyButton from '../components/ApplyButton';
 import Company from '../components/Company';
 import Share from '../components/Share';
 import Tag from '../components/Tag';
+import Header from '../components/Header';
 
 class Job extends Component {
+
+    onSearch = async (searchTerm) => {
+        Router.push({
+            pathname: '/',
+            query: {
+                search: searchTerm
+            }
+        })
+    }
+
     render() {
         const { job } = this.props;
         let htmlDescription = job.description;
@@ -26,7 +38,8 @@ class Job extends Component {
 
         return (
             <Layout>
-                <div className="container">
+                <Header onSearch={this.onSearch} />
+                <div className="container" style={{ marginTop: 60 }}>
                     <div className="row">
                         <div className="col-sm-12 col-md-8">
                             <JobTitle job={job} expanded={true} />

@@ -4,6 +4,16 @@ const encoding = require('encoding');
 const bulkCreateJobsAndTags = require('./bulkCreateJobsAndTags');
 const getRelatedTags = require('./getRelatedTags');
 
+function cleanString(input) {
+    var output = "";
+    for (var i = 0; i < input.length; i++) {
+        if (input.charCodeAt(i) <= 127) {
+            output += input.charAt(i);
+        }
+    }
+    return output;
+}
+
 
 const getRss = ({ url, jobsite }) => {
     return new Promise((resolve, reject) => {
@@ -34,7 +44,7 @@ const getRss = ({ url, jobsite }) => {
                 // If stackoverflow job does not have `remote` in the title, return an empty promise.
                 if (!((jobsite === 'stackoverflow' && title.indexOf('remote') === -1) || jobsite === 'github' && title.indexOf('remote') === -1)) {
                     const descBuffer = encoding.convert(item.description, 'ISO-8859-1', 'UTF-8');
-                    const description = descBuffer.toString();
+                    const description = cleanString(descBuffer.toString());
 
                     const relatedTags = getRelatedTags({ title });
 

@@ -115,7 +115,7 @@ var ApplyButton = function ApplyButton(props) {
     );
 };
 
-/* unused harmony default export */ var _unused_webpack_default_export = (ApplyButton);
+/* harmony default export */ __webpack_exports__["a"] = (ApplyButton);
 
 /***/ }),
 
@@ -205,7 +205,7 @@ var Email = function (_Component) {
                             lineNumber: 42
                         }
                     },
-                    'Get notified for new ',
+                    'Get notified when new ',
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'span',
                         { className: 'term', __source: {
@@ -215,7 +215,7 @@ var Email = function (_Component) {
                         },
                         this.props.defaultValue
                     ),
-                    ' positions'
+                    ' positions come out'
                 );
             } else {
                 header = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -452,7 +452,7 @@ var Header = function (_Component) {
         value: function render() {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_3_reactstrap__["Navbar"],
-                { color: 'faded', light: true, expand: 'md', className: 'justify-content-between', __source: {
+                { fixed: 'top', color: 'light', light: true, expand: 'md', className: 'justify-content-between', __source: {
                         fileName: _jsxFileName,
                         lineNumber: 26
                     }
@@ -485,7 +485,7 @@ var Header = function (_Component) {
                                 lineNumber: 30
                             }
                         },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__SearchBar__["a" /* default */], { isSmall: true, term: this.props.searchTerm, onSearch: this.props.onSearch, __source: {
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__SearchBar__["a" /* default */], { isSmall: true, term: this.props.searchTerm || '', onSearch: this.props.onSearch, __source: {
                                 fileName: _jsxFileName,
                                 lineNumber: 31
                             }
@@ -770,7 +770,7 @@ var Jumbotron = function (_Component) {
         value: function render() {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { className: 'jumbotron jumbotron-fluid app-jumbotron', __source: {
+                { className: 'jumbotron jumbotron-fluid app-jumbotron', style: { marginTop: 60 }, __source: {
                         fileName: _jsxFileName,
                         lineNumber: 14
                     }
@@ -1020,7 +1020,7 @@ var SearchBar = function (_Component) {
                         lineNumber: 20
                     }
                 },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: __WEBPACK_IMPORTED_MODULE_1_classnames___default()("app-search-input form-control mr-sm-2", { 'form-control-lg': !isSmall }), type: 'search', placeholder: 'Enter a skill like \'software\' or \'design\'...', value: this.state.searchTerm, onChange: function onChange(e) {
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: __WEBPACK_IMPORTED_MODULE_1_classnames___default()("app-search-input form-control mr-sm-2", { 'form-control-lg': !isSmall }), type: 'search', placeholder: 'Enter a skill like \'software\' or \'design\'', value: this.state.searchTerm, onChange: function onChange(e) {
                         _this2.setState({ searchTerm: e.currentTarget.value });
                     }, __source: {
                         fileName: _jsxFileName,
@@ -1034,7 +1034,7 @@ var SearchBar = function (_Component) {
                             lineNumber: 24
                         }
                     },
-                    isSmall ? 'Find' : 'Find Remote Jobs'
+                    isSmall ? 'Search' : 'Search Remote Jobs'
                 )
             );
         }

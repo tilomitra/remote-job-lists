@@ -18,11 +18,11 @@ class SearchBar extends Component {
 
         return (
             <form className="form-inline app-search">
-                <input className={classnames("app-search-input form-control mr-sm-2", { 'form-control-lg': !isSmall })} type="search" placeholder="Enter a skill like 'software' or 'design'..." value={this.state.searchTerm} onChange={(e) => {
+                <input className={classnames("app-search-input form-control mr-sm-2", { 'form-control-lg': !isSmall })} type="search" placeholder="Enter a skill like 'software' or 'design'" value={this.state.searchTerm} onChange={(e) => {
                     this.setState({ searchTerm: e.currentTarget.value })
                 }} />
                 <button className={classnames("app-search-btn btn btn-primary my-2 my-sm-0", { 'form-control-lg': !isSmall })} type="submit" onClick={this.onSearchClick}>
-                    {isSmall ? 'Find' : 'Find Remote Jobs'}
+                    {isSmall ? 'Search' : 'Search Remote Jobs'}
                 </button>
             </form>
         )

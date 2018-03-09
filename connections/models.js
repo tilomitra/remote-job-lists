@@ -16,6 +16,17 @@ let models = {
         },
         tags: Sequelize.STRING
     }),
+
+    user: sequelize.define('User', {
+        email: {
+            type: Sequelize.STRING,
+            unique: true
+        },
+        tags: Sequelize.STRING,
+        subscribed: Sequelize.BOOLEAN,
+        lastEmailSent: Sequelize.DATE,
+        numberOfEmailsSent: Sequelize.INTEGER
+    })
 }
 
 

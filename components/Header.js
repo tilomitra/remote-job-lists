@@ -23,12 +23,12 @@ class Header extends Component {
     }
     render() {
         return (
-            <Navbar color="faded" light expand="md" className="justify-content-between">
+            <Navbar fixed="top" color="light" light expand="md" className="justify-content-between">
                 <NavbarBrand href="/">Remote Job Lists</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
-                        <SearchBar isSmall={true} term={this.props.searchTerm} onSearch={this.props.onSearch} />
+                        <SearchBar isSmall={true} term={this.props.searchTerm || ''} onSearch={this.props.onSearch} />
                     </Nav>
                 </Collapse>
 

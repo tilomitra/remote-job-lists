@@ -11,7 +11,7 @@ class Jumbotron extends Component {
     render() {
         return (
 
-            <div className="jumbotron jumbotron-fluid app-jumbotron">
+            <div className="jumbotron jumbotron-fluid app-jumbotron" style={{ marginTop: 60 }} >
                 <div className="container">
                     <h1 className="display-4">
                         Work Remotely as

@@ -34,6 +34,10 @@ p, ul, li  {
     margin-bottom: 1em;
 }
 
+nav {
+    border-bottom: 2px solid blue !important;
+}
+
 .app-search-input {
     width: 360px !important;
 }

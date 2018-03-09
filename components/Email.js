@@ -40,7 +40,7 @@ class Email extends Component {
 
         if (didUserSearch) {
             header = <h5 className="card-title">
-                Get notified for new <span className="term">{this.props.defaultValue}</span> positions
+                Get notified when new <span className="term">{this.props.defaultValue}</span> positions come out
             </h5>
         } else {
             header = <h5 className="card-title">
