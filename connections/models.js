@@ -23,9 +23,15 @@ let models = {
             unique: true
         },
         tags: Sequelize.STRING,
-        subscribed: Sequelize.BOOLEAN,
+        subscribed: {
+            type: Sequelize.BOOLEAN,
+            defaultValue: true
+        },
         lastEmailSent: Sequelize.DATE,
-        numberOfEmailsSent: Sequelize.INTEGER
+        numberOfEmailsSent: {
+            type: Sequelize.INTEGER,
+            defaultValue: 0
+        }
     })
 }
 

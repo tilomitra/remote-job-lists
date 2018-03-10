@@ -4,7 +4,7 @@ const sequelize = require('./connections/db');
 const models = require('./connections/models');
 const tags = require('./connections/tags');
 const _ = require('lodash');
-
+const bodyParser = require('body-parser')
 
 const api = require('./routes/api');
 
@@ -20,12 +20,17 @@ app.prepare()
         sequelize
             .sync({ force: false })
             .then(function (err) {
-                console.log('Connected to Sqlite.');
+                console.log('Connected to Postgresql.');
             }).catch((err) => {
                 console.error("Error in Sequelize syncing: ", err);
             });
 
         const server = express()
+
+        server.use(bodyParser.json());       // to support JSON-encoded bodies
+        server.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+            extended: true
+        }));
 
         server.get('/job/:id', (req, res) => {
             const actualPage = '/job'
@@ -36,8 +41,7 @@ app.prepare()
         server.get('/api/jobs', api.jobs.find);
         server.get('/api/jobs/:id', api.jobs.findOne);
 
-        server.get('/api/tags', api.tags.find);
-        server.get('/api/tags/:id', api.tags.findOne);
+        server.post('/api/subscribe', api.subscribe);
 
         server.get('/api/findJobs/weworkremotely', api.weworkremotely);
         server.get('/api/findJobs/stackoverflow', api.stackoverflow);

@@ -14,8 +14,7 @@ const bulkCreateJobsAndTags = require('./bulkCreateJobsAndTags');
 const apiRoutes = {
 
     jobs: require('./jobs'),
-
-    tags: require('./tags'),
+    subscribe: require('./subscribe'),
 
     weworkremotely: (req, res) => {
         const urls = [

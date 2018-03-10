@@ -10,6 +10,7 @@ class Email extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            email: '',
             removeSelected: true,
             disabled: false,
             stayOpen: false,
@@ -18,8 +19,28 @@ class Email extends Component {
         }
 
     }
-    onSubmit = () => {
+    onSubmit = (e) => {
+        e.preventDefault();
+        const res = fetch('http://localhost:3000/api/subscribe',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: this.state.email,
+                    tags: this.state.value
+                })
+            }).then((response) => {
+                response.json()
+            })
+            .then((responseJson) => {
+                console.log(responseJson)
+            })
+    }
 
+    handleEmailChange = (e) => {
+        this.setState({ email: e.currentTarget.value });
     }
 
     handleSelectChange = (value) => {
@@ -57,7 +78,7 @@ class Email extends Component {
                         <div className="form-row align-items-center">
                             <div className="col-sm-12 col-md-4 my-1">
                                 <label className="mr-sm-2">Email me at</label>
-                                <input type="text" className="form-control" placeholder="Enter your email" />
+                                <input type="text" className="form-control" placeholder="Enter your email" value={this.state.email} onChange={this.handleEmailChange} />
                             </div>
                             <div className="col-sm-12 col-md-6 my-1">
                                 <label>with new listings related to</label>
@@ -75,7 +96,13 @@ class Email extends Component {
                                 />
                             </div>
                             <div className="col-sm-12 col-md-2 my-1">
-                                <button className="btn btn-success" style={{ marginTop: 35 }}>Subscribe</button>
+                                <button
+                                    className="btn btn-success"
+                                    style={{ marginTop: 35 }}
+                                    onClick={this.onSubmit}
+                                >
+                                    Subscribe
+                                </button>
                             </div>
                         </div>
                         <small className="form-text text-muted">

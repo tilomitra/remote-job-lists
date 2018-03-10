@@ -6,11 +6,11 @@ module.exports = {
     find: (req, res) => {
         let q = req.query;
         let opts = {
-            group: ["link"],
+            group: ["link", "id"],
             attributes: ['id', 'title', 'link', 'publishDate', 'referrer', 'company', 'tags'],
             order: [["publishDate", "DESC"]],
             offset: req.query.offset || 0,
-            limit: req.query.limit || 25,
+            limit: req.query.limit || 25
         }
 
         let whereOr = {};

@@ -115,7 +115,7 @@ var ApplyButton = function ApplyButton(props) {
     );
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (ApplyButton);
+/* unused harmony default export */ var _unused_webpack_default_export = (ApplyButton);
 
 /***/ }),
 
@@ -160,7 +160,27 @@ var Email = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (Email.__proto__ || Object.getPrototypeOf(Email)).call(this, props));
 
-        _this.onSubmit = function () {};
+        _this.onSubmit = function (e) {
+            e.preventDefault();
+            var res = fetch('http://localhost:3000/api/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: _this.state.email,
+                    tags: _this.state.value
+                })
+            }).then(function (response) {
+                response.json();
+            }).then(function (responseJson) {
+                console.log(responseJson);
+            });
+        };
+
+        _this.handleEmailChange = function (e) {
+            _this.setState({ email: e.currentTarget.value });
+        };
 
         _this.handleSelectChange = function (value) {
             console.log('You\'ve selected:', value);
@@ -168,6 +188,7 @@ var Email = function (_Component) {
         };
 
         _this.state = {
+            email: '',
             removeSelected: true,
             disabled: false,
             stayOpen: false,
@@ -202,7 +223,7 @@ var Email = function (_Component) {
                     'h5',
                     { className: 'card-title', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 42
+                            lineNumber: 63
                         }
                     },
                     'Get notified when new ',
@@ -210,7 +231,7 @@ var Email = function (_Component) {
                         'span',
                         { className: 'term', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 43
+                                lineNumber: 64
                             }
                         },
                         this.props.defaultValue
@@ -222,7 +243,7 @@ var Email = function (_Component) {
                     'h5',
                     { className: 'card-title', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 46
+                            lineNumber: 67
                         }
                     },
                     'Get Daily Job Listings'
@@ -233,21 +254,21 @@ var Email = function (_Component) {
                 'div',
                 { className: 'card app-email', __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 53
+                        lineNumber: 74
                     }
                 },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'card-body', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 54
+                            lineNumber: 75
                         }
                     },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'h5',
                         { className: 'card-title', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 55
+                                lineNumber: 76
                             }
                         },
                         header
@@ -257,35 +278,35 @@ var Email = function (_Component) {
                         {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 56
+                                lineNumber: 77
                             }
                         },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
                             { className: 'form-row align-items-center', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 57
+                                    lineNumber: 78
                                 }
                             },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
                                 { className: 'col-sm-12 col-md-4 my-1', __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 58
+                                        lineNumber: 79
                                     }
                                 },
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'label',
                                     { className: 'mr-sm-2', __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 59
+                                            lineNumber: 80
                                         }
                                     },
                                     'Email me at'
                                 ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Enter your email', __source: {
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Enter your email', value: this.state.email, onChange: this.handleEmailChange, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 60
+                                        lineNumber: 81
                                     }
                                 })
                             ),
@@ -293,7 +314,7 @@ var Email = function (_Component) {
                                 'div',
                                 { className: 'col-sm-12 col-md-6 my-1', __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 62
+                                        lineNumber: 83
                                     }
                                 },
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -301,7 +322,7 @@ var Email = function (_Component) {
                                     {
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 63
+                                            lineNumber: 84
                                         }
                                     },
                                     'with new listings related to'
@@ -319,7 +340,7 @@ var Email = function (_Component) {
                                     value: value,
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 64
+                                        lineNumber: 85
                                     }
                                 })
                             ),
@@ -327,14 +348,18 @@ var Email = function (_Component) {
                                 'div',
                                 { className: 'col-sm-12 col-md-2 my-1', __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 77
+                                        lineNumber: 98
                                     }
                                 },
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'button',
-                                    { className: 'btn btn-success', style: { marginTop: 35 }, __source: {
+                                    {
+                                        className: 'btn btn-success',
+                                        style: { marginTop: 35 },
+                                        onClick: this.onSubmit,
+                                        __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 78
+                                            lineNumber: 99
                                         }
                                     },
                                     'Subscribe'
@@ -345,7 +370,7 @@ var Email = function (_Component) {
                             'small',
                             { className: 'form-text text-muted', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 81
+                                    lineNumber: 108
                                 }
                             },
                             'The tags that you specify will be used to customize listings for your email. You can unsubscribe anytime.'

@@ -2,9 +2,9 @@ const Sequelize = require('sequelize');
 const path = require('path');
 
 
-const sequelize = new Sequelize('database', null, null, {
+const sequelize = new Sequelize('remote_job_lists', 'tilo', 'testuser', {
   host: 'localhost',
-  dialect: 'sqlite',
+  dialect: 'postgres',
 
   pool: {
     max: 100,
@@ -12,9 +12,6 @@ const sequelize = new Sequelize('database', null, null, {
     acquire: 30000,
     idle: 10000
   },
-
-  // SQLite only
-  storage: path.join(__dirname, '../db/database.sqlite'),
 
   // http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
   operatorsAliases: true
