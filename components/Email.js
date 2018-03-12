@@ -2,6 +2,7 @@ import { Component } from 'react';
 import Select from 'react-select';
 import Tags from '../connections/tags';
 import forEach from 'lodash/forEach';
+import cn from 'classnames';
 
 import 'react-select/dist/react-select.css';
 
@@ -15,7 +16,8 @@ class Email extends Component {
             disabled: false,
             stayOpen: false,
             value: this.props.defaultValue ? [{ label: this.props.defaultValue, value: this.props.defaultValue }] : [],
-            rtl: false
+            rtl: false,
+
         }
 
     }
@@ -78,7 +80,7 @@ class Email extends Component {
                         <div className="form-row align-items-center">
                             <div className="col-sm-12 col-md-4 my-1">
                                 <label className="mr-sm-2">Email me at</label>
-                                <input type="text" className="form-control" placeholder="Enter your email" value={this.state.email} onChange={this.handleEmailChange} />
+                                <input type="email" className="form-control" placeholder="Enter your email" value={this.state.email} onChange={this.handleEmailChange} />
                             </div>
                             <div className="col-sm-12 col-md-6 my-1">
                                 <label>with new listings related to</label>

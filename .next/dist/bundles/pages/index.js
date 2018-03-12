@@ -131,8 +131,10 @@ var ApplyButton = function ApplyButton(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connections_tags___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__connections_tags__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash_forEach__ = __webpack_require__("lodash/forEach");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash_forEach___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_lodash_forEach__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_select_dist_react_select_css__ = __webpack_require__("./node_modules/react-select/dist/react-select.css");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_select_dist_react_select_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react_select_dist_react_select_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_classnames__ = __webpack_require__("classnames");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_classnames__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_select_dist_react_select_css__ = __webpack_require__("./node_modules/react-select/dist/react-select.css");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_select_dist_react_select_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react_select_dist_react_select_css__);
 var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/components/Email.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -144,6 +146,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -194,6 +197,7 @@ var Email = function (_Component) {
             stayOpen: false,
             value: _this.props.defaultValue ? [{ label: _this.props.defaultValue, value: _this.props.defaultValue }] : [],
             rtl: false
+
         };
 
         return _this;
@@ -223,7 +227,7 @@ var Email = function (_Component) {
                     'h5',
                     { className: 'card-title', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 63
+                            lineNumber: 65
                         }
                     },
                     'Get notified when new ',
@@ -231,7 +235,7 @@ var Email = function (_Component) {
                         'span',
                         { className: 'term', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 64
+                                lineNumber: 66
                             }
                         },
                         this.props.defaultValue
@@ -243,7 +247,7 @@ var Email = function (_Component) {
                     'h5',
                     { className: 'card-title', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 67
+                            lineNumber: 69
                         }
                     },
                     'Get Daily Job Listings'
@@ -254,21 +258,21 @@ var Email = function (_Component) {
                 'div',
                 { className: 'card app-email', __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 74
+                        lineNumber: 76
                     }
                 },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'card-body', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 75
+                            lineNumber: 77
                         }
                     },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'h5',
                         { className: 'card-title', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 76
+                                lineNumber: 78
                             }
                         },
                         header
@@ -278,35 +282,35 @@ var Email = function (_Component) {
                         {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 77
+                                lineNumber: 79
                             }
                         },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
                             { className: 'form-row align-items-center', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 78
+                                    lineNumber: 80
                                 }
                             },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
                                 { className: 'col-sm-12 col-md-4 my-1', __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 79
+                                        lineNumber: 81
                                     }
                                 },
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'label',
                                     { className: 'mr-sm-2', __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 80
+                                            lineNumber: 82
                                         }
                                     },
                                     'Email me at'
                                 ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Enter your email', value: this.state.email, onChange: this.handleEmailChange, __source: {
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'email', className: 'form-control', placeholder: 'Enter your email', value: this.state.email, onChange: this.handleEmailChange, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 81
+                                        lineNumber: 83
                                     }
                                 })
                             ),
@@ -314,7 +318,7 @@ var Email = function (_Component) {
                                 'div',
                                 { className: 'col-sm-12 col-md-6 my-1', __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 83
+                                        lineNumber: 85
                                     }
                                 },
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -322,7 +326,7 @@ var Email = function (_Component) {
                                     {
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 84
+                                            lineNumber: 86
                                         }
                                     },
                                     'with new listings related to'
@@ -340,7 +344,7 @@ var Email = function (_Component) {
                                     value: value,
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 85
+                                        lineNumber: 87
                                     }
                                 })
                             ),
@@ -348,7 +352,7 @@ var Email = function (_Component) {
                                 'div',
                                 { className: 'col-sm-12 col-md-2 my-1', __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 98
+                                        lineNumber: 100
                                     }
                                 },
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -359,7 +363,7 @@ var Email = function (_Component) {
                                         onClick: this.onSubmit,
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 99
+                                            lineNumber: 101
                                         }
                                     },
                                     'Subscribe'
@@ -370,7 +374,7 @@ var Email = function (_Component) {
                             'small',
                             { className: 'form-text text-muted', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 108
+                                    lineNumber: 110
                                 }
                             },
                             'The tags that you specify will be used to customize listings for your email. You can unsubscribe anytime.'
