@@ -12,6 +12,10 @@ import Share from '../components/Share';
 import Tag from '../components/Tag';
 import Header from '../components/Header';
 
+import config from '../config';
+
+const BASE_URL = config.host;
+
 class Job extends Component {
 
     onSearch = async (searchTerm) => {
@@ -72,7 +76,7 @@ class Job extends Component {
 }
 
 Job.getInitialProps = async function ({ query }) {
-    const res = await fetch(`http://localhost:3000/api/jobs/${query.id}`)
+    const res = await fetch(`${BASE_URL}/api/jobs/${query.id}`)
     const data = await res.json()
 
     return {

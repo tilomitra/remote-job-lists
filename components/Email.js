@@ -3,6 +3,7 @@ import Select from 'react-select';
 import Tags from '../connections/tags';
 import forEach from 'lodash/forEach';
 import cn from 'classnames';
+import config from '../config';
 
 import 'react-select/dist/react-select.css';
 
@@ -23,7 +24,7 @@ class Email extends Component {
     }
     onSubmit = (e) => {
         e.preventDefault();
-        const res = fetch('http://localhost:3000/api/subscribe',
+        const res = fetch(`${config.host}/api/subscribe`,
             {
                 method: 'POST',
                 headers: {

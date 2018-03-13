@@ -7,6 +7,8 @@ import ReactPaginate from 'react-paginate';
 import qs from 'query-string';
 import Typing from 'react-typing-animation';
 
+
+import config from '../config';
 import Layout from '../components/Layout';
 import Header from '../components/Header';
 import JobTitle from '../components/JobTitle';
@@ -17,7 +19,7 @@ import Email from '../components/Email';
 
 const LIMIT = 20;
 
-const FIND_JOBS_URL = 'http://localhost:3000/api/jobs';
+const BASE_URL = config.host;
 
 
 class Index extends Component {
@@ -114,7 +116,7 @@ class Index extends Component {
 Index.getInitialProps = async function ({ query }) {
 
 
-    const res = await fetch(FIND_JOBS_URL + '?' + qs.stringify(query));
+    const res = await fetch(BASE_URL + '?' + qs.stringify(query));
     const data = await res.json()
 
     console.log(`Show data fetched. Count: ${data.rows.length}/${data.count.length}`)
