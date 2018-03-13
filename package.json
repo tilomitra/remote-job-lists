@@ -8,7 +8,8 @@
     "dev": "node server.js",
     "build": "next build",
     "heroku-postbuild": "next build",
-    "start": "node server.js"
+    "start": "node server.js",
+    "startWithProd": "NODE_ENV=production DATABASE_URL=$(heroku config:get DATABASE_URL) node server.js"
   },
   "keywords": [],
   "author": "",

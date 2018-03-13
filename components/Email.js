@@ -1,11 +1,17 @@
 import { Component } from 'react';
-import Select from 'react-select';
+import { Creatable } from 'react-select';
 import Tags from '../connections/tags';
 import forEach from 'lodash/forEach';
 import cn from 'classnames';
 import config from '../config';
 
 import 'react-select/dist/react-select.css';
+
+
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
 
 class Email extends Component {
 
@@ -18,12 +24,17 @@ class Email extends Component {
             stayOpen: false,
             value: this.props.defaultValue ? [{ label: this.props.defaultValue, value: this.props.defaultValue }] : [],
             rtl: false,
-
+            isValidEmail: true,
+            componentState: 'not-sent' // can be 'not-sent', 'is-sending', 'sent', 'error', 
         }
 
     }
     onSubmit = (e) => {
         e.preventDefault();
+        this.setState({
+            componentState: 'is-sending'
+        });
+
         const res = fetch(`${config.host}/api/subscribe`,
             {
                 method: 'POST',
@@ -38,21 +49,41 @@ class Email extends Component {
                 response.json()
             })
             .then((responseJson) => {
-                console.log(responseJson)
-            })
+                console.log(responseJson);
+                if (responseJson.statusCode === 200) {
+                    this.setState({
+                        componentState: 'sent'
+                    });
+                } else {
+                    this.setState({
+                        componentState: 'error'
+                    });
+                }
+            }).catch((err) => {
+                console.log(err);
+                this.setState({
+                    componentState: 'error'
+                });
+            });
     }
 
+    handleEmailBlur = () => {
+        let email = this.state.email;
+        let isValidEmail = validateEmail(email);
+        this.setState({ isValidEmail });
+    }
     handleEmailChange = (e) => {
-        this.setState({ email: e.currentTarget.value });
+
+        let email = e.currentTarget.value;
+        this.setState({ componentState: 'not-sent', email });
     }
 
     handleSelectChange = (value) => {
-        console.log('You\'ve selected:', value);
-        this.setState({ value });
+        this.setState({ componentState: 'not-sent', value });
     }
 
     render() {
-        const { disabled, stayOpen, value, removeSelected, rtl } = this.state;
+        const { disabled, stayOpen, value, removeSelected, rtl, componentState, isValidEmail } = this.state;
         const didUserSearch = !!this.props.defaultValue;
 
         let options = [];
@@ -60,7 +91,7 @@ class Email extends Component {
             options.push({ label: tag, value: tag });
         });
 
-        let header;
+        let header, alertBox, subscribeBtnText = 'Receive Alerts';
 
         if (didUserSearch) {
             header = <h5 className="card-title">
@@ -72,6 +103,26 @@ class Email extends Component {
         </h5>
         }
 
+        if (componentState === 'sent') {
+            alertBox = (
+                <div className="alert alert-success">You have successfully enabled daily job listing alerts. 👍</div>
+            )
+            subscribeBtnText = 'Daily Alerts Enabled';
+        } else if (componentState === 'error') {
+            alertBox = (
+                <div className="alert alert-danger">There was an error when subscribing. Verify that your email address is correct, try again, or <a href="https://twitter.com/tilomitra" target="_blank">contact me</a>.</div>
+            )
+        } else if (componentState === 'is-sending') {
+            subscribeBtnText = 'Loading...'
+        }
+
+        if (!isValidEmail) {
+            alertBox = (
+                <div className="alert alert-warning">We noticed a typo in your email address. Make sure you enter a correct email address before subscribing. 🙂</div>
+            )
+        }
+
+
         return (
 
             <div className="card app-email">
@@ -81,20 +132,28 @@ class Email extends Component {
                         <div className="form-row align-items-center">
                             <div className="col-sm-12 col-md-4 my-1">
                                 <label className="mr-sm-2">Email me at</label>
-                                <input type="email" className="form-control" placeholder="Enter your email" value={this.state.email} onChange={this.handleEmailChange} />
+                                <input
+                                    type="email"
+                                    className="form-control"
+                                    placeholder="Enter your email"
+                                    value={this.state.email}
+                                    onBlur={this.handleEmailBlur}
+                                    onChange={this.handleEmailChange} />
                             </div>
                             <div className="col-sm-12 col-md-6 my-1">
                                 <label>with new listings related to</label>
-                                <Select
+                                <Creatable
                                     closeOnSelect={!stayOpen}
                                     disabled={disabled}
                                     multi
                                     onChange={this.handleSelectChange}
                                     options={options}
-                                    placeholder={`You can type "design", "engineering", or more...`}
+                                    placeholder={`Type keywords to only receive alerts for relevant listings.`}
                                     removeSelected={removeSelected}
+                                    promptTextCreator={(label) => {
+                                        return `Create job keyword: ${label}`
+                                    }}
                                     rtl={rtl}
-                                    simpleValue
                                     value={value}
                                 />
                             </div>
@@ -103,14 +162,17 @@ class Email extends Component {
                                     className="btn btn-success"
                                     style={{ marginTop: 35 }}
                                     onClick={this.onSubmit}
+                                    disabled={(componentState !== 'not-sent' || !isValidEmail)}
                                 >
-                                    Subscribe
+                                    {subscribeBtnText}
                                 </button>
                             </div>
                         </div>
                         <small className="form-text text-muted">
-                            The tags that you specify will be used to customize listings for your email. You can unsubscribe anytime.
+                            If you don't enter any tags, we'll send you alerts for all job listings daily. The keywords that you specify will be used to customize listings for your email. You can unsubscribe anytime. 🤝
                         </small>
+
+                        {alertBox}
                     </form>
                 </div>
             </div>

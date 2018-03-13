@@ -14,7 +14,7 @@ let models = {
             type: Sequelize.DATE,
             defaultValue: Sequelize.NOW
         },
-        tags: Sequelize.STRING
+        tags: Sequelize.ARRAY(Sequelize.TEXT)
     }),
 
     user: sequelize.define('User', {

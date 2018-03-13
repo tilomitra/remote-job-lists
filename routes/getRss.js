@@ -55,7 +55,7 @@ const getRss = ({ url, jobsite }) => {
                         link: item.link,
                         referrer: jobsite,
                         publishDate: new Date(item.pubdate),
-                        tags: relatedTags.join(',')
+                        tags: relatedTags
                     });
                 }
             });

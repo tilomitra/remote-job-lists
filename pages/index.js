@@ -15,6 +15,9 @@ import JobTitle from '../components/JobTitle';
 import SearchBar from '../components/SearchBar';
 import Jumbotron from '../components/Jumbotron';
 import Email from '../components/Email';
+import Categories from '../components/Categories';
+import Tag from '../components/Tag';
+import Leadline from '../components/Leadline';
 
 
 const LIMIT = 20;
@@ -40,44 +43,25 @@ class Index extends Component {
         })
     }
 
-    onSearch = async (searchTerm) => {
+    onSearch = async (searchTerm, searchTags = this.props.url.query.tags) => {
         Router.push({
             pathname: '/',
             query: {
-                search: searchTerm
+                search: searchTerm,
+                tags: searchTags
             }
         })
     }
 
     render() {
 
+        const { search, tags } = this.props.url.query;
         const jobCards = this.props.jobs.map((job, i) => {
             return (
                 <JobTitle job={job} key={`job-item-${i}`} />
             )
         })
 
-        let leadLine = (
-            <section className="text-center job-list-lead">
-                <h5 className="title">
-                    Showing <span className="count">{this.props.count} jobs</span> across all categories
-            </h5>
-            </section>
-        )
-
-            ;
-
-        if (this.props.url.query.search) {
-            leadLine = (
-                <section className="text-center job-list-lead">
-                    <h5 className="title">
-                        Showing <span className="count">{this.props.count} jobs</span> related to <span className="term">{this.props.url.query.search}</span>.
-                    </h5>
-                    <a className="reset" onClick={() => { this.onSearch(''); }}>Click to reset filters.</a>
-                </section>
-            );
-
-        }
 
         return (
             <Layout>
@@ -85,8 +69,9 @@ class Index extends Component {
                 <Jumbotron searchTerm={this.props.url.query.search} onSearch={this.onSearch} />
                 <section className="container">
 
-                    {leadLine}
+                    <Leadline search={search} tags={tags} count={this.props.count} onSearch={this.onSearch} />
 
+                    <Categories selectedCategories={this.props.url.query.tags} />
                     <Email defaultValue={this.props.url.query.search || null} />
                     <div className="job-list">
                         {jobCards}

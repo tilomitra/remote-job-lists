@@ -101,7 +101,7 @@ const apiRoutes = {
                         referrer: 'remoteok',
                         publishDate: new Date(d.date),
                         slug: d.slug,
-                        tags: relatedTags.join(',')
+                        tags: relatedTags
                     });
                 });
             }

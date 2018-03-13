@@ -9,7 +9,7 @@ class JobTitle extends Component {
     render() {
         let contents;
 
-        let tagList = this.props.job.tags.split(',').map((t, i) => {
+        let tagList = this.props.job.tags.map((t, i) => {
             return <Tag name={t} key={`tag-${t}-${i}`} />
         });
 
