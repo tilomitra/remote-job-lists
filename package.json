@@ -8,7 +8,7 @@
     "dev": "node server.js",
     "build": "next build",
     "heroku-postbuild": "next build",
-    "start": "node server.js -p $PORT"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
