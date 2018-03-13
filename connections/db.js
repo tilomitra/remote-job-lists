@@ -2,8 +2,6 @@ const Sequelize = require('sequelize');
 const path = require('path');
 
 const env = process.env.NODE_ENV;
-
-let match;
 let sequelize;
 
 
