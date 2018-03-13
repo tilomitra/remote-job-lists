@@ -116,7 +116,7 @@ class Index extends Component {
 Index.getInitialProps = async function ({ query }) {
 
 
-    const res = await fetch(BASE_URL + '?' + qs.stringify(query));
+    const res = await fetch(BASE_URL + '/?' + qs.stringify(query));
     const data = await res.json()
 
     console.log(`Show data fetched. Count: ${data.rows.length}/${data.count.length}`)
