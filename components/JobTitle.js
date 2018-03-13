@@ -29,7 +29,7 @@ class JobTitle extends Component {
                 <div className="job-list-item">
                     <div className="row">
                         <div className="col-sm-6">
-                            <Link prefetch as={`/job/${this.props.job.id}`} href={`/job?id=${this.props.job.id}`}>
+                            <Link prefetch href={`/job/${this.props.job.id}`}>
                                 <h2 className="job-title job-title-compact">{this.props.job.title} <span className="muted">at</span> <span className="job-company">{this.props.job.company}</span></h2>
                             </Link>
                             <span className="muted">Published</span> {moment(this.props.job.publishDate).startOf('day').fromNow()}

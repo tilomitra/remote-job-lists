@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node server.js",
-    "build": "next build",
-    "heroku-postbuild": "next build",
+    "build": "./node_modules/next/dist/bin/next build",
+    "heroku-postbuild": "./node_modules/next/dist/bin/next build",
     "start": "node server.js",
     "startWithProd": "NODE_ENV=production DATABASE_URL=$(heroku config:get DATABASE_URL) node server.js"
   },
