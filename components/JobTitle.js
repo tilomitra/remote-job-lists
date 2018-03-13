@@ -38,7 +38,7 @@ class JobTitle extends Component {
                             {tagList}
                         </div>
                         <div className="col-sm-2 text-right job-list-item-apply">
-                            <a className="btn job-apply-button" href={this.props.job.link}>Apply</a>
+                            <a className="btn job-apply-button" href={this.props.job.link} style={{ fontSize: '1rem' }}>Apply</a>
                         </div>
                     </div>
                 </div>

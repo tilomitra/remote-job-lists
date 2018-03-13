@@ -99,7 +99,7 @@ class Email extends Component {
             </h5>
         } else {
             header = <h5 className="card-title">
-                Get Daily Job Listings
+                Get Weekly Job Listings
         </h5>
         }
 
@@ -140,7 +140,7 @@ class Email extends Component {
                                     onBlur={this.handleEmailBlur}
                                     onChange={this.handleEmailChange} />
                             </div>
-                            <div className="col-sm-12 col-md-6 my-1">
+                            <div className="col-sm-12 col-md-8 my-1">
                                 <label>with new listings related to</label>
                                 <Creatable
                                     closeOnSelect={!stayOpen}
@@ -160,7 +160,6 @@ class Email extends Component {
                             <div className="col-sm-12 col-md-2 my-1">
                                 <button
                                     className="btn btn-success"
-                                    style={{ marginTop: 35 }}
                                     onClick={this.onSubmit}
                                     disabled={(componentState !== 'not-sent' || !isValidEmail)}
                                 >

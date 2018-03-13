@@ -17,7 +17,7 @@ class Leadline extends Component {
             leadLine = (
                 <section className="text-center job-list-lead">
                     <h5 className="title">
-                        Showing <span className="count">{count} jobs</span> across all categories
+                        Showing <span className="count">{count} remote jobs</span> across all categories and employers
                 </h5>
                 </section>
             )

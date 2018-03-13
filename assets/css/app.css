@@ -17,8 +17,7 @@ p, ul, li  {
 }
 
 .app-jumbotron {
-    /* background: url('https://images.unsplash.com/photo-1460794418188-1bb7dba2720d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d2bfe8be765e57893fa314522a14050c&auto=format&fit=crop&w=1950&q=80') no-repeat;
-    background-size: cover; */
+    margin-bottom: 0;
 }
 
 .btn {
@@ -26,8 +25,8 @@ p, ul, li  {
 }
 
 .btn.btn-primary {
-    background: blue;
-    border-color: blue;
+    background: #2572ff;
+    border-color: #2572ff;
 }
 
 .card {
@@ -48,24 +47,41 @@ nav {
     background: #e6f0ff;
 }
 
+.app-categories {
+    margin: 1em 0;
+}
+
 .app-category {
     text-align: center;
-    padding: 0.75em;
-    margin: 0.25em;
+    padding: 0.75em 0;
+    margin: 0.25em 0;
     text-transform: capitalize;
     cursor: pointer;
     border: 1px solid #ddd;
     border-radius: 5px;
+    transition: all 0.2s;
+    font-size: 0.75em;
 }
 
-.app-category:hover {
+.app-category:hover, .job-tag:hover {
     background: #e6f0ff;
-    border: transparent;
+    border-color: #e6f0ff;
+    color: #2572ff;
 }
 
 .app-category.selected {
-    background: blue;
-    color: white;
+    border-color: #2572ff;
+    color: #2572ff;
+    background: white;
+}
+
+.app-category-icon {
+    margin: 0 auto;
+    display: block;
+    transition: all 0.2s;
+}
+.app-category:hover .app-category-icon {
+    color: #2572ff;
 }
 
 .job-list-item {
@@ -77,7 +93,7 @@ nav {
 
 .app-jumbotron-typing,
 .job-list-item:hover .job-title {
-    color: blue;
+    color: #2572ff;
     font-weight: bold;
 }
 
@@ -98,29 +114,28 @@ nav {
     font-weight: bold;
 }
 .job-title-expanded {
-    color: blue;
+    color: #2572ff;
     font-size: 3em;
     padding-top: 1em;
 }
 
-.job-title-lead, 
-.job-list-lead {
+.job-title-lead {
     font-size: 2em;
 }
 
 .job-list-lead {
-    padding: 1em 0;
+    padding: 1em;
+    font-size: 1.5em;
     border-bottom: 1px solid #ddd;
     line-height: 1;
 }
 .job-list-lead .title {
     margin: 0;
     padding: 0;
-    font-size: 1.75rem;
 }
 .job-list-lead .reset {
-    font-size: 17px;
-    color: blue;
+    font-size: 14px;
+    color: #2572ff;
     text-decoration: underline;
 }
 .job-list-lead .count,
@@ -131,7 +146,7 @@ nav {
 }
 .job-list-lead .term,
 .app-email .term {
-    color: blue;
+    color: #2572ff;
     text-decoration: underline;
 }
 
@@ -144,24 +159,28 @@ nav {
 }
 
 .job-tag {
-    font-size: 1em;
+    font-size: 0.85em;
     margin: 0.3em;
     font-weight: 400;
     text-transform: capitalize;
     padding: 0.3em 1em;
     cursor: pointer;
-    border: 1px solid #ddd;
     transition: all 0.2s ease-out;
+    
+    border: 1px solid #e6f0ff;
 }
 
-.job-tag:hover {
-    color: blue;
-    border-color: blue;
-    border-radius: 30px;
+.job-tag svg {
+   width: 16px;
+   margin-right: 10px;
+}
+.job-tag .job-tag-name {
+    position: relative;
+    top: -6px;
 }
 
 .job-apply-button {
-    background: blue;
+    background: #2572ff;
     color: white;
     padding: 0.5em 2em;
     border-radius: 5px;

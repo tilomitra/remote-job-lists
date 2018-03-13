@@ -4,7 +4,7 @@ import forEach from 'lodash/forEach';
 import remove from 'lodash/remove';
 import Router from 'next/router';
 import cn from 'classnames';
-
+import feather from 'feather-icons';
 
 class Categories extends Component {
     constructor(props) {
@@ -14,6 +14,10 @@ class Categories extends Component {
         this.state = {
             selected: selectedCategories ? selectedCategories.split(',') : []
         }
+    }
+
+    componentDidMount() {
+        feather.replace()
     }
 
     onCategoryClick = (tag) => {
@@ -40,23 +44,26 @@ class Categories extends Component {
         let categories = [];
         const { selected } = this.state;
 
-        forEach(Tags, (keywords, tag) => {
+        forEach(Tags, ({ icon }, tag) => {
             const isSelected = selected.indexOf(tag) > -1 ? true : false;
             categories.push(
                 <div
-                    className="col-3"
+                    className="col-sm-12 col-md-6"
                     key={`category-${tag}`}
                     onClick={() => { this.onCategoryClick(tag); }}>
                     <section className={cn("app-category", { selected: isSelected })}>
-                        {tag}
+                        <i data-feather={icon} className="app-category-icon"></i>
+                        <span className="app-category-tag">{tag}</span>
                     </section>
                 </div>
             );
         }, this);
 
         return (
-            <section className="app-categories">
-                <h5>Categories</h5>
+            <section className="app-categories sticky-top" style={{ top: 80 }}>
+                <h5>Tags
+                <p className="lead">Use the tags below to filter your search.</p>
+                </h5>
                 <div className="row">
                     {categories}
                 </div>

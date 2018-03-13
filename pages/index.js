@@ -56,12 +56,19 @@ class Index extends Component {
     render() {
 
         const { search, tags } = this.props.url.query;
-        const jobCards = this.props.jobs.map((job, i) => {
+        let jobCards = this.props.jobs.map((job, i) => {
             return (
                 <JobTitle job={job} key={`job-item-${i}`} />
             )
         })
 
+        const emailJsx = (
+            <Email defaultValue={this.props.url.query.search || null} />
+        );
+
+        // insert the email in line 5.
+
+        jobCards.splice(5, 0, emailJsx);
 
         return (
             <Layout>
@@ -71,19 +78,28 @@ class Index extends Component {
 
                     <Leadline search={search} tags={tags} count={this.props.count} onSearch={this.onSearch} />
 
-                    <Categories selectedCategories={this.props.url.query.tags} />
-                    <Email defaultValue={this.props.url.query.search || null} />
-                    <div className="job-list">
-                        {jobCards}
+                    <div className="row">
+                        <div className="col-sm-12 col-md-8 col-lg-9">
+                            <div className="job-list">
+                                {jobCards}
+                            </div>
+                        </div>
+                        <div className="col-sm-12 col-md-4 col-lg-3">
+                            <Categories selectedCategories={this.props.url.query.tags} />
+                        </div>
                     </div>
+
+
+
+
 
                     <hr style={{ margin: '30px 0' }} />
                     <ReactPaginate
                         pageCount={Math.ceil(this.props.count / 50)}
                         marginPagesDisplayed={2}
                         onPageChange={this.onPageChange}
-                        pageRangeDisplayed={5}
-                        containerClassName={"pagination pagination-lg justify-content-center"}
+                        pageRangeDisplayed={3}
+                        containerClassName={"pagination justify-content-center"}
                         pageClassName={"page-item"}
                         activeClassName={"active"}
                         pageLinkClassName={"page-link"}

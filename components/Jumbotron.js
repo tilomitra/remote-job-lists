@@ -28,9 +28,8 @@ class Jumbotron extends Component {
                             <span className="app-jumbotron-typing">an Android Developer</span>
                         </Typing>
                     </h1>
-                    <p className="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                    <p className="lead">Find your next gig by searching through the largest remote listing database on the internet. <br /> Updated every hour. All positions are 100% remote.</p>
                     <hr className="my-4" />
-                    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
                     <p className="lead">
                         <SearchBar term={this.props.searchTerm} onSearch={this.props.onSearch} />
                     </p>

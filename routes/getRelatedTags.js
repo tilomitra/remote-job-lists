@@ -7,7 +7,7 @@ const getRelatedTags = ({ title }) => {
 
     let relatedTags = [];
 
-    _.forEach(tags, (keywords, tag) => {
+    _.forEach(tags, ({ keywords }, tag) => {
         // check to see if the keywords are in title or description.
         let isRelatedTag = false;
         keywords.forEach(k => {

@@ -35,7 +35,7 @@ class Job extends Component {
             htmlDescription = marked(job.description);
         }
 
-        const tags = job.tags.split(',');
+        const tags = job.tags;
         const tagsJsx = tags.map((t, i) => {
             return <Tag name={t} key={`tag-${t}-${i}`} />
         });
