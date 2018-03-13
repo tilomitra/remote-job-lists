@@ -35,7 +35,11 @@ app.prepare()
             extended: true
         }));
 
-        ///server.get()
+        server.get('/', (req, res) => {
+            const parsedUrl = parse(req.url, true);
+            const { pathname, query = {} } = parsedUrl;
+            return app.render(req, res, '/', query);
+        });
         server.get('/job/:id', (req, res) => {
             const actualPage = '/job'
             const queryParams = { id: req.params.id }
