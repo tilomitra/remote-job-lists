@@ -28,17 +28,20 @@ class JobTitle extends Component {
 
                 <div className="job-list-item">
                     <div className="row">
-                        <div className="col-sm-6">
+                        <div className="col-sm-12 col-md-6">
                             <Link prefetch as={`/job/${this.props.job.id}`} href={`/job?id=${this.props.job.id}`}>
                                 <h2 className="job-title job-title-compact">{this.props.job.title} <span className="muted">at</span> <span className="job-company">{this.props.job.company}</span></h2>
                             </Link>
                             <span className="muted">Published</span> {moment(this.props.job.publishDate).startOf('day').fromNow()}
                         </div>
-                        <div className="col-sm-4">
+                        <div className="col-sm-6 col-md-4">
                             {tagList}
                         </div>
-                        <div className="col-sm-2 text-right job-list-item-apply">
-                            <a className="btn job-apply-button" href={this.props.job.link} style={{ fontSize: '1rem' }}>Apply</a>
+                        <div className="col-sm-6 col-md-2 job-list-item-apply">
+                            <Link prefetch as={`/job/${this.props.job.id}`} href={`/job?id=${this.props.job.id}`}>
+                                <button className="btn job-apply-button" style={{ fontSize: '1rem' }}>Apply</button>
+
+                            </Link>
                         </div>
                     </div>
                 </div>

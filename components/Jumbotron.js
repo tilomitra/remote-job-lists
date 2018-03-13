@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { Component } from "react";
 import SearchBar from './SearchBar';
 import Typing from 'react-typing-animation';
+import PostJob from './PostJob';
+import Email from './Email';
 
 class Jumbotron extends Component {
 
@@ -28,11 +30,17 @@ class Jumbotron extends Component {
                             <span className="app-jumbotron-typing">an Android Developer</span>
                         </Typing>
                     </h1>
-                    <p className="lead">Find your next gig by searching through the largest remote listing database on the internet. <br /> Updated every hour. All positions are 100% remote.</p>
+                    <p className="lead">Find your next job by searching through the largest remote listing database on the internet. <br /> Kept up to date every hour.</p>
                     <hr className="my-4" />
                     <p className="lead">
                         <SearchBar term={this.props.searchTerm} onSearch={this.props.onSearch} />
                     </p>
+                    {/* <p className="lead">
+                        <Email />
+                    </p> */}
+                    {/* <p className="lead">
+                        <PostJob buttonLabel={"Post a job for $249/month"} />
+                    </p> */}
                 </div>
             </div>
         )

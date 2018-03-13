@@ -1,10 +1,14 @@
 import { Component } from 'react';
 import Tag from './Tag';
+import feather from 'feather-icons';
+
 class Leadline extends Component {
     constructor(props) {
         super(props);
     }
-
+    componentDidMount() {
+        feather.replace();
+    }
     render() {
         let { search, tags, count } = this.props;
         let leadLine, tagjsx = [];
@@ -12,6 +16,13 @@ class Leadline extends Component {
         if (tags) {
             tagjsx = tags.split(',').map((t) => { return <Tag name={t} key={t} /> })
         }
+
+        let resetBtn = (
+            <a className="reset" onClick={() => { this.props.onSearch(''); }}>
+                <i data-feather="x-circle" />
+                Reset filters
+            </a>
+        )
 
         if (!search && !tags) {
             leadLine = (
@@ -28,7 +39,7 @@ class Leadline extends Component {
                     <h5 className="title">
                         Showing <span className="count">{count} jobs</span> related to <span className="term">{search}</span>
                     </h5>
-                    <a className="reset" onClick={() => { this.props.onSearch(''); }}>Click to reset filters.</a>
+                    {resetBtn}
                 </section>
             );
         }
@@ -37,9 +48,9 @@ class Leadline extends Component {
             leadLine = (
                 <section className="text-center job-list-lead">
                     <h5 className="title">
-                        Showing <span className="count">{count} jobs</span> that match <span className="term">{search}</span> and have the tags {tagjsx}
+                        Showing <span className="count">{count} jobs</span> that match <span className="term">{search}</span> with tags <br /> {tagjsx}
                     </h5>
-                    <a className="reset" onClick={() => { this.props.onSearch(''); }}>Click to reset filters.</a>
+                    {resetBtn}
                 </section>
             );
         }
@@ -48,9 +59,9 @@ class Leadline extends Component {
             leadLine = (
                 <section className="text-center job-list-lead">
                     <h5 className="title">
-                        Showing <span className="count">{count} jobs</span> that have the tags {tagjsx}
+                        Showing <span className="count">{count} jobs</span> with tags <br />  {tagjsx}
                     </h5>
-                    <a className="reset" onClick={() => { this.props.onSearch(''); }}>Click to reset filters.</a>
+                    {resetBtn}
                 </section>
             );
         }

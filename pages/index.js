@@ -63,7 +63,7 @@ class Index extends Component {
         })
 
         const emailJsx = (
-            <Email defaultValue={this.props.url.query.search || null} />
+            <Email expanded defaultValue={this.props.url.query.search || null} />
         );
 
         // insert the email in line 5.
@@ -79,12 +79,12 @@ class Index extends Component {
                     <Leadline search={search} tags={tags} count={this.props.count} onSearch={this.onSearch} />
 
                     <div className="row">
-                        <div className="col-sm-12 col-md-8 col-lg-9">
+                        <div className="col-sm-12 col-md-7 col-lg-9">
                             <div className="job-list">
                                 {jobCards}
                             </div>
                         </div>
-                        <div className="col-sm-12 col-md-4 col-lg-3">
+                        <div className="col-sm-12 col-md-5 col-lg-3">
                             <Categories selectedCategories={this.props.url.query.tags} />
                         </div>
                     </div>

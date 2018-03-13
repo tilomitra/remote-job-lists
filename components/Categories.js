@@ -61,12 +61,18 @@ class Categories extends Component {
 
         return (
             <section className="app-categories sticky-top" style={{ top: 80 }}>
-                <h5>Tags
-                <p className="lead">Use the tags below to filter your search.</p>
-                </h5>
-                <div className="row">
-                    {categories}
-                </div>
+                <section className="card">
+                    <div className="card-body">
+
+                        <h5>Filter Job Listings
+                    <p className="lead">Use the tags below to filter your job search.</p>
+                        </h5>
+                        <div className="row no-gutters">
+                            {categories}
+                        </div>
+
+                    </div>
+                </section>
             </section>
         )
     }

@@ -86,6 +86,9 @@ class Email extends Component {
         const { disabled, stayOpen, value, removeSelected, rtl, componentState, isValidEmail } = this.state;
         const didUserSearch = !!this.props.defaultValue;
 
+        const { expanded } = this.props;
+
+
         let options = [];
         forEach(Tags, (keywords, tag) => {
             options.push({ label: tag, value: tag });
@@ -122,60 +125,87 @@ class Email extends Component {
             )
         }
 
+        if (expanded) {
+            return (
 
-        return (
+                <div className="card app-email">
+                    <div className="card-body">
+                        <h5 className="card-title">{header}</h5>
+                        <form>
+                            <div className="form-row align-items-center">
+                                <div className="col-sm-12 col-md-4 my-1">
+                                    <label className="mr-sm-2">Email me at</label>
+                                    <input
+                                        type="email"
+                                        className="form-control"
+                                        placeholder="Enter your email"
+                                        value={this.state.email}
+                                        onBlur={this.handleEmailBlur}
+                                        onChange={this.handleEmailChange} />
+                                </div>
+                                <div className="col-sm-12 col-md-8 my-1">
+                                    <label>with new listings related to</label>
+                                    <Creatable
+                                        closeOnSelect={!stayOpen}
+                                        disabled={disabled}
+                                        multi
+                                        onChange={this.handleSelectChange}
+                                        options={options}
+                                        placeholder={`Type keywords to only receive alerts for relevant listings.`}
+                                        removeSelected={removeSelected}
+                                        promptTextCreator={(label) => {
+                                            return `Get notified for jobs with keyword: ${label}`
+                                        }}
+                                        rtl={rtl}
+                                        value={value}
+                                    />
+                                </div>
+                                <div className="col-sm-12 col-md-2 my-1">
+                                    <button
+                                        className="btn btn-success"
+                                        onClick={this.onSubmit}
+                                        disabled={(componentState !== 'not-sent' || !isValidEmail)}
+                                    >
+                                        {subscribeBtnText}
+                                    </button>
+                                </div>
+                            </div>
+                            <small className="form-text text-muted">
+                                If you don't enter any tags, we'll send you alerts for all job listings daily. The keywords that you specify will be used to customize listings for your email. You can unsubscribe anytime. 🤝
+                            </small>
 
-            <div className="card app-email">
-                <div className="card-body">
-                    <h5 className="card-title">{header}</h5>
-                    <form>
-                        <div className="form-row align-items-center">
-                            <div className="col-sm-12 col-md-4 my-1">
-                                <label className="mr-sm-2">Email me at</label>
-                                <input
-                                    type="email"
-                                    className="form-control"
-                                    placeholder="Enter your email"
-                                    value={this.state.email}
-                                    onBlur={this.handleEmailBlur}
-                                    onChange={this.handleEmailChange} />
-                            </div>
-                            <div className="col-sm-12 col-md-8 my-1">
-                                <label>with new listings related to</label>
-                                <Creatable
-                                    closeOnSelect={!stayOpen}
-                                    disabled={disabled}
-                                    multi
-                                    onChange={this.handleSelectChange}
-                                    options={options}
-                                    placeholder={`Type keywords to only receive alerts for relevant listings.`}
-                                    removeSelected={removeSelected}
-                                    promptTextCreator={(label) => {
-                                        return `Get notified for jobs with keyword: ${label}`
-                                    }}
-                                    rtl={rtl}
-                                    value={value}
-                                />
-                            </div>
-                            <div className="col-sm-12 col-md-2 my-1">
-                                <button
-                                    className="btn btn-success"
-                                    onClick={this.onSubmit}
-                                    disabled={(componentState !== 'not-sent' || !isValidEmail)}
-                                >
-                                    {subscribeBtnText}
-                                </button>
-                            </div>
-                        </div>
-                        <small className="form-text text-muted">
-                            If you don't enter any tags, we'll send you alerts for all job listings daily. The keywords that you specify will be used to customize listings for your email. You can unsubscribe anytime. 🤝
-                        </small>
-
-                        {alertBox}
-                    </form>
+                            {alertBox}
+                        </form>
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        } else {
+            return (
+                <form>
+                    <div className="form-row align-items-center">
+                        <div className="col-sm-12 col-md-6 my-1">
+                            <input
+                                type="email"
+                                className="form-control"
+                                placeholder="Enter your email"
+                                value={this.state.email}
+                                onBlur={this.handleEmailBlur}
+                                onChange={this.handleEmailChange} />
+                        </div>
+                        <div className="col-sm-12 col-md-4 my-1">
+                            <button
+                                className="btn btn-success"
+                                onClick={this.onSubmit}
+                                disabled={(componentState !== 'not-sent' || !isValidEmail)}
+                            >
+                                {subscribeBtnText}
+                            </button>
+                        </div>
+                    </div>
+                    {alertBox}
+                </form>
+            )
+        }
     }
 }
 
