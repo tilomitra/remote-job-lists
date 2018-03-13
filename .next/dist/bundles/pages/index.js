@@ -115,7 +115,7 @@ var ApplyButton = function ApplyButton(props) {
     );
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (ApplyButton);
+/* unused harmony default export */ var _unused_webpack_default_export = (ApplyButton);
 
 /***/ }),
 
@@ -607,7 +607,7 @@ var Email = function (_Component) {
                                     placeholder: 'Type keywords to only receive alerts for relevant listings.',
                                     removeSelected: removeSelected,
                                     promptTextCreator: function promptTextCreator(label) {
-                                        return 'Create job keyword: ' + label;
+                                        return 'Get notified for jobs with keyword: ' + label;
                                     },
                                     rtl: rtl,
                                     value: value,

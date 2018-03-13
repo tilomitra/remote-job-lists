@@ -151,7 +151,7 @@ class Email extends Component {
                                     placeholder={`Type keywords to only receive alerts for relevant listings.`}
                                     removeSelected={removeSelected}
                                     promptTextCreator={(label) => {
-                                        return `Create job keyword: ${label}`
+                                        return `Get notified for jobs with keyword: ${label}`
                                     }}
                                     rtl={rtl}
                                     value={value}
