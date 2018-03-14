@@ -2,7 +2,7 @@ const env = process.env.NODE_ENV;
 let config;
 if (env === 'production') {
     config = {
-        host: 'https://remotejoblists.com'
+        host: 'https://www.remotejoblists.com'
     }
 } else[
     config = {
