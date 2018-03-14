@@ -2,7 +2,7 @@ module.exports =
 
         __NEXT_REGISTER_PAGE('/', function() {
           var comp = 
-      webpackJsonp([4],{
+      webpackJsonp([5],{
 
 /***/ "./components/ApplyButton.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -972,6 +972,8 @@ var _default = Footer;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SearchBar__ = __webpack_require__("./components/SearchBar.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_reactstrap__ = __webpack_require__("./node_modules/reactstrap/dist/reactstrap.es.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_feather_icons__ = __webpack_require__("./node_modules/feather-icons/dist/feather.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_feather_icons___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_feather_icons__);
 var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/components/Header.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -989,6 +991,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -1016,46 +1019,51 @@ var Header = function (_Component) {
     }
 
     _createClass(Header, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            //feather.replace();
+        }
+    }, {
         key: 'render',
         value: function render() {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_3_reactstrap__["i" /* Navbar */],
-                { fixed: 'top', color: 'dark', dark: true, expand: 'md', className: 'justify-content-between', __source: {
+                { fixed: 'top', color: 'light', light: true, expand: 'md', className: 'justify-content-between', __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 26
+                        lineNumber: 32
                     }
                 },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     __WEBPACK_IMPORTED_MODULE_3_reactstrap__["j" /* NavbarBrand */],
                     { href: '/', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 27
+                            lineNumber: 33
                         }
                     },
                     'Remote Job Lists'
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_reactstrap__["k" /* NavbarToggler */], { onClick: this.toggle, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 28
+                        lineNumber: 36
                     }
                 }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     __WEBPACK_IMPORTED_MODULE_3_reactstrap__["c" /* Collapse */],
                     { isOpen: this.state.isOpen, navbar: true, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 29
+                            lineNumber: 37
                         }
                     },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         __WEBPACK_IMPORTED_MODULE_3_reactstrap__["h" /* Nav */],
                         { className: 'ml-auto', navbar: true, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 30
+                                lineNumber: 38
                             }
                         },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__SearchBar__["a" /* default */], { isSmall: true, term: this.props.searchTerm || '', onSearch: this.props.onSearch, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 31
+                                lineNumber: 39
                             }
                         })
                     )
@@ -58735,7 +58743,7 @@ var _default = Index;
 
 /***/ }),
 
-/***/ 2:
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/index.js");
@@ -58743,7 +58751,7 @@ module.exports = __webpack_require__("./pages/index.js");
 
 /***/ })
 
-},[2])
+},[3])
           return { page: comp.default }
         })
       ;

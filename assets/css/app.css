@@ -60,9 +60,17 @@ nav {
 }
 
 .navbar-brand {
-    font-family: "cortado", cursive;
+    font-family: "mr-eaves-xl-sans", cursive;
+    color: #2572ff !important;
+    font-weight: bold;
+    font-style: italic;
     border: 1px solid rgba(255,255,255,0.3);
     padding: 0 1em;
+    transition: color 0.2s ease-in;
+}
+
+.navbar-brand:hover {
+    color: #243B55 !important;
 }
 
 .app-search-input {
