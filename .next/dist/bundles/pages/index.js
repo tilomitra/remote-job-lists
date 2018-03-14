@@ -115,7 +115,7 @@ var ApplyButton = function ApplyButton(props) {
     );
 };
 
-/* unused harmony default export */ var _unused_webpack_default_export = (ApplyButton);
+/* harmony default export */ __webpack_exports__["a"] = (ApplyButton);
 
 /***/ }),
 
@@ -1497,6 +1497,8 @@ var Layout = function Layout(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Tag__ = __webpack_require__("./components/Tag.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_feather_icons__ = __webpack_require__("feather-icons");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_feather_icons___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_feather_icons__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_reactstrap__ = __webpack_require__("reactstrap");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_reactstrap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_reactstrap__);
 var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/components/Leadline.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -1508,6 +1510,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -1584,8 +1587,8 @@ var Leadline = function (_Component) {
                         },
                         'Showing ',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'span',
-                            { className: 'count', __source: {
+                            __WEBPACK_IMPORTED_MODULE_3_reactstrap__["Badge"],
+                            { color: "primary", __source: {
                                     fileName: _jsxFileName,
                                     lineNumber: 31
                                 }
@@ -1613,14 +1616,14 @@ var Leadline = function (_Component) {
                         },
                         'Showing ',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'span',
-                            { className: 'count', __source: {
+                            __WEBPACK_IMPORTED_MODULE_3_reactstrap__["Badge"],
+                            { color: "primary", __source: {
                                     fileName: _jsxFileName,
                                     lineNumber: 40
                                 }
                             },
                             count,
-                            ' jobs'
+                            ' remote jobs'
                         ),
                         ' related to ',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -1652,14 +1655,14 @@ var Leadline = function (_Component) {
                         },
                         'Showing ',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'span',
-                            { className: 'count', __source: {
+                            __WEBPACK_IMPORTED_MODULE_3_reactstrap__["Badge"],
+                            { color: "primary", __source: {
                                     fileName: _jsxFileName,
                                     lineNumber: 51
                                 }
                             },
                             count,
-                            ' jobs'
+                            ' remote jobs'
                         ),
                         ' that match ',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -1700,14 +1703,14 @@ var Leadline = function (_Component) {
                         },
                         'Showing ',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'span',
-                            { className: 'count', __source: {
+                            __WEBPACK_IMPORTED_MODULE_3_reactstrap__["Badge"],
+                            { color: "primary", __source: {
                                     fileName: _jsxFileName,
                                     lineNumber: 62
                                 }
                             },
                             count,
-                            ' jobs'
+                            ' remote jobs'
                         ),
                         ' with tags ',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', {

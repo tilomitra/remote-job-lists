@@ -48,7 +48,7 @@ var ApplyButton = function ApplyButton(props) {
 };
 
 var _default = ApplyButton;
-/* unused harmony default export */ var _unused_webpack_default_export = (_default);
+/* harmony default export */ __webpack_exports__["a"] = (_default);
 ;
 
 (function () {
@@ -262,7 +262,7 @@ var Categories = function (_Component) {
                             }
                         },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            __WEBPACK_IMPORTED_MODULE_7_reactstrap__["a" /* Button */],
+                            __WEBPACK_IMPORTED_MODULE_7_reactstrap__["b" /* Button */],
                             { size: 'sm', onClick: this.toggle, style: { marginBottom: '1rem' }, __source: {
                                     fileName: _jsxFileName,
                                     lineNumber: 77
@@ -274,7 +274,7 @@ var Categories = function (_Component) {
                     )
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_7_reactstrap__["b" /* Collapse */],
+                    __WEBPACK_IMPORTED_MODULE_7_reactstrap__["c" /* Collapse */],
                     { isOpen: this.state.isOpen, __source: {
                             fileName: _jsxFileName,
                             lineNumber: 83
@@ -926,14 +926,14 @@ var Header = function (_Component) {
         key: 'render',
         value: function render() {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_3_reactstrap__["h" /* Navbar */],
+                __WEBPACK_IMPORTED_MODULE_3_reactstrap__["i" /* Navbar */],
                 { fixed: 'top', color: 'light', light: true, expand: 'md', className: 'justify-content-between', __source: {
                         fileName: _jsxFileName,
                         lineNumber: 26
                     }
                 },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_3_reactstrap__["i" /* NavbarBrand */],
+                    __WEBPACK_IMPORTED_MODULE_3_reactstrap__["j" /* NavbarBrand */],
                     { href: '/', __source: {
                             fileName: _jsxFileName,
                             lineNumber: 27
@@ -941,20 +941,20 @@ var Header = function (_Component) {
                     },
                     'Remote Job Lists'
                 ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_reactstrap__["j" /* NavbarToggler */], { onClick: this.toggle, __source: {
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_reactstrap__["k" /* NavbarToggler */], { onClick: this.toggle, __source: {
                         fileName: _jsxFileName,
                         lineNumber: 28
                     }
                 }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_3_reactstrap__["b" /* Collapse */],
+                    __WEBPACK_IMPORTED_MODULE_3_reactstrap__["c" /* Collapse */],
                     { isOpen: this.state.isOpen, navbar: true, __source: {
                             fileName: _jsxFileName,
                             lineNumber: 29
                         }
                     },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        __WEBPACK_IMPORTED_MODULE_3_reactstrap__["g" /* Nav */],
+                        __WEBPACK_IMPORTED_MODULE_3_reactstrap__["h" /* Nav */],
                         { className: 'ml-auto', navbar: true, __source: {
                                 fileName: _jsxFileName,
                                 lineNumber: 30
@@ -1476,7 +1476,7 @@ var Jumbotron = function (_Component) {
                                 }
                             },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                __WEBPACK_IMPORTED_MODULE_5_reactstrap__["a" /* Button */],
+                                __WEBPACK_IMPORTED_MODULE_5_reactstrap__["b" /* Button */],
                                 { color: 'danger', onClick: this.toggle, __source: {
                                         fileName: _jsxFileName,
                                         lineNumber: 50
@@ -1485,14 +1485,14 @@ var Jumbotron = function (_Component) {
                                 'Get Weekly Job Notifications'
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                __WEBPACK_IMPORTED_MODULE_5_reactstrap__["c" /* Modal */],
+                                __WEBPACK_IMPORTED_MODULE_5_reactstrap__["d" /* Modal */],
                                 { isOpen: this.state.isModalOpen, toggle: this.toggle, className: this.props.className, __source: {
                                         fileName: _jsxFileName,
                                         lineNumber: 53
                                     }
                                 },
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    __WEBPACK_IMPORTED_MODULE_5_reactstrap__["f" /* ModalHeader */],
+                                    __WEBPACK_IMPORTED_MODULE_5_reactstrap__["g" /* ModalHeader */],
                                     { toggle: this.toggle, __source: {
                                             fileName: _jsxFileName,
                                             lineNumber: 54
@@ -1501,7 +1501,7 @@ var Jumbotron = function (_Component) {
                                     'Get Weekly Job Notifications'
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    __WEBPACK_IMPORTED_MODULE_5_reactstrap__["d" /* ModalBody */],
+                                    __WEBPACK_IMPORTED_MODULE_5_reactstrap__["e" /* ModalBody */],
                                     {
                                         __source: {
                                             fileName: _jsxFileName,
@@ -1515,7 +1515,7 @@ var Jumbotron = function (_Component) {
                                     })
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    __WEBPACK_IMPORTED_MODULE_5_reactstrap__["e" /* ModalFooter */],
+                                    __WEBPACK_IMPORTED_MODULE_5_reactstrap__["f" /* ModalFooter */],
                                     {
                                         __source: {
                                             fileName: _jsxFileName,
@@ -1523,7 +1523,7 @@ var Jumbotron = function (_Component) {
                                         }
                                     },
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        __WEBPACK_IMPORTED_MODULE_5_reactstrap__["a" /* Button */],
+                                        __WEBPACK_IMPORTED_MODULE_5_reactstrap__["b" /* Button */],
                                         { color: 'primary', onClick: this.toggle, __source: {
                                                 fileName: _jsxFileName,
                                                 lineNumber: 59
@@ -1656,6 +1656,7 @@ var _default = Layout;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Tag__ = __webpack_require__("./components/Tag.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_feather_icons__ = __webpack_require__("./node_modules/feather-icons/dist/feather.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_feather_icons___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_feather_icons__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_reactstrap__ = __webpack_require__("./node_modules/reactstrap/dist/reactstrap.es.js");
 var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/components/Leadline.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -1673,6 +1674,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -1749,8 +1751,8 @@ var Leadline = function (_Component) {
                         },
                         'Showing ',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'span',
-                            { className: 'count', __source: {
+                            __WEBPACK_IMPORTED_MODULE_3_reactstrap__["a" /* Badge */],
+                            { color: "primary", __source: {
                                     fileName: _jsxFileName,
                                     lineNumber: 31
                                 }
@@ -1778,14 +1780,14 @@ var Leadline = function (_Component) {
                         },
                         'Showing ',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'span',
-                            { className: 'count', __source: {
+                            __WEBPACK_IMPORTED_MODULE_3_reactstrap__["a" /* Badge */],
+                            { color: "primary", __source: {
                                     fileName: _jsxFileName,
                                     lineNumber: 40
                                 }
                             },
                             count,
-                            ' jobs'
+                            ' remote jobs'
                         ),
                         ' related to ',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -1817,14 +1819,14 @@ var Leadline = function (_Component) {
                         },
                         'Showing ',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'span',
-                            { className: 'count', __source: {
+                            __WEBPACK_IMPORTED_MODULE_3_reactstrap__["a" /* Badge */],
+                            { color: "primary", __source: {
                                     fileName: _jsxFileName,
                                     lineNumber: 51
                                 }
                             },
                             count,
-                            ' jobs'
+                            ' remote jobs'
                         ),
                         ' that match ',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -1865,14 +1867,14 @@ var Leadline = function (_Component) {
                         },
                         'Showing ',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'span',
-                            { className: 'count', __source: {
+                            __WEBPACK_IMPORTED_MODULE_3_reactstrap__["a" /* Badge */],
+                            { color: "primary", __source: {
                                     fileName: _jsxFileName,
                                     lineNumber: 62
                                 }
                             },
                             count,
-                            ' jobs'
+                            ' remote jobs'
                         ),
                         ' with tags ',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', {
@@ -43002,16 +43004,16 @@ var _temp = function () {
 /* unused harmony export Container */
 /* unused harmony export Row */
 /* unused harmony export Col */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return Navbar; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return NavbarBrand; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return NavbarToggler; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return Nav; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return Navbar; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return NavbarBrand; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return NavbarToggler; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return Nav; });
 /* unused harmony export NavItem */
 /* unused harmony export NavDropdown */
 /* unused harmony export NavLink */
 /* unused harmony export Breadcrumb */
 /* unused harmony export BreadcrumbItem */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Button; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Button; });
 /* unused harmony export ButtonDropdown */
 /* unused harmony export ButtonGroup */
 /* unused harmony export ButtonToolbar */
@@ -43020,7 +43022,7 @@ var _temp = function () {
 /* unused harmony export DropdownMenu */
 /* unused harmony export DropdownToggle */
 /* unused harmony export Fade */
-/* unused harmony export Badge */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Badge; });
 /* unused harmony export Card */
 /* unused harmony export CardLink */
 /* unused harmony export CardGroup */
@@ -43047,10 +43049,10 @@ var _temp = function () {
 /* unused harmony export PopoverTitle */
 /* unused harmony export PopoverHeader */
 /* unused harmony export Progress */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return Modal; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return ModalHeader; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return ModalBody; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return ModalFooter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return Modal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return ModalHeader; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return ModalBody; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return ModalFooter; });
 /* unused harmony export PopperContent */
 /* unused harmony export PopperTargetHelper */
 /* unused harmony export Tooltip */
@@ -43074,7 +43076,7 @@ var _temp = function () {
 /* unused harmony export TabContent */
 /* unused harmony export TabPane */
 /* unused harmony export Jumbotron */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Collapse; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return Collapse; });
 /* unused harmony export ListGroupItem */
 /* unused harmony export ListGroupItemText */
 /* unused harmony export ListGroupItemHeading */

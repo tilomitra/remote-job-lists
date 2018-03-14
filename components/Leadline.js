@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import Tag from './Tag';
 import feather from 'feather-icons';
-
+import { Badge } from 'reactstrap';
 class Leadline extends Component {
     constructor(props) {
         super(props);
@@ -28,7 +28,7 @@ class Leadline extends Component {
             leadLine = (
                 <section className="text-center job-list-lead">
                     <h5 className="title">
-                        Showing <span className="count">{count} remote jobs</span> across all categories and employers
+                        Showing <Badge color={"primary"}>{count} remote jobs</Badge> across all categories and employers
                 </h5>
                 </section>
             )
@@ -37,7 +37,7 @@ class Leadline extends Component {
             leadLine = (
                 <section className="text-center job-list-lead">
                     <h5 className="title">
-                        Showing <span className="count">{count} jobs</span> related to <span className="term">{search}</span>
+                        Showing <Badge color={"primary"}>{count} remote jobs</Badge> related to <span className="term">{search}</span>
                     </h5>
                     {resetBtn}
                 </section>
@@ -48,7 +48,7 @@ class Leadline extends Component {
             leadLine = (
                 <section className="text-center job-list-lead">
                     <h5 className="title">
-                        Showing <span className="count">{count} jobs</span> that match <span className="term">{search}</span> with tags <br /> {tagjsx}
+                        Showing <Badge color={"primary"}>{count} remote jobs</Badge> that match <span className="term">{search}</span> with tags <br /> {tagjsx}
                     </h5>
                     {resetBtn}
                 </section>
@@ -59,7 +59,7 @@ class Leadline extends Component {
             leadLine = (
                 <section className="text-center job-list-lead">
                     <h5 className="title">
-                        Showing <span className="count">{count} jobs</span> with tags <br />  {tagjsx}
+                        Showing <Badge color={"primary"}>{count} remote jobs</Badge> with tags <br />  {tagjsx}
                     </h5>
                     {resetBtn}
                 </section>

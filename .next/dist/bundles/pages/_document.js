@@ -128,7 +128,7 @@ var MyDocument = function (_Document) {
                             lineNumber: 8
                         }
                     }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", { href: "https://fonts.googleapis.com/css?family=Crimson+Text|Source+Sans+Pro", rel: "stylesheet", __source: {
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", { href: "https://fonts.googleapis.com/css?family=Hind:300,400,500,700|Trocchi", rel: "stylesheet", __source: {
                             fileName: _jsxFileName,
                             lineNumber: 9
                         }

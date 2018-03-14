@@ -6,7 +6,7 @@ export default class MyDocument extends Document {
             <html>
                 <Head>
                     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
-                    <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Source+Sans+Pro" rel="stylesheet" />
+                    <link href="https://fonts.googleapis.com/css?family=Hind:300,400,500,700|Trocchi" rel="stylesheet" />
                     <link rel="stylesheet" href="/_next/static/style.css" />
                 </Head>
                 <body>
