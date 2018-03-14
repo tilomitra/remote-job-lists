@@ -18,6 +18,14 @@ const handle = app.getRequestHandler()
 // Parse APP_ID remote-job-lists-api-server
 // Parse MASTER_KEY of09m103ngrioem13gm10i4g14kg
 
+
+const forceSsl = function (req, res, next) {
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+        return res.redirect(['https://', req.get('Host'), req.url].join(''));
+    }
+    return next();
+};
+
 app.prepare()
     .then(() => {
         sequelize
@@ -30,10 +38,15 @@ app.prepare()
 
         const server = express()
 
+
         server.use(bodyParser.json());       // to support JSON-encoded bodies
         server.use(bodyParser.urlencoded({     // to support URL-encoded bodies
             extended: true
         }));
+
+        if (process.env.NODE_ENV === 'production') {
+            app.use(forceSsl);
+        }
 
         server.get('/', (req, res) => {
             const parsedUrl = parse(req.url, true);
