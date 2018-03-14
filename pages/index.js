@@ -62,14 +62,6 @@ class Index extends Component {
             )
         })
 
-        const emailJsx = (
-            <Email expanded defaultValue={this.props.url.query.search || null} />
-        );
-
-        // insert the email in line 5.
-
-        jobCards.splice(5, 0, emailJsx);
-
         return (
             <Layout>
                 <Header searchTerm={this.props.url.query.search} onSearch={this.onSearch} />
@@ -99,7 +91,7 @@ class Index extends Component {
                         pageCount={Math.ceil(this.props.count / 50)}
                         marginPagesDisplayed={2}
                         onPageChange={this.onPageChange}
-                        pageRangeDisplayed={3}
+                        pageRangeDisplayed={2}
                         containerClassName={"pagination justify-content-center"}
                         pageClassName={"page-item"}
                         activeClassName={"active"}

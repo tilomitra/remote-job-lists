@@ -42,6 +42,7 @@
     "reactstrap": "^5.0.0-beta",
     "request": "^2.83.0",
     "sequelize": "^4.35.2",
+    "sequelize-cli": "^4.0.0",
     "sqlite3": "^3.1.13",
     "style-loader": "^0.20.2",
     "webpack": "^3.1.0"

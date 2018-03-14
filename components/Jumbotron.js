@@ -53,7 +53,7 @@ class Jumbotron extends Component {
                             <Modal isOpen={this.state.isModalOpen} toggle={this.toggle} className={this.props.className}>
                                 <ModalHeader toggle={this.toggle}>Get Weekly Job Notifications</ModalHeader>
                                 <ModalBody>
-                                    <Email expanded noBackground hideTitle />
+                                    <Email type="expanded" noBackground hideTitle />
                                 </ModalBody>
                                 <ModalFooter>
                                     <Button color="primary" onClick={this.toggle}>Close</Button>

@@ -415,8 +415,7 @@ var Email = function (_Component) {
             }).then(function (response) {
                 response.json();
             }).then(function (responseJson) {
-                console.log(responseJson);
-                if (responseJson.statusCode === 200) {
+                if (responseJson.success !== false) {
                     _this.setState({
                         componentState: 'sent'
                     });
@@ -426,7 +425,6 @@ var Email = function (_Component) {
                     });
                 }
             }).catch(function (err) {
-                console.log(err);
                 _this.setState({
                     componentState: 'error'
                 });
@@ -477,7 +475,7 @@ var Email = function (_Component) {
 
             var didUserSearch = !!this.props.defaultValue;
 
-            var expanded = this.props.expanded;
+            var type = this.props.type;
 
 
             var options = [];
@@ -494,7 +492,7 @@ var Email = function (_Component) {
                     'h5',
                     { className: 'card-title', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 100
+                            lineNumber: 98
                         }
                     },
                     'Get notified when new ',
@@ -502,7 +500,7 @@ var Email = function (_Component) {
                         'span',
                         { className: 'term', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 101
+                                lineNumber: 99
                             }
                         },
                         this.props.defaultValue
@@ -514,7 +512,7 @@ var Email = function (_Component) {
                     'h5',
                     { className: 'card-title', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 104
+                            lineNumber: 102
                         }
                     },
                     'Get Weekly Job Listings'
@@ -526,7 +524,7 @@ var Email = function (_Component) {
                     'div',
                     { className: 'alert alert-success', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 111
+                            lineNumber: 109
                         }
                     },
                     'You have successfully enabled daily job listing alerts. \uD83D\uDC4D'
@@ -537,7 +535,7 @@ var Email = function (_Component) {
                     'div',
                     { className: 'alert alert-danger', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 116
+                            lineNumber: 114
                         }
                     },
                     'There was an error when subscribing. Verify that your email address is correct, try again, or ',
@@ -545,7 +543,7 @@ var Email = function (_Component) {
                         'a',
                         { href: 'https://twitter.com/tilomitra', target: '_blank', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 116
+                                lineNumber: 114
                             }
                         },
                         'contact me'
@@ -561,33 +559,33 @@ var Email = function (_Component) {
                     'div',
                     { className: 'alert alert-warning', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 124
+                            lineNumber: 122
                         }
                     },
                     'We noticed a typo in your email address. Make sure you enter a correct email address before subscribing. \uD83D\uDE42'
                 );
             }
 
-            if (expanded) {
+            if (type === 'expanded') {
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: __WEBPACK_IMPORTED_MODULE_4_classnames___default()("card app-email", { 'app-email-bg': !this.props.noBackground }), __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 131
+                            lineNumber: 128
                         }
                     },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         { className: 'card-body', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 132
+                                lineNumber: 129
                             }
                         },
                         this.props.hideTitle ? null : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'h5',
                             { className: 'card-title', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 133
+                                    lineNumber: 130
                                 }
                             },
                             header
@@ -597,28 +595,28 @@ var Email = function (_Component) {
                             {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 134
+                                    lineNumber: 131
                                 }
                             },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
                                 { className: 'form-row align-items-center', __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 135
+                                        lineNumber: 132
                                     }
                                 },
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'div',
                                     { className: 'col-sm-12 col-md-4 my-1', __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 136
+                                            lineNumber: 133
                                         }
                                     },
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                         'label',
                                         { className: 'mr-sm-2', __source: {
                                                 fileName: _jsxFileName,
-                                                lineNumber: 137
+                                                lineNumber: 134
                                             }
                                         },
                                         'Email me at'
@@ -631,7 +629,7 @@ var Email = function (_Component) {
                                         onBlur: this.handleEmailBlur,
                                         onChange: this.handleEmailChange, __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 138
+                                            lineNumber: 135
                                         }
                                     })
                                 ),
@@ -639,7 +637,7 @@ var Email = function (_Component) {
                                     'div',
                                     { className: 'col-sm-12 col-md-8 my-1', __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 146
+                                            lineNumber: 143
                                         }
                                     },
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -647,7 +645,7 @@ var Email = function (_Component) {
                                         {
                                             __source: {
                                                 fileName: _jsxFileName,
-                                                lineNumber: 147
+                                                lineNumber: 144
                                             }
                                         },
                                         'with new listings related to'
@@ -667,7 +665,7 @@ var Email = function (_Component) {
                                         value: value,
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 148
+                                            lineNumber: 145
                                         }
                                     })
                                 ),
@@ -675,7 +673,7 @@ var Email = function (_Component) {
                                     'div',
                                     { className: 'col-sm-12 col-md-2 my-1', __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 163
+                                            lineNumber: 160
                                         }
                                     },
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -686,7 +684,7 @@ var Email = function (_Component) {
                                             disabled: componentState !== 'not-sent' || !isValidEmail,
                                             __source: {
                                                 fileName: _jsxFileName,
-                                                lineNumber: 164
+                                                lineNumber: 161
                                             }
                                         },
                                         subscribeBtnText
@@ -697,7 +695,7 @@ var Email = function (_Component) {
                                 'small',
                                 { className: 'form-text text-muted', __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 173
+                                        lineNumber: 170
                                     }
                                 },
                                 'If you don\'t enter any tags, we\'ll send you alerts for all job listings daily. The keywords that you specify will be used to customize listings for your email. You can unsubscribe anytime. \uD83E\uDD1D'
@@ -706,27 +704,27 @@ var Email = function (_Component) {
                         )
                     )
                 );
-            } else {
+            } else if (type === 'compact') {
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'form',
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 184
+                            lineNumber: 181
                         }
                     },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         { className: 'form-row align-items-center', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 185
+                                lineNumber: 182
                             }
                         },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
                             { className: 'col-sm-12 col-md-6 my-1', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 186
+                                    lineNumber: 183
                                 }
                             },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
@@ -737,7 +735,7 @@ var Email = function (_Component) {
                                 onBlur: this.handleEmailBlur,
                                 onChange: this.handleEmailChange, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 187
+                                    lineNumber: 184
                                 }
                             })
                         ),
@@ -745,7 +743,7 @@ var Email = function (_Component) {
                             'div',
                             { className: 'col-sm-12 col-md-4 my-1', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 195
+                                    lineNumber: 192
                                 }
                             },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -756,7 +754,7 @@ var Email = function (_Component) {
                                     disabled: componentState !== 'not-sent' || !isValidEmail,
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 196
+                                        lineNumber: 193
                                     }
                                 },
                                 subscribeBtnText
@@ -764,6 +762,128 @@ var Email = function (_Component) {
                         )
                     ),
                     alertBox
+                );
+            } else if (type === 'footer') {
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'app-email fixed-bottom d-none d-sm-block border-top', __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 207
+                        }
+                    },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'card-body', __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 208
+                            }
+                        },
+                        alertBox,
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'form',
+                            {
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 210
+                                }
+                            },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'form-row align-items-center', __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 211
+                                    }
+                                },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { className: 'col-sm-4', __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 212
+                                        }
+                                    },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'label',
+                                        { className: 'mr-sm-2', __source: {
+                                                fileName: _jsxFileName,
+                                                lineNumber: 213
+                                            }
+                                        },
+                                        'Send a weekly email to'
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                        type: 'email',
+                                        className: 'form-control',
+                                        placeholder: 'Enter your email',
+                                        value: this.state.email,
+                                        onBlur: this.handleEmailBlur,
+                                        onChange: this.handleEmailChange, __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 214
+                                        }
+                                    })
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { className: 'col-sm-6', __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 222
+                                        }
+                                    },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'label',
+                                        {
+                                            __source: {
+                                                fileName: _jsxFileName,
+                                                lineNumber: 223
+                                            }
+                                        },
+                                        'with listings related to'
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_select__["Creatable"], {
+                                        closeOnSelect: !stayOpen,
+                                        className: 'creatable-fixed-bottom',
+                                        disabled: disabled,
+                                        multi: true,
+                                        onChange: this.handleSelectChange,
+                                        options: options,
+                                        placeholder: 'Leave blank to get all listings emailed to you',
+                                        removeSelected: removeSelected,
+                                        promptTextCreator: function promptTextCreator(label) {
+                                            return 'Get notified for jobs with keyword: ' + label;
+                                        },
+                                        rtl: rtl,
+                                        value: value,
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 224
+                                        }
+                                    })
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { className: 'col-sm-2', __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 240
+                                        }
+                                    },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'button',
+                                        {
+                                            className: 'btn btn-success',
+                                            style: { top: 15, position: 'relative' },
+                                            onClick: this.onSubmit,
+                                            disabled: componentState !== 'not-sent' || !isValidEmail,
+                                            __source: {
+                                                fileName: _jsxFileName,
+                                                lineNumber: 241
+                                            }
+                                        },
+                                        'Subscribe'
+                                    )
+                                )
+                            )
+                        )
+                    )
                 );
             }
         }
@@ -818,7 +938,7 @@ var Footer = function Footer() {
                             lineNumber: 7
                         }
                     },
-                    "Remote Job Lists Copyright \xA9 2018 \u2022 Follow us on Twitter"
+                    "Remote Job Lists Copyright \xA9 2018"
                 )
             )
         )
@@ -1401,7 +1521,7 @@ var Jumbotron = function (_Component) {
                                             lineNumber: 55
                                         }
                                     },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Email__["a" /* default */], { expanded: true, noBackground: true, hideTitle: true, __source: {
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Email__["a" /* default */], { type: 'expanded', noBackground: true, hideTitle: true, __source: {
                                             fileName: _jsxFileName,
                                             lineNumber: 56
                                         }
@@ -1448,9 +1568,11 @@ var Jumbotron = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Header__ = __webpack_require__("./components/Header.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Footer__ = __webpack_require__("./components/Footer.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_css_app_css__ = __webpack_require__("./assets/css/app.css");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_css_app_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__assets_css_app_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Email__ = __webpack_require__("./components/Email.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__assets_css_app_css__ = __webpack_require__("./assets/css/app.css");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__assets_css_app_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__assets_css_app_css__);
 var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/components/Layout.js';
+
 
 
 
@@ -1462,7 +1584,7 @@ var Layout = function Layout(props) {
         'div',
         { className: 'app', __source: {
                 fileName: _jsxFileName,
-                lineNumber: 7
+                lineNumber: 8
             }
         },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -1470,15 +1592,20 @@ var Layout = function Layout(props) {
             {
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 8
+                    lineNumber: 9
                 }
             },
             props.children
         ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Email__["a" /* default */], { type: 'footer', __source: {
+                fileName: _jsxFileName,
+                lineNumber: 12
+            }
+        }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Footer__["a" /* default */], {
             __source: {
                 fileName: _jsxFileName,
-                lineNumber: 11
+                lineNumber: 13
             }
         })
     );
@@ -2156,63 +2283,53 @@ var Index = function (_Component) {
                 });
             });
 
-            var emailJsx = __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_15__components_Email__["a" /* default */], { expanded: true, defaultValue: this.props.url.query.search || null, __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 66
-                }
-            });
-
-            // insert the email in line 5.
-
-            jobCards.splice(5, 0, emailJsx);
-
             return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_10__components_Layout__["a" /* default */],
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 74
+                        lineNumber: 66
                     }
                 },
                 __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11__components_Header__["a" /* default */], { searchTerm: this.props.url.query.search, onSearch: this.onSearch, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 75
+                        lineNumber: 67
                     }
                 }),
                 __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_14__components_Jumbotron__["a" /* default */], { searchTerm: this.props.url.query.search, onSearch: this.onSearch, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 76
+                        lineNumber: 68
                     }
                 }),
                 __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                     'section',
                     { className: 'container', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 77
+                            lineNumber: 69
                         }
                     },
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_18__components_Leadline__["a" /* default */], { search: search, tags: tags, count: this.props.count, onSearch: this.onSearch, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 79
+                            lineNumber: 71
                         }
                     }),
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                         'div',
                         { className: 'row', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 81
+                                lineNumber: 73
                             }
                         },
                         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                             'div',
                             { className: 'col-sm-12', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 82
+                                    lineNumber: 74
                                 }
                             },
                             __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_Categories__["a" /* default */], { selectedCategories: this.props.url.query.tags, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 83
+                                    lineNumber: 75
                                 }
                             })
                         ),
@@ -2220,14 +2337,14 @@ var Index = function (_Component) {
                             'div',
                             { className: 'col-sm-12', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 85
+                                    lineNumber: 77
                                 }
                             },
                             __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                                 'div',
                                 { className: 'job-list', __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 86
+                                        lineNumber: 78
                                     }
                                 },
                                 jobCards
@@ -2236,14 +2353,14 @@ var Index = function (_Component) {
                     ),
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('hr', { style: { margin: '30px 0' }, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 97
+                            lineNumber: 89
                         }
                     }),
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_react_paginate___default.a, {
                         pageCount: Math.ceil(this.props.count / 50),
                         marginPagesDisplayed: 2,
                         onPageChange: this.onPageChange,
-                        pageRangeDisplayed: 3,
+                        pageRangeDisplayed: 2,
                         containerClassName: "pagination justify-content-center",
                         pageClassName: "page-item",
                         activeClassName: "active",
@@ -2254,7 +2371,7 @@ var Index = function (_Component) {
 
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 98
+                            lineNumber: 90
                         }
                     })
                 )

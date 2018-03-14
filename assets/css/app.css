@@ -76,6 +76,14 @@ nav {
     margin: 1em;
 }
 
+.app-email.fixed-bottom {
+    background: #e6f0ff;
+}
+.creatable-fixed-bottom .Select-menu-outer {
+    top: auto;
+    bottom: 100%;
+}
+
 .app-categories {
     margin: 1em 0;
 }

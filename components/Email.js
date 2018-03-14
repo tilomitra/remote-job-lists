@@ -49,8 +49,7 @@ class Email extends Component {
                 response.json()
             })
             .then((responseJson) => {
-                console.log(responseJson);
-                if (responseJson.statusCode === 200) {
+                if (responseJson.success !== false) {
                     this.setState({
                         componentState: 'sent'
                     });
@@ -60,7 +59,6 @@ class Email extends Component {
                     });
                 }
             }).catch((err) => {
-                console.log(err);
                 this.setState({
                     componentState: 'error'
                 });
@@ -86,7 +84,7 @@ class Email extends Component {
         const { disabled, stayOpen, value, removeSelected, rtl, componentState, isValidEmail } = this.state;
         const didUserSearch = !!this.props.defaultValue;
 
-        const { expanded } = this.props;
+        const { type } = this.props;
 
 
         let options = [];
@@ -125,9 +123,8 @@ class Email extends Component {
             )
         }
 
-        if (expanded) {
+        if (type === 'expanded') {
             return (
-
                 <div className={cn("card app-email", { 'app-email-bg': !this.props.noBackground })}>
                     <div className="card-body">
                         {this.props.hideTitle ? null : <h5 className="card-title">{header}</h5>}
@@ -179,7 +176,7 @@ class Email extends Component {
                     </div>
                 </div>
             )
-        } else {
+        } else if (type === 'compact') {
             return (
                 <form>
                     <div className="form-row align-items-center">
@@ -204,6 +201,58 @@ class Email extends Component {
                     </div>
                     {alertBox}
                 </form>
+            )
+        } else if (type === 'footer') {
+            return (
+                <div className="app-email fixed-bottom d-none d-sm-block border-top">
+                    <div className="card-body">
+                        {alertBox}
+                        <form>
+                            <div className="form-row align-items-center">
+                                <div className="col-sm-4">
+                                    <label className="mr-sm-2">Send a weekly email to</label>
+                                    <input
+                                        type="email"
+                                        className="form-control"
+                                        placeholder="Enter your email"
+                                        value={this.state.email}
+                                        onBlur={this.handleEmailBlur}
+                                        onChange={this.handleEmailChange} />
+                                </div>
+                                <div className="col-sm-6">
+                                    <label>with listings related to</label>
+                                    <Creatable
+                                        closeOnSelect={!stayOpen}
+                                        className="creatable-fixed-bottom"
+                                        disabled={disabled}
+                                        multi
+                                        onChange={this.handleSelectChange}
+                                        options={options}
+                                        placeholder={`Leave blank to get all listings emailed to you`}
+                                        removeSelected={removeSelected}
+                                        promptTextCreator={(label) => {
+                                            return `Get notified for jobs with keyword: ${label}`
+                                        }}
+                                        rtl={rtl}
+                                        value={value}
+                                    />
+                                </div>
+                                <div className="col-sm-2">
+                                    <button
+                                        className="btn btn-success"
+                                        style={{ top: 15, position: 'relative' }}
+                                        onClick={this.onSubmit}
+                                        disabled={(componentState !== 'not-sent' || !isValidEmail)}
+                                    >
+                                        Subscribe
+                                    </button>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
             )
         }
     }

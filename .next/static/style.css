@@ -1,290 +1,4 @@
-
-body, h1, h2, h3, h4, h5, .btn, .job-meta, .app-jumbotron, p.lead {
-    font-family: 'Hind', sans-serif;
-}
-
-p, ul, li  {
-    font-size: 18px;
-}
-
-
-.app {
-    line-height: 1.8;
-}
-
-.app-content {
-    padding: 1em;
-}
-
-.app-jumbotron {
-    margin-bottom: 0;
-    color: white;
-    background: #141E30;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
-    
-
-}
-
-.btn {
-    font-weight: 500;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.3);
-
-}
-
-
-.btn:hover, .btn:active {
-    box-shadow: 0 2px 2px rgba(0,0,0,0.3);
-}
-
-
-.btn.btn-danger {
-    background: #ee0979;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #ff6a00, #ee0979);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #ff6a00, #ee0979); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-
-
-.modal-dialog {
-    max-width: 800px;
-}
-
-.card {
-    margin-bottom: 1em;
-}
-
-nav {
-    border-bottom: 2px solid #53346D !important;
-}
-
-.navbar-brand {
-    font-family: 'Trocchi', cursive;
-}
-
-.app-search-input {
-    width: 360px !important;
-}
-
-.app-email {
-    
-    border-color: transparent;
-}
-.app-email-bg  {
-    background: #e6f0ff;
-    margin: 1em;
-}
-
-.app-categories {
-    margin: 1em 0;
-}
-
-.app-category {
-    text-align: center;
-    padding: 0.5em 0.25em;
-    margin: 0.25em 0.25em;
-    text-transform: capitalize;
-    cursor: pointer;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    transition: all 0.2s;
-    font-size: 0.75em;
-    line-height: 1.2;
-    word-wrap: break-word;
-}
-
-.app-category:hover, .job-tag:hover {
-    background: #e6f0ff;
-    border-color: #e6f0ff;
-    color: #2572ff;
-}
-
-.app-category.selected {
-    border-color: #2572ff;
-    color: #2572ff;
-    background: white;
-}
-
-.app-category-icon {
-    margin: 0 auto;
-    display: block;
-    transition: all 0.2s;
-    width: 16px;
-}
-.app-category:hover .app-category-icon {
-    color: #2572ff;
-}
-
-.job-list-item {
-    cursor: pointer;
-    padding: 1em;
-    border-radius: 5px;
-    transition: background 0.12s ease-out;
-}
-
-.app-jumbotron-typing {
-    color: white;
-    font-weight: bold;
-}
-
-
-.job-list-item:hover .job-title {
-    color: #2572ff;
-    font-weight: bold;
-}
-
-.job-list-item-apply {
-    opacity: 0;
-    transition: opacity 0.2s ease-out;
-}
-
-.job-list-item:hover .job-list-item-apply {
-    opacity: 1;
-}
-
-
-.job-title {
-    margin: 0;
-    padding: 0;
-    font-size: 1.2em;
-    font-weight: bold;
-}
-.job-title-expanded {
-    color: #2572ff;
-    font-size: 3em;
-    padding-top: 1em;
-}
-
-.job-title-lead {
-    font-size: 2em;
-}
-
-.job-list-lead {
-    padding: 1em;
-    font-size: 1.5em;
-    border-bottom: 1px solid #ddd;
-    line-height: 1;
-}
-.job-list-lead .title {
-    margin: 0;
-    padding: 0;
-}
-.job-list-lead .reset {
-    font-size: 14px;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.job-list-lead .reset:hover, .job-list-lead .reset:hover svg {
-    color: #ee0979 !important;
-}
-
-.job-list-lead .reset svg {
-    width: 16px;
-    margin-right: 5px;
-    top: 6px;
-    position: relative;
-}
-
-
-.job-list-lead .count,
-.job-list-lead .term,
-.app-email .term,
-.job-company {
-    font-weight: bold;
-}
-.job-list-lead .term,
-.app-email .term {
-    color: #2572ff;
-    text-decoration: underline;
-}
-
-
-.job-company {
-    color: black;
-}
-
-.job-sidebar {
-    padding-top: 1em;
-}
-
-.job-tag {
-    font-size: 0.85em;
-    margin: 0.3em;
-    font-weight: 400;
-    text-transform: capitalize;
-    padding: 0.3em 1em;
-    cursor: pointer;
-    transition: all 0.2s ease-out;
-    
-    border: 1px solid #e6f0ff;
-}
-
-.job-tag svg {
-   width: 16px;
-   margin-right: 10px;
-}
-.job-tag .job-tag-name {
-    position: relative;
-    top: -6px;
-}
-
-.job-apply-button {
-    background: #2572ff;
-    color: white;
-    padding: 0.5em 2em;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: all 0.3s ease-out;
-    font-weight: bold;
-    font-size: 1.2em;
-}
-.job-apply-button:hover {
-    background: #36AAEB;
-}
-
-.job-description ul {
-    margin: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
-
-.job-description h1,
-.job-description h2,
-.job-description h3,
-.job-description h4 {
-    font-size: 1.3em;
-}
-
-
-
-.muted {
-    color: #6c718a;
-    font-weight: 100;
-}
-
-
-
-.paginate ul {
-    display: inline-block;
-}
-
-.paginate li {
-    display: inline-block;
-    padding: 0.5em;
-}
-
-.paginate .break a {
-    cursor: default;
-}
-
-.footer {
-    background: url('data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB2aWV3Q…kiPjwvcGF0aD4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+') no-repeat;
-    background-size: cover;
-    height: 300px;
-}/**
+/**
  * React Select
  * ============
  * Created by Jed Watson and Joss Mackison for KeystoneJS, http://www.keystonejs.com/
@@ -712,4 +426,298 @@ nav {
   }
 }
 
+body, h1, h2, h3, h4, h5, .btn, .job-meta, .app-jumbotron, p.lead {
+    font-family: 'Hind', sans-serif;
+}
+
+p, ul, li  {
+    font-size: 18px;
+}
+
+
+.app {
+    line-height: 1.8;
+}
+
+.app-content {
+    padding: 1em;
+}
+
+.app-jumbotron {
+    margin-bottom: 0;
+    color: white;
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    
+
+}
+
+.btn {
+    font-weight: 500;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+
+}
+
+
+.btn:hover, .btn:active {
+    box-shadow: 0 2px 2px rgba(0,0,0,0.3);
+}
+
+
+.btn.btn-danger {
+    background: #ee0979;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ff6a00, #ee0979);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ff6a00, #ee0979); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+
+.modal-dialog {
+    max-width: 800px;
+}
+
+.card {
+    margin-bottom: 1em;
+}
+
+nav {
+    border-bottom: 2px solid #53346D !important;
+}
+
+.navbar-brand {
+    font-family: 'Trocchi', cursive;
+}
+
+.app-search-input {
+    width: 360px !important;
+}
+
+.app-email {
+    
+    border-color: transparent;
+}
+.app-email-bg  {
+    background: #e6f0ff;
+    margin: 1em;
+}
+
+.app-email.fixed-bottom {
+    background: #e6f0ff;
+}
+.creatable-fixed-bottom .Select-menu-outer {
+    top: auto;
+    bottom: 100%;
+}
+
+.app-categories {
+    margin: 1em 0;
+}
+
+.app-category {
+    text-align: center;
+    padding: 0.5em 0.25em;
+    margin: 0.25em 0.25em;
+    text-transform: capitalize;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.2s;
+    font-size: 0.75em;
+    line-height: 1.2;
+    word-wrap: break-word;
+}
+
+.app-category:hover, .job-tag:hover {
+    background: #e6f0ff;
+    border-color: #e6f0ff;
+    color: #2572ff;
+}
+
+.app-category.selected {
+    border-color: #2572ff;
+    color: #2572ff;
+    background: white;
+}
+
+.app-category-icon {
+    margin: 0 auto;
+    display: block;
+    transition: all 0.2s;
+    width: 16px;
+}
+.app-category:hover .app-category-icon {
+    color: #2572ff;
+}
+
+.job-list-item {
+    cursor: pointer;
+    padding: 1em;
+    border-radius: 5px;
+    transition: background 0.12s ease-out;
+}
+
+.app-jumbotron-typing {
+    color: white;
+    font-weight: bold;
+}
+
+
+.job-list-item:hover .job-title {
+    color: #2572ff;
+    font-weight: bold;
+}
+
+.job-list-item-apply {
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+}
+
+.job-list-item:hover .job-list-item-apply {
+    opacity: 1;
+}
+
+
+.job-title {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.job-title-expanded {
+    color: #2572ff;
+    font-size: 3em;
+    padding-top: 1em;
+}
+
+.job-title-lead {
+    font-size: 2em;
+}
+
+.job-list-lead {
+    padding: 1em;
+    font-size: 1.5em;
+    border-bottom: 1px solid #ddd;
+    line-height: 1;
+}
+.job-list-lead .title {
+    margin: 0;
+    padding: 0;
+}
+.job-list-lead .reset {
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.job-list-lead .reset:hover, .job-list-lead .reset:hover svg {
+    color: #ee0979 !important;
+}
+
+.job-list-lead .reset svg {
+    width: 16px;
+    margin-right: 5px;
+    top: 6px;
+    position: relative;
+}
+
+
+.job-list-lead .count,
+.job-list-lead .term,
+.app-email .term,
+.job-company {
+    font-weight: bold;
+}
+.job-list-lead .term,
+.app-email .term {
+    color: #2572ff;
+    text-decoration: underline;
+}
+
+
+.job-company {
+    color: black;
+}
+
+.job-sidebar {
+    padding-top: 1em;
+}
+
+.job-tag {
+    font-size: 0.85em;
+    margin: 0.3em;
+    font-weight: 400;
+    text-transform: capitalize;
+    padding: 0.3em 1em;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    
+    border: 1px solid #e6f0ff;
+}
+
+.job-tag svg {
+   width: 16px;
+   margin-right: 10px;
+}
+.job-tag .job-tag-name {
+    position: relative;
+    top: -6px;
+}
+
+.job-apply-button {
+    background: #2572ff;
+    color: white;
+    padding: 0.5em 2em;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.job-apply-button:hover {
+    background: #36AAEB;
+}
+
+.job-description ul {
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+
+.job-description h1,
+.job-description h2,
+.job-description h3,
+.job-description h4 {
+    font-size: 1.3em;
+}
+
+
+
+.muted {
+    color: #6c718a;
+    font-weight: 100;
+}
+
+
+
+.paginate ul {
+    display: inline-block;
+}
+
+.paginate li {
+    display: inline-block;
+    padding: 0.5em;
+}
+
+.paginate .break a {
+    cursor: default;
+}
+
+.footer {
+    background: url('data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB2aWV3Q…kiPjwvcGF0aD4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+') no-repeat;
+    background-size: cover;
+    height: 300px;
+}
 /*# sourceMappingURL=style.css.map*/

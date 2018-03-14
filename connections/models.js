@@ -22,7 +22,7 @@ let models = {
             type: Sequelize.STRING,
             unique: true
         },
-        tags: Sequelize.STRING,
+        tags: Sequelize.TEXT,
         subscribed: {
             type: Sequelize.BOOLEAN,
             defaultValue: true

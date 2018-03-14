@@ -13,13 +13,15 @@ function subscribe(req, res) {
     }
 
     // convert from empty array to empty string.
-    if (tags.length === 0) tags = '';
+    if (tags.length === 0) tags = [];
+
+    let dbTags = tags.join(',');
 
     Users.findOrCreate({
         where: { email },
         defaults: {
             email,
-            tags
+            tags: dbTags
         },
     })
         .spread((user, created) => {
@@ -28,7 +30,10 @@ function subscribe(req, res) {
             });
             return res.status(200).json(user);
         }).catch((err) => {
-            return res.status(500).send(err);
+            return res.status(500).json({
+                success: false,
+                error: err
+            });
         })
 };
 
