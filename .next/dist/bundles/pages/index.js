@@ -197,7 +197,7 @@ var Categories = function (_Component) {
 
         _this.state = {
             selected: selectedCategories ? selectedCategories.split(',') : [],
-            isOpen: true
+            isOpen: false
         };
         return _this;
     }
@@ -273,47 +273,20 @@ var Categories = function (_Component) {
                     },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'col-sm-8', __source: {
+                        { className: 'col-sm-12', __source: {
                                 fileName: _jsxFileName,
                                 lineNumber: 71
                             }
                         },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'h5',
-                            {
-                                __source: {
+                            __WEBPACK_IMPORTED_MODULE_7_reactstrap__["Button"],
+                            { size: 'sm', block: true, onClick: this.toggle, style: { marginBottom: '1rem' }, __source: {
                                     fileName: _jsxFileName,
                                     lineNumber: 72
                                 }
                             },
-                            'Filter Job Listings',
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'p',
-                                { className: 'lead', __source: {
-                                        fileName: _jsxFileName,
-                                        lineNumber: 73
-                                    }
-                                },
-                                'Use the tags below to filter your job search. You can select more than one tag.'
-                            )
-                        )
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { className: 'col-sm-4 text-right', __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 76
-                            }
-                        },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            __WEBPACK_IMPORTED_MODULE_7_reactstrap__["Button"],
-                            { size: 'sm', onClick: this.toggle, style: { marginBottom: '1rem' }, __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 77
-                                }
-                            },
                             this.state.isOpen ? "Hide" : "Show",
-                            ' Filters'
+                            ' Job Filters'
                         )
                     )
                 ),
@@ -321,14 +294,14 @@ var Categories = function (_Component) {
                     __WEBPACK_IMPORTED_MODULE_7_reactstrap__["Collapse"],
                     { isOpen: this.state.isOpen, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 83
+                            lineNumber: 78
                         }
                     },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         { className: 'row no-gutters', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 84
+                                lineNumber: 79
                             }
                         },
                         categories
@@ -1002,7 +975,7 @@ var Header = function (_Component) {
         value: function render() {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_3_reactstrap__["Navbar"],
-                { fixed: 'top', color: 'light', light: true, expand: 'md', className: 'justify-content-between', __source: {
+                { fixed: 'top', color: 'dark', dark: true, expand: 'md', className: 'justify-content-between', __source: {
                         fileName: _jsxFileName,
                         lineNumber: 26
                     }
@@ -2052,7 +2025,7 @@ var env = "development";
 var config = void 0;
 if (env === 'production') {
     config = {
-        host: 'https://remote-job-lists.herokuapp.com'
+        host: 'https://www.remotejoblists.com'
     };
 } else [config = {
     host: 'http://localhost:3000'

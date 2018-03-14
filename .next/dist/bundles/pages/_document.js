@@ -148,14 +148,14 @@ var MyDocument = function (_Document) {
                             lineNumber: 11
                         }
                     }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", { href: "https://fonts.googleapis.com/css?family=Hind:300,400,500,700|Trocchi", rel: "stylesheet", __source: {
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", { rel: "stylesheet", href: "https://use.typekit.net/pox4jyh.css", __source: {
                             fileName: _jsxFileName,
                             lineNumber: 12
                         }
                     }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", { rel: "stylesheet", href: "/_next/static/style.css", __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 13
+                            lineNumber: 15
                         }
                     })
                 ),
@@ -164,19 +164,19 @@ var MyDocument = function (_Document) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 15
+                            lineNumber: 17
                         }
                     },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_document__["Main"], {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 16
+                            lineNumber: 18
                         }
                     }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_document__["NextScript"], {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 17
+                            lineNumber: 19
                         }
                     })
                 )

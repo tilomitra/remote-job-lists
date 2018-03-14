@@ -14,7 +14,7 @@ class Categories extends Component {
         const { selectedCategories } = this.props;
         this.state = {
             selected: selectedCategories ? selectedCategories.split(',') : [],
-            isOpen: true
+            isOpen: false
         }
     }
 
@@ -68,14 +68,9 @@ class Categories extends Component {
         return (
             <section className="app-categories sticky-top" style={{ top: 80 }}>
                 <div className="row">
-                    <div className="col-sm-8">
-                        <h5>Filter Job Listings
-                        <p className="lead">Use the tags below to filter your job search. You can select more than one tag.</p>
-                        </h5>
-                    </div>
-                    <div className="col-sm-4 text-right">
-                        <Button size="sm" onClick={this.toggle} style={{ marginBottom: '1rem' }}>
-                            {this.state.isOpen ? "Hide" : "Show"} Filters
+                    <div className="col-sm-12">
+                        <Button size="sm" block onClick={this.toggle} style={{ marginBottom: '1rem' }}>
+                            {this.state.isOpen ? "Hide" : "Show"} Job Filters
                         </Button>
                     </div>
 

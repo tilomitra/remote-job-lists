@@ -427,7 +427,7 @@
 }
 
 body, h1, h2, h3, h4, h5, .btn, .job-meta, .app-jumbotron, p.lead {
-    font-family: 'Hind', sans-serif;
+    font-family: "europa", sans-serif;
 }
 
 p, ul, li  {
@@ -483,11 +483,13 @@ p, ul, li  {
 }
 
 nav {
-    border-bottom: 2px solid #53346D !important;
+    border-bottom: 1px solid white !important;
 }
 
 .navbar-brand {
-    font-family: 'Trocchi', cursive;
+    font-family: "cortado", cursive;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 0 1em;
 }
 
 .app-search-input {
@@ -719,5 +721,28 @@ nav {
     background: url('data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB2aWV3Q…kiPjwvcGF0aD4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+') no-repeat;
     background-size: cover;
     height: 300px;
+}
+
+@media (max-width: 680px) {
+
+    p, ul, li, body  {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+
+    .app {
+        line-height: 1.6;
+    }
+}
+
+@media (max-width: 500px){
+    .app-jumbotron h1 {
+        font-size: 2rem;
+    }
+
+    .app-jumbotron .lead {
+        font-size: 1.2rem;
+    }
 }
 /*# sourceMappingURL=style.css.map*/

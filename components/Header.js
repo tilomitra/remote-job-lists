@@ -23,7 +23,7 @@ class Header extends Component {
     }
     render() {
         return (
-            <Navbar fixed="top" color="light" light expand="md" className="justify-content-between">
+            <Navbar fixed="top" color="dark" dark expand="md" className="justify-content-between">
                 <NavbarBrand href="/">Remote Job Lists</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} navbar>
