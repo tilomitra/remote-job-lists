@@ -6,6 +6,8 @@ function subscribe(req, res) {
     const email = req.body.email;
     const tags = req.body.tags;
 
+    let dbTags = null;
+
     if (!email) {
         return res.status(401).send({
             message: "Please enter an email address"
@@ -13,9 +15,9 @@ function subscribe(req, res) {
     }
 
     // convert from empty array to empty string.
-    if (tags.length === 0) tags = [];
-
-    let dbTags = tags.join(',');
+    if (tags.length !== 0) {
+        dbTags = tags.join(',');
+    }
 
     Users.findOrCreate({
         where: { email },
