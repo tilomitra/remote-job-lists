@@ -100,13 +100,13 @@ class Email extends Component {
             </h5>
         } else {
             header = <h5 className="card-title">
-                Get Weekly Job Listings
+                Get Job Notifications
         </h5>
         }
 
         if (componentState === 'sent') {
             alertBox = (
-                <div className="alert alert-success">You have successfully enabled daily job listing alerts. 👍</div>
+                <div className="alert alert-success">You will be notified whenever we receive new listings. 👍</div>
             )
             subscribeBtnText = 'Daily Alerts Enabled';
         } else if (componentState === 'error') {
@@ -210,7 +210,7 @@ class Email extends Component {
                         <form>
                             <div className="form-row align-items-center">
                                 <div className="col-sm-4">
-                                    <label className="mr-sm-2">Send a weekly email to</label>
+                                    <label className="mr-sm-2">Send an email to</label>
                                     <input
                                         type="email"
                                         className="form-control"
@@ -220,7 +220,7 @@ class Email extends Component {
                                         onChange={this.handleEmailChange} />
                                 </div>
                                 <div className="col-sm-6">
-                                    <label>with listings related to</label>
+                                    <label>when new listings arrive related to</label>
                                     <Creatable
                                         closeOnSelect={!stayOpen}
                                         className="creatable-fixed-bottom"

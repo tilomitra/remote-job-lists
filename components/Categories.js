@@ -54,7 +54,7 @@ class Categories extends Component {
             const isSelected = selected.indexOf(tag) > -1 ? true : false;
             categories.push(
                 <div
-                    className="col-sm-4 col-md-2"
+                    className="col-xs-6 col-sm-4 col-md-2"
                     key={`category-${tag}`}
                     onClick={() => { this.onCategoryClick(tag); }}>
                     <section className={cn("app-category", { selected: isSelected })}>
