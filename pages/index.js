@@ -79,14 +79,15 @@ class Index extends Component {
                     <Leadline search={search} tags={tags} count={this.props.count} onSearch={this.onSearch} />
 
                     <div className="row">
-                        <div className="col-sm-12 col-md-7 col-lg-9">
+                        <div className="col-sm-12">
+                            <Categories selectedCategories={this.props.url.query.tags} />
+                        </div>
+                        <div className="col-sm-12">
                             <div className="job-list">
                                 {jobCards}
                             </div>
                         </div>
-                        <div className="col-sm-12 col-md-5 col-lg-3">
-                            <Categories selectedCategories={this.props.url.query.tags} />
-                        </div>
+
                     </div>
 
 

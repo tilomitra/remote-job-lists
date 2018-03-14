@@ -128,9 +128,9 @@ class Email extends Component {
         if (expanded) {
             return (
 
-                <div className="card app-email">
+                <div className={cn("card app-email", { 'app-email-bg': !this.props.noBackground })}>
                     <div className="card-body">
-                        <h5 className="card-title">{header}</h5>
+                        {this.props.hideTitle ? null : <h5 className="card-title">{header}</h5>}
                         <form>
                             <div className="form-row align-items-center">
                                 <div className="col-sm-12 col-md-4 my-1">

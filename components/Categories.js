@@ -5,6 +5,7 @@ import remove from 'lodash/remove';
 import Router from 'next/router';
 import cn from 'classnames';
 import feather from 'feather-icons';
+import { Collapse, Button } from 'reactstrap';
 
 class Categories extends Component {
     constructor(props) {
@@ -12,12 +13,17 @@ class Categories extends Component {
 
         const { selectedCategories } = this.props;
         this.state = {
-            selected: selectedCategories ? selectedCategories.split(',') : []
+            selected: selectedCategories ? selectedCategories.split(',') : [],
+            isOpen: true
         }
     }
 
     componentDidMount() {
         feather.replace()
+    }
+
+    toggle = () => {
+        this.setState({ isOpen: !this.state.isOpen });
     }
 
     onCategoryClick = (tag) => {
@@ -48,7 +54,7 @@ class Categories extends Component {
             const isSelected = selected.indexOf(tag) > -1 ? true : false;
             categories.push(
                 <div
-                    className="col-sm-12 col-md-6"
+                    className="col-sm-4 col-md-2"
                     key={`category-${tag}`}
                     onClick={() => { this.onCategoryClick(tag); }}>
                     <section className={cn("app-category", { selected: isSelected })}>
@@ -61,18 +67,24 @@ class Categories extends Component {
 
         return (
             <section className="app-categories sticky-top" style={{ top: 80 }}>
-                <section className="card">
-                    <div className="card-body">
-
+                <div className="row">
+                    <div className="col-sm-8">
                         <h5>Filter Job Listings
-                    <p className="lead">Use the tags below to filter your job search.</p>
+                        <p className="lead">Use the tags below to filter your job search. You can select more than one tag.</p>
                         </h5>
-                        <div className="row no-gutters">
-                            {categories}
-                        </div>
-
                     </div>
-                </section>
+                    <div className="col-sm-4 text-right">
+                        <Button size="sm" onClick={this.toggle} style={{ marginBottom: '1rem' }}>
+                            {this.state.isOpen ? "Hide" : "Show"} Filters
+                        </Button>
+                    </div>
+
+                </div>
+                <Collapse isOpen={this.state.isOpen}>
+                    <div className="row no-gutters">
+                        {categories}
+                    </div>
+                </Collapse>
             </section>
         )
     }

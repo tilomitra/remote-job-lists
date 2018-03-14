@@ -2,13 +2,23 @@ import Link from 'next/link'
 import { Component } from "react";
 import SearchBar from './SearchBar';
 import Typing from 'react-typing-animation';
-import PostJob from './PostJob';
 import Email from './Email';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+
 
 class Jumbotron extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isModalOpen: false
+        };
 
-    componentDidMount() {
+    }
 
+    toggle = () => {
+        this.setState({
+            isModalOpen: !this.state.isModalOpen
+        });
     }
     render() {
         return (
@@ -34,6 +44,22 @@ class Jumbotron extends Component {
                     <hr className="my-4" />
                     <p className="lead">
                         <SearchBar term={this.props.searchTerm} onSearch={this.props.onSearch} />
+                    </p>
+                    <p>
+                        <div>
+                            <Button color="danger" onClick={this.toggle}>
+                                Get Weekly Job Notifications
+                            </Button>
+                            <Modal isOpen={this.state.isModalOpen} toggle={this.toggle} className={this.props.className}>
+                                <ModalHeader toggle={this.toggle}>Get Weekly Job Notifications</ModalHeader>
+                                <ModalBody>
+                                    <Email expanded noBackground hideTitle />
+                                </ModalBody>
+                                <ModalFooter>
+                                    <Button color="primary" onClick={this.toggle}>Close</Button>
+                                </ModalFooter>
+                            </Modal>
+                        </div>
                     </p>
                     {/* <p className="lead">
                         <Email />

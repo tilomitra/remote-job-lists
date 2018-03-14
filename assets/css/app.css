@@ -26,13 +26,7 @@ p, ul, li  {
 
 }
 
-.btn.btn-primary {
-    background: #396afc;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #2948ff, #396afc);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #2948ff, #396afc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    border-color: #2572ff;
-    transition: all 0.2s;
-}
+
 .btn:hover, .btn:active {
     box-shadow: 0 2px 2px rgba(0,0,0,0.3);
 }
@@ -44,11 +38,10 @@ p, ul, li  {
     background: linear-gradient(to right, #ff6a00, #ee0979); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.btn.btn-success {
-    background: #56ab2f;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #a8e063, #56ab2f);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+
+.modal-dialog {
+    max-width: 800px;
 }
 
 .card {
@@ -64,9 +57,12 @@ nav {
 }
 
 .app-email {
-    margin: 1em;
+    
     border-color: transparent;
+}
+.app-email-bg  {
     background: #e6f0ff;
+    margin: 1em;
 }
 
 .app-categories {

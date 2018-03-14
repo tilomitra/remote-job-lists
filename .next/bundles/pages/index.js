@@ -48,7 +48,7 @@ var ApplyButton = function ApplyButton(props) {
 };
 
 var _default = ApplyButton;
-/* harmony default export */ __webpack_exports__["a"] = (_default);
+/* unused harmony default export */ var _unused_webpack_default_export = (_default);
 ;
 
 (function () {
@@ -88,6 +88,7 @@ var _default = ApplyButton;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_feather_icons__ = __webpack_require__("./node_modules/feather-icons/dist/feather.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_feather_icons___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_feather_icons__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_reactstrap__ = __webpack_require__("./node_modules/reactstrap/dist/reactstrap.es.js");
 var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/components/Categories.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -114,6 +115,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+
 var Categories = function (_Component) {
     _inherits(Categories, _Component);
 
@@ -121,6 +123,10 @@ var Categories = function (_Component) {
         _classCallCheck(this, Categories);
 
         var _this = _possibleConstructorReturn(this, (Categories.__proto__ || Object.getPrototypeOf(Categories)).call(this, props));
+
+        _this.toggle = function () {
+            _this.setState({ isOpen: !_this.state.isOpen });
+        };
 
         _this.onCategoryClick = function (tag) {
             var selected = _this.state.selected;
@@ -146,7 +152,8 @@ var Categories = function (_Component) {
         var selectedCategories = _this.props.selectedCategories;
 
         _this.state = {
-            selected: selectedCategories ? selectedCategories.split(',') : []
+            selected: selectedCategories ? selectedCategories.split(',') : [],
+            isOpen: true
         };
         return _this;
     }
@@ -172,32 +179,32 @@ var Categories = function (_Component) {
                 categories.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     {
-                        className: 'col-sm-12 col-md-6',
+                        className: 'col-sm-4 col-md-2',
                         key: 'category-' + tag,
                         onClick: function onClick() {
                             _this2.onCategoryClick(tag);
                         }, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 50
+                            lineNumber: 56
                         }
                     },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'section',
                         { className: __WEBPACK_IMPORTED_MODULE_5_classnames___default()("app-category", { selected: isSelected }), __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 54
+                                lineNumber: 60
                             }
                         },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { 'data-feather': icon, className: 'app-category-icon', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 55
+                                lineNumber: 61
                             }
                         }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'span',
                             { className: 'app-category-tag', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 56
+                                    lineNumber: 62
                                 }
                             },
                             tag
@@ -210,21 +217,21 @@ var Categories = function (_Component) {
                 'section',
                 { className: 'app-categories sticky-top', style: { top: 80 }, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 63
+                        lineNumber: 69
                     }
                 },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'section',
-                    { className: 'card', __source: {
+                    'div',
+                    { className: 'row', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 64
+                            lineNumber: 70
                         }
                     },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'card-body', __source: {
+                        { className: 'col-sm-8', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 65
+                                lineNumber: 71
                             }
                         },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -232,7 +239,7 @@ var Categories = function (_Component) {
                             {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 67
+                                    lineNumber: 72
                                 }
                             },
                             'Filter Job Listings',
@@ -240,21 +247,47 @@ var Categories = function (_Component) {
                                 'p',
                                 { className: 'lead', __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 68
+                                        lineNumber: 73
                                     }
                                 },
-                                'Use the tags below to filter your job search.'
+                                'Use the tags below to filter your job search. You can select more than one tag.'
                             )
-                        ),
+                        )
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'col-sm-4 text-right', __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 76
+                            }
+                        },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'div',
-                            { className: 'row no-gutters', __source: {
+                            __WEBPACK_IMPORTED_MODULE_7_reactstrap__["a" /* Button */],
+                            { size: 'sm', onClick: this.toggle, style: { marginBottom: '1rem' }, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 70
+                                    lineNumber: 77
                                 }
                             },
-                            categories
+                            this.state.isOpen ? "Hide" : "Show",
+                            ' Filters'
                         )
+                    )
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    __WEBPACK_IMPORTED_MODULE_7_reactstrap__["b" /* Collapse */],
+                    { isOpen: this.state.isOpen, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 83
+                        }
+                    },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'row no-gutters', __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 84
+                            }
+                        },
+                        categories
                     )
                 )
             );
@@ -525,7 +558,7 @@ var Email = function (_Component) {
             if (expanded) {
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { className: 'card app-email', __source: {
+                    { className: __WEBPACK_IMPORTED_MODULE_4_classnames___default()("card app-email", { 'app-email-bg': !this.props.noBackground }), __source: {
                             fileName: _jsxFileName,
                             lineNumber: 131
                         }
@@ -537,7 +570,7 @@ var Email = function (_Component) {
                                 lineNumber: 132
                             }
                         },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        this.props.hideTitle ? null : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'h5',
                             { className: 'card-title', __source: {
                                     fileName: _jsxFileName,
@@ -1243,8 +1276,8 @@ var _default = JobTitle;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SearchBar__ = __webpack_require__("./components/SearchBar.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_typing_animation__ = __webpack_require__("./node_modules/react-typing-animation/dist/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_typing_animation___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react_typing_animation__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__PostJob__ = __webpack_require__("./components/PostJob.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Email__ = __webpack_require__("./components/Email.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Email__ = __webpack_require__("./components/Email.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_reactstrap__ = __webpack_require__("./node_modules/reactstrap/dist/reactstrap.es.js");
 var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/components/Jumbotron.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -1273,37 +1306,46 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Jumbotron = function (_Component) {
     _inherits(Jumbotron, _Component);
 
-    function Jumbotron() {
+    function Jumbotron(props) {
         _classCallCheck(this, Jumbotron);
 
-        return _possibleConstructorReturn(this, (Jumbotron.__proto__ || Object.getPrototypeOf(Jumbotron)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (Jumbotron.__proto__ || Object.getPrototypeOf(Jumbotron)).call(this, props));
+
+        _this.toggle = function () {
+            _this.setState({
+                isModalOpen: !_this.state.isModalOpen
+            });
+        };
+
+        _this.state = {
+            isModalOpen: false
+        };
+
+        return _this;
     }
 
     _createClass(Jumbotron, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {}
-    }, {
         key: 'render',
         value: function render() {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 { className: 'jumbotron jumbotron-fluid app-jumbotron', style: { marginTop: 60 }, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 16
+                        lineNumber: 26
                     }
                 },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'container', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 17
+                            lineNumber: 27
                         }
                     },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'h1',
                         { className: 'display-4', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 18
+                                lineNumber: 28
                             }
                         },
                         'Work Remotely as',
@@ -1312,71 +1354,71 @@ var Jumbotron = function (_Component) {
                             {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 20
+                                    lineNumber: 30
                                 }
                             },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'span',
                                 { className: 'app-jumbotron-typing', __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 21
+                                        lineNumber: 31
                                     }
                                 },
                                 'a Software Engineer'
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_typing_animation___default.a.Backspace, { count: 50, delay: 2000, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 22
+                                    lineNumber: 32
                                 }
                             }),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_typing_animation___default.a.Delay, { ms: 500, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 23
+                                    lineNumber: 33
                                 }
                             }),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'span',
                                 { className: 'app-jumbotron-typing', __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 24
+                                        lineNumber: 34
                                     }
                                 },
                                 'an Accountant'
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_typing_animation___default.a.Backspace, { count: 50, delay: 2000, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 25
+                                    lineNumber: 35
                                 }
                             }),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_typing_animation___default.a.Delay, { ms: 500, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 26
+                                    lineNumber: 36
                                 }
                             }),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'span',
                                 { className: 'app-jumbotron-typing', __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 27
+                                        lineNumber: 37
                                     }
                                 },
                                 'a Graphic Designer'
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_typing_animation___default.a.Backspace, { count: 50, delay: 2000, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 28
+                                    lineNumber: 38
                                 }
                             }),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_typing_animation___default.a.Delay, { ms: 500, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 29
+                                    lineNumber: 39
                                 }
                             }),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'span',
                                 { className: 'app-jumbotron-typing', __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 30
+                                        lineNumber: 40
                                     }
                                 },
                                 'an Android Developer'
@@ -1387,49 +1429,111 @@ var Jumbotron = function (_Component) {
                         'p',
                         { className: 'lead', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 33
+                                lineNumber: 43
                             }
                         },
                         'Find your next job by searching through the largest remote listing database on the internet. ',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 33
+                                lineNumber: 43
                             }
                         }),
                         ' Kept up to date every hour.'
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', { className: 'my-4', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 34
+                            lineNumber: 44
                         }
                     }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'p',
                         { className: 'lead', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 35
+                                lineNumber: 45
                             }
                         },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__SearchBar__["a" /* default */], { term: this.props.searchTerm, onSearch: this.props.onSearch, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 36
+                                lineNumber: 46
                             }
                         })
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'p',
-                        { className: 'lead', __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 38
-                            }
-                        },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Email__["a" /* default */], {
+                        {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 39
+                                lineNumber: 48
                             }
-                        })
+                        },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            {
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 49
+                                }
+                            },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                __WEBPACK_IMPORTED_MODULE_5_reactstrap__["a" /* Button */],
+                                { color: 'danger', onClick: this.toggle, __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 50
+                                    }
+                                },
+                                'Get Weekly Job Notifications'
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                __WEBPACK_IMPORTED_MODULE_5_reactstrap__["c" /* Modal */],
+                                { isOpen: this.state.isModalOpen, toggle: this.toggle, className: this.props.className, __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 53
+                                    }
+                                },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    __WEBPACK_IMPORTED_MODULE_5_reactstrap__["f" /* ModalHeader */],
+                                    { toggle: this.toggle, __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 54
+                                        }
+                                    },
+                                    'Get Weekly Job Notifications'
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    __WEBPACK_IMPORTED_MODULE_5_reactstrap__["d" /* ModalBody */],
+                                    {
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 55
+                                        }
+                                    },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Email__["a" /* default */], { expanded: true, noBackground: true, hideTitle: true, __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 56
+                                        }
+                                    })
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    __WEBPACK_IMPORTED_MODULE_5_reactstrap__["e" /* ModalFooter */],
+                                    {
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 58
+                                        }
+                                    },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        __WEBPACK_IMPORTED_MODULE_5_reactstrap__["a" /* Button */],
+                                        { color: 'primary', onClick: this.toggle, __source: {
+                                                fileName: _jsxFileName,
+                                                lineNumber: 59
+                                            }
+                                        },
+                                        'Close'
+                                    )
+                                )
+                            )
+                        )
                     )
                 )
             );
@@ -1821,163 +1925,6 @@ var _default = Leadline;
 
     reactHotLoader.register(Leadline, 'Leadline', '/Applications/MAMP/code/sandbox/remote-job-lists/components/Leadline.js');
     reactHotLoader.register(_default, 'default', '/Applications/MAMP/code/sandbox/remote-job-lists/components/Leadline.js');
-    leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/next/node_modules/webpack/buildin/harmony-module.js")(module)))
-
-/***/ }),
-
-/***/ "./components/PostJob.js":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("./node_modules/react/cjs/react.development.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_reactstrap__ = __webpack_require__("./node_modules/reactstrap/dist/reactstrap.es.js");
-var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/components/PostJob.js';
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-
-
-(function () {
-    var enterModule = __webpack_require__("./node_modules/react-hot-loader/patch.js").enterModule;
-
-    enterModule && enterModule(module);
-})();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-var PostJob = function (_Component) {
-    _inherits(PostJob, _Component);
-
-    function PostJob(props) {
-        _classCallCheck(this, PostJob);
-
-        var _this = _possibleConstructorReturn(this, (PostJob.__proto__ || Object.getPrototypeOf(PostJob)).call(this, props));
-
-        _this.toggle = function () {
-            _this.setState({
-                modal: !_this.state.modal
-            });
-        };
-
-        _this.state = {
-            modal: false
-        };
-
-        return _this;
-    }
-
-    _createClass(PostJob, [{
-        key: 'render',
-        value: function render() {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                {
-                    __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 22
-                    }
-                },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_1_reactstrap__["a" /* Button */],
-                    { color: 'danger', onClick: this.toggle, __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 23
-                        }
-                    },
-                    this.props.buttonLabel
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_1_reactstrap__["c" /* Modal */],
-                    { isOpen: this.state.modal, toggle: this.toggle, className: this.props.className, __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 24
-                        }
-                    },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        __WEBPACK_IMPORTED_MODULE_1_reactstrap__["f" /* ModalHeader */],
-                        { toggle: this.toggle, __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 25
-                            }
-                        },
-                        'Post a Remote Job Listing'
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_reactstrap__["d" /* ModalBody */], {
-                        __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 26
-                        }
-                    }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        __WEBPACK_IMPORTED_MODULE_1_reactstrap__["e" /* ModalFooter */],
-                        {
-                            __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 29
-                            }
-                        },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            __WEBPACK_IMPORTED_MODULE_1_reactstrap__["a" /* Button */],
-                            { color: 'primary', onClick: this.toggle, __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 30
-                                }
-                            },
-                            'Do Something'
-                        ),
-                        ' ',
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            __WEBPACK_IMPORTED_MODULE_1_reactstrap__["a" /* Button */],
-                            { color: 'secondary', onClick: this.toggle, __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 31
-                                }
-                            },
-                            'Cancel'
-                        )
-                    )
-                )
-            );
-        }
-    }, {
-        key: '__reactstandin__regenerateByEval',
-        value: function __reactstandin__regenerateByEval(key, code) {
-            this[key] = eval(code);
-        }
-    }]);
-
-    return PostJob;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-var _default = PostJob;
-
-
-/* unused harmony default export */ var _unused_webpack_default_export = (_default);
-;
-
-(function () {
-    var reactHotLoader = __webpack_require__("./node_modules/react-hot-loader/patch.js").default;
-
-    var leaveModule = __webpack_require__("./node_modules/react-hot-loader/patch.js").leaveModule;
-
-    if (!reactHotLoader) {
-        return;
-    }
-
-    reactHotLoader.register(PostJob, 'PostJob', '/Applications/MAMP/code/sandbox/remote-job-lists/components/PostJob.js');
-    reactHotLoader.register(_default, 'default', '/Applications/MAMP/code/sandbox/remote-job-lists/components/PostJob.js');
     leaveModule(module);
 })();
 
@@ -58548,38 +58495,38 @@ var Index = function (_Component) {
                         },
                         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                             'div',
-                            { className: 'col-sm-12 col-md-7 col-lg-9', __source: {
+                            { className: 'col-sm-12', __source: {
                                     fileName: _jsxFileName,
                                     lineNumber: 82
+                                }
+                            },
+                            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_Categories__["a" /* default */], { selectedCategories: this.props.url.query.tags, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 83
+                                }
+                            })
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                            'div',
+                            { className: 'col-sm-12', __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 85
                                 }
                             },
                             __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                                 'div',
                                 { className: 'job-list', __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 83
+                                        lineNumber: 86
                                     }
                                 },
                                 jobCards
                             )
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-                            'div',
-                            { className: 'col-sm-12 col-md-5 col-lg-3', __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 87
-                                }
-                            },
-                            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_Categories__["a" /* default */], { selectedCategories: this.props.url.query.tags, __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 88
-                                }
-                            })
                         )
                     ),
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('hr', { style: { margin: '30px 0' }, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 96
+                            lineNumber: 97
                         }
                     }),
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_react_paginate___default.a, {
@@ -58597,7 +58544,7 @@ var Index = function (_Component) {
 
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 97
+                            lineNumber: 98
                         }
                     })
                 )
