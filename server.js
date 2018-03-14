@@ -45,7 +45,7 @@ app.prepare()
         }));
 
         if (process.env.NODE_ENV === 'production') {
-            app.use(forceSsl);
+            server.use(forceSsl);
         }
 
         server.get('/', (req, res) => {
