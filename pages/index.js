@@ -66,7 +66,7 @@ class Index extends Component {
             <Layout>
                 <Meta
                     title={"Remote Job Lists"}
-                    description={"A daily updated list of all remote job listings from across the internet."}
+                    description={"Remote Job Lists provides a daily updated list of all remote job listings from across the internet. We list remote jobs for engineering, software, marketing, accounting, media, design and more."}
                     url={this.props.url}
                 />
                 <Header searchTerm={this.props.url.query.search} onSearch={this.onSearch} />

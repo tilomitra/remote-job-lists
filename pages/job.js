@@ -45,7 +45,7 @@ class Job extends Component {
             <Layout>
                 <Meta
                     title={`${job.title} at ${job.company} | Remote Job Lists`}
-                    description={`${job.description}`}
+                    description={`${job.company} is looking to hire a ${job.title}. This position is available to remote candidates.`}
                     url={this.props.url}
                 />
                 <Header onSearch={this.onSearch} />
