@@ -1,10 +1,11 @@
 import { Component } from 'react';
-import { Creatable } from 'react-select';
+import Select from 'react-select';
 import Tags from '../connections/tags';
 import forEach from 'lodash/forEach';
 import cn from 'classnames';
 import config from '../config';
 import { logEvent } from '../utils/analytics';
+import Categories from '../components/Categories';
 
 import 'react-select/dist/react-select.css';
 
@@ -121,7 +122,7 @@ class Email extends Component {
             subscribeBtnText = 'Daily Alerts Enabled';
         } else if (componentState === 'error') {
             alertBox = (
-                <div className="alert alert-danger">There was an error when subscribing. Verify that your email address is correct, try again, or <a href="https://twitter.com/tilomitra" target="_blank">contact me</a>.</div>
+                <div className="alert alert-danger">There was an error when subscribing. Verify that your email address is correct, try again, or <a href="https://twitter.com/tilomitra" target="_blank">get in touch</a>.</div>
             )
         } else if (componentState === 'is-sending') {
             subscribeBtnText = 'Loading...'
@@ -152,20 +153,9 @@ class Email extends Component {
                                 </div>
                                 <div className="col-sm-12 col-md-12 my-1">
                                     <label>with new listings related to</label>
-                                    <Creatable
-                                        closeOnSelect={!stayOpen}
-                                        disabled={disabled}
-                                        multi
-                                        className="form-control"
-                                        onChange={this.handleSelectChange}
-                                        options={options}
-                                        placeholder={`Type keywords to only receive alerts for relevant listings.`}
-                                        removeSelected={removeSelected}
-                                        promptTextCreator={(label) => {
-                                            return `Get notified for jobs with keyword: ${label}`
-                                        }}
-                                        value={value}
-                                    />
+                                    <Categories hideFilter onSelect={(selected) => {
+                                        this.setState({ value: selected })
+                                    }} />
                                 </div>
                                 <div className="col-sm-12 col-md-2 my-1">
                                     <button
@@ -231,7 +221,7 @@ class Email extends Component {
                                 </div>
                                 <div className="col-sm-6">
                                     <label>when new listings arrive related to</label>
-                                    <Creatable
+                                    <Select
                                         closeOnSelect={!stayOpen}
                                         className="creatable-fixed-bottom"
                                         disabled={disabled}
@@ -240,9 +230,6 @@ class Email extends Component {
                                         options={options}
                                         placeholder={`Leave blank to get all listings emailed to you`}
                                         removeSelected={removeSelected}
-                                        promptTextCreator={(label) => {
-                                            return `Get notified for jobs with keyword: ${label}`
-                                        }}
                                         rtl={rtl}
                                         value={value}
                                     />

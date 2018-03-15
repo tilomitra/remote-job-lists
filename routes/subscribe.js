@@ -31,11 +31,17 @@ function subscribe(req, res) {
         },
     })
         .spread((user, created) => {
-            user = user.get({
-                plain: true
-            });
-            return res.status(200).json(user);
-        }).catch((err) => {
+            if (!created) {
+                user.tags = dbTags;
+            }
+            return user.save();
+        }).then(() => {
+            return res.status(200).json({
+                success: true,
+                message: 'Subscribed user with tags.'
+            })
+        })
+        .catch((err) => {
             return res.status(500).json({
                 success: false,
                 error: err

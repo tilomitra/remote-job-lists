@@ -14,7 +14,7 @@ class Categories extends Component {
         const { selectedCategories } = this.props;
         this.state = {
             selected: selectedCategories ? selectedCategories.split(',') : [],
-            isOpen: false
+            isOpen: this.props.isOpen || false
         }
     }
 
@@ -37,12 +37,22 @@ class Categories extends Component {
         }
 
         this.setState({ selected });
-        Router.push({
-            pathname: '/',
-            query: {
-                tags: selected.join(',')
-            }
-        })
+
+        if (this.props.onSelect) {
+            // make it same datastructure as react-select in <Email/>
+            let map = selected.map((s) => {
+                return { label: s, value: s }
+            });
+            this.props.onSelect(map);
+        } else {
+            Router.push({
+                pathname: '/',
+                query: {
+                    tags: selected.join(',')
+                }
+            })
+        }
+
     }
 
     render() {
@@ -54,7 +64,7 @@ class Categories extends Component {
             const isSelected = selected.indexOf(tag) > -1 ? true : false;
             categories.push(
                 <div
-                    className="col-xs-6 col-sm-4 col-md-2"
+                    className="col-6 col-sm-4 col-md-2"
                     key={`category-${tag}`}
                     onClick={() => { this.onCategoryClick(tag); }}>
                     <section className={cn("app-category", { selected: isSelected })}>
@@ -65,23 +75,33 @@ class Categories extends Component {
             );
         }, this);
 
-        return (
-            <section className="app-categories sticky-top" style={{ top: 80 }}>
-                <div className="row">
-                    <div className="col-sm-12">
-                        <Button size="sm" block onClick={this.toggle} style={{ marginBottom: '1rem' }}>
-                            {this.state.isOpen ? "Hide" : "Show"} Job Filters
-                        </Button>
-                    </div>
-
+        if (this.props.hideFilter) {
+            return (
+                <div className="row no-gutters">
+                    {categories}
                 </div>
-                <Collapse isOpen={this.state.isOpen}>
-                    <div className="row no-gutters">
-                        {categories}
+            )
+        } else {
+            return (
+                <section className="app-categories" style={{ top: 80 }}>
+                    <div className="row">
+                        <div className="col-sm-12">
+                            <Button size="sm" block onClick={this.toggle} style={{ marginBottom: '1rem' }}>
+                                {this.state.isOpen ? "Hide" : "Show"} Job Filters
+                            </Button>
+                        </div>
+
                     </div>
-                </Collapse>
-            </section>
-        )
+                    <Collapse isOpen={this.state.isOpen}>
+                        <div className="row no-gutters">
+                            {categories}
+                        </div>
+                    </Collapse>
+                </section>
+            )
+        }
+
+
     }
 }
 
