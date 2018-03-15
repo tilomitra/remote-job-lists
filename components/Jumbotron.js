@@ -26,21 +26,20 @@ class Jumbotron extends Component {
             <div className="jumbotron jumbotron-fluid app-jumbotron" style={{ marginTop: 60 }} >
                 <div className="container">
                     <h1 className="display-4">
-                        Work Remotely as
+                        Find a remote job
                             <Typing>
-                            <span className="app-jumbotron-typing">a Software Engineer</span>
+                            <span className="app-jumbotron-typing">as a Software Engineer</span>
                             <Typing.Backspace count={50} delay={2000} />
                             <Typing.Delay ms={500} />
-                            <span className="app-jumbotron-typing">an Accountant</span>
+                            <span className="app-jumbotron-typing">as an Accountant</span>
                             <Typing.Backspace count={50} delay={2000} />
                             <Typing.Delay ms={500} />
-                            <span className="app-jumbotron-typing">a Graphic Designer</span>
+                            <span className="app-jumbotron-typing">as a Designer</span>
                             <Typing.Backspace count={50} delay={2000} />
-                            <Typing.Delay ms={500} />
-                            <span className="app-jumbotron-typing">an Android Developer</span>
+                            and work from anywhere
                         </Typing>
                     </h1>
-                    <p className="lead">Find your next job by searching through the largest remote listing database on the internet. <br /> Kept up to date every hour.</p>
+                    <p className="lead">We crawl the internet for the latest remote job listings daily, <br />categorize them, and make it searchable in one place.</p>
                     <hr className="my-4" />
                     <p className="lead">
                         <SearchBar term={this.props.searchTerm} onSearch={this.props.onSearch} />

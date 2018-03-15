@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -115,7 +115,7 @@ var ApplyButton = function ApplyButton(props) {
     );
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (ApplyButton);
+/* unused harmony default export */ var _unused_webpack_default_export = (ApplyButton);
 
 /***/ }),
 
@@ -223,7 +223,7 @@ var Categories = function (_Component) {
                 categories.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     {
-                        className: 'col-sm-4 col-md-2',
+                        className: 'col-xs-6 col-sm-4 col-md-2',
                         key: 'category-' + tag,
                         onClick: function onClick() {
                             _this2.onCategoryClick(tag);
@@ -488,7 +488,7 @@ var Email = function (_Component) {
                             lineNumber: 102
                         }
                     },
-                    'Get Weekly Job Listings'
+                    'Get Job Notifications'
                 );
             }
 
@@ -500,7 +500,7 @@ var Email = function (_Component) {
                             lineNumber: 109
                         }
                     },
-                    'You have successfully enabled daily job listing alerts. \uD83D\uDC4D'
+                    'You will be notified whenever we receive new listings. \uD83D\uDC4D'
                 );
                 subscribeBtnText = 'Daily Alerts Enabled';
             } else if (componentState === 'error') {
@@ -781,7 +781,7 @@ var Email = function (_Component) {
                                                 lineNumber: 213
                                             }
                                         },
-                                        'Send a weekly email to'
+                                        'Send an email to'
                                     ),
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
                                         type: 'email',
@@ -810,7 +810,7 @@ var Email = function (_Component) {
                                                 lineNumber: 223
                                             }
                                         },
-                                        'with listings related to'
+                                        'when new listings arrive related to'
                                     ),
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_select__["Creatable"], {
                                         closeOnSelect: !stayOpen,
@@ -1342,7 +1342,7 @@ var Jumbotron = function (_Component) {
                                 lineNumber: 28
                             }
                         },
-                        'Work Remotely as',
+                        'Find a remote job',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             __WEBPACK_IMPORTED_MODULE_3_react_typing_animation___default.a,
                             {
@@ -1358,7 +1358,7 @@ var Jumbotron = function (_Component) {
                                         lineNumber: 31
                                     }
                                 },
-                                'a Software Engineer'
+                                'as a Software Engineer'
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_typing_animation___default.a.Backspace, { count: 50, delay: 2000, __source: {
                                     fileName: _jsxFileName,
@@ -1377,7 +1377,7 @@ var Jumbotron = function (_Component) {
                                         lineNumber: 34
                                     }
                                 },
-                                'an Accountant'
+                                'as an Accountant'
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_typing_animation___default.a.Backspace, { count: 50, delay: 2000, __source: {
                                     fileName: _jsxFileName,
@@ -1396,60 +1396,47 @@ var Jumbotron = function (_Component) {
                                         lineNumber: 37
                                     }
                                 },
-                                'a Graphic Designer'
+                                'as a Designer'
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_typing_animation___default.a.Backspace, { count: 50, delay: 2000, __source: {
                                     fileName: _jsxFileName,
                                     lineNumber: 38
                                 }
                             }),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_typing_animation___default.a.Delay, { ms: 500, __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 39
-                                }
-                            }),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'span',
-                                { className: 'app-jumbotron-typing', __source: {
-                                        fileName: _jsxFileName,
-                                        lineNumber: 40
-                                    }
-                                },
-                                'an Android Developer'
-                            )
+                            'and work from anywhere'
                         )
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'p',
                         { className: 'lead', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 43
+                                lineNumber: 42
                             }
                         },
-                        'Find your next job by searching through the largest remote listing database on the internet. ',
+                        'We crawl the internet for the latest remote job listings daily, ',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 43
+                                lineNumber: 42
                             }
                         }),
-                        ' Kept up to date every hour.'
+                        'categorize them, and make it searchable in one place.'
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', { className: 'my-4', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 44
+                            lineNumber: 43
                         }
                     }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'p',
                         { className: 'lead', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 45
+                                lineNumber: 44
                             }
                         },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__SearchBar__["a" /* default */], { term: this.props.searchTerm, onSearch: this.props.onSearch, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 46
+                                lineNumber: 45
                             }
                         })
                     ),
@@ -1458,7 +1445,7 @@ var Jumbotron = function (_Component) {
                         {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 48
+                                lineNumber: 47
                             }
                         },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -1466,14 +1453,14 @@ var Jumbotron = function (_Component) {
                             {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 49
+                                    lineNumber: 48
                                 }
                             },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 __WEBPACK_IMPORTED_MODULE_5_reactstrap__["Button"],
                                 { color: 'danger', onClick: this.toggle, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 50
+                                        lineNumber: 49
                                     }
                                 },
                                 'Get Weekly Job Notifications'
@@ -1482,14 +1469,14 @@ var Jumbotron = function (_Component) {
                                 __WEBPACK_IMPORTED_MODULE_5_reactstrap__["Modal"],
                                 { isOpen: this.state.isModalOpen, toggle: this.toggle, className: this.props.className, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 53
+                                        lineNumber: 52
                                     }
                                 },
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     __WEBPACK_IMPORTED_MODULE_5_reactstrap__["ModalHeader"],
                                     { toggle: this.toggle, __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 54
+                                            lineNumber: 53
                                         }
                                     },
                                     'Get Weekly Job Notifications'
@@ -1499,12 +1486,12 @@ var Jumbotron = function (_Component) {
                                     {
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 55
+                                            lineNumber: 54
                                         }
                                     },
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Email__["a" /* default */], { type: 'expanded', noBackground: true, hideTitle: true, __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 56
+                                            lineNumber: 55
                                         }
                                     })
                                 ),
@@ -1513,14 +1500,14 @@ var Jumbotron = function (_Component) {
                                     {
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 58
+                                            lineNumber: 57
                                         }
                                     },
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                         __WEBPACK_IMPORTED_MODULE_5_reactstrap__["Button"],
                                         { color: 'primary', onClick: this.toggle, __source: {
                                                 fileName: _jsxFileName,
-                                                lineNumber: 59
+                                                lineNumber: 58
                                             }
                                         },
                                         'Close'
@@ -2407,7 +2394,7 @@ Index.getInitialProps = function () {
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/index.js");
