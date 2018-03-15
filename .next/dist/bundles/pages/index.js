@@ -1413,14 +1413,7 @@ var Jumbotron = function (_Component) {
                                 lineNumber: 42
                             }
                         },
-                        'We crawl the internet for the latest remote job listings daily, ',
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', {
-                            __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 42
-                            }
-                        }),
-                        'categorize them, and make it searchable in one place.'
+                        'We crawl the internet for the latest remote job listings daily, categorize them, and make it searchable in one place.'
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', { className: 'my-4', __source: {
                             fileName: _jsxFileName,
@@ -1840,6 +1833,93 @@ var Leadline = function (_Component) {
 
 /***/ }),
 
+/***/ "./components/Meta.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_head__ = __webpack_require__("next/head");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_head___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_head__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__("./config/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__config__);
+var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/components/Meta.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+var Meta = function (_Component) {
+    _inherits(Meta, _Component);
+
+    function Meta() {
+        _classCallCheck(this, Meta);
+
+        return _possibleConstructorReturn(this, (Meta.__proto__ || Object.getPrototypeOf(Meta)).apply(this, arguments));
+    }
+
+    _createClass(Meta, [{
+        key: 'render',
+        value: function render() {
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_1_next_head___default.a,
+                {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 8
+                    }
+                },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('meta', { property: 'og:title', content: this.props.title, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 9
+                    }
+                }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('meta', { property: 'og:description', content: this.props.description, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 10
+                    }
+                }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('meta', { property: 'og:image', content: __WEBPACK_IMPORTED_MODULE_2__config___default.a.host + '/static/screenshot.png', __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 11
+                    }
+                }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('meta', { property: 'og:url', content: this.props.url, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 12
+                    }
+                }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('meta', { name: 'twitter:card', content: 'summary_large_image', __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 13
+                    }
+                }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('meta', { property: 'og:site_name', content: 'Remote Job Lists', __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 14
+                    }
+                })
+            );
+        }
+    }]);
+
+    return Meta;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (Meta);
+
+/***/ }),
+
 /***/ "./components/SearchBar.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2143,6 +2223,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_Categories__ = __webpack_require__("./components/Categories.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_Tag__ = __webpack_require__("./components/Tag.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_Leadline__ = __webpack_require__("./components/Leadline.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_Meta__ = __webpack_require__("./components/Meta.js");
 
 var _jsxFileName = '/Applications/MAMP/code/sandbox/remote-job-lists/pages/index.js';
 
@@ -2157,6 +2238,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -2259,45 +2341,54 @@ var Index = function (_Component) {
                         lineNumber: 66
                     }
                 },
-                __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11__components_Header__["a" /* default */], { searchTerm: this.props.url.query.search, onSearch: this.onSearch, __source: {
+                __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_19__components_Meta__["a" /* default */], {
+                    title: "Remote Job Lists",
+                    description: "A daily updated list of all remote job listings from across the internet.",
+                    url: this.props.url,
+                    __source: {
                         fileName: _jsxFileName,
                         lineNumber: 67
                     }
                 }),
+                __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11__components_Header__["a" /* default */], { searchTerm: this.props.url.query.search, onSearch: this.onSearch, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 72
+                    }
+                }),
                 __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_14__components_Jumbotron__["a" /* default */], { searchTerm: this.props.url.query.search, onSearch: this.onSearch, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 68
+                        lineNumber: 73
                     }
                 }),
                 __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                     'section',
                     { className: 'container', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 69
+                            lineNumber: 74
                         }
                     },
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_18__components_Leadline__["a" /* default */], { search: search, tags: tags, count: this.props.count, onSearch: this.onSearch, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 71
+                            lineNumber: 76
                         }
                     }),
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                         'div',
                         { className: 'row', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 73
+                                lineNumber: 78
                             }
                         },
                         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                             'div',
                             { className: 'col-sm-12', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 74
+                                    lineNumber: 79
                                 }
                             },
                             __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_Categories__["a" /* default */], { selectedCategories: this.props.url.query.tags, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 75
+                                    lineNumber: 80
                                 }
                             })
                         ),
@@ -2305,14 +2396,14 @@ var Index = function (_Component) {
                             'div',
                             { className: 'col-sm-12', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 77
+                                    lineNumber: 82
                                 }
                             },
                             __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                                 'div',
                                 { className: 'job-list', __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 78
+                                        lineNumber: 83
                                     }
                                 },
                                 jobCards
@@ -2321,7 +2412,7 @@ var Index = function (_Component) {
                     ),
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('hr', { style: { margin: '30px 0' }, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 89
+                            lineNumber: 94
                         }
                     }),
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_react_paginate___default.a, {
@@ -2339,7 +2430,7 @@ var Index = function (_Component) {
 
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 90
+                            lineNumber: 95
                         }
                     })
                 )
@@ -2448,6 +2539,13 @@ module.exports = require("lodash/remove");
 /***/ (function(module, exports) {
 
 module.exports = require("moment");
+
+/***/ }),
+
+/***/ "next/head":
+/***/ (function(module, exports) {
+
+module.exports = require("next/head");
 
 /***/ }),
 

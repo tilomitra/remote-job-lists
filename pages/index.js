@@ -18,7 +18,7 @@ import Email from '../components/Email';
 import Categories from '../components/Categories';
 import Tag from '../components/Tag';
 import Leadline from '../components/Leadline';
-
+import Meta from '../components/Meta';
 
 const LIMIT = 20;
 
@@ -64,6 +64,11 @@ class Index extends Component {
 
         return (
             <Layout>
+                <Meta
+                    title={"Remote Job Lists"}
+                    description={"A daily updated list of all remote job listings from across the internet."}
+                    url={this.props.url}
+                />
                 <Header searchTerm={this.props.url.query.search} onSearch={this.onSearch} />
                 <Jumbotron searchTerm={this.props.url.query.search} onSearch={this.onSearch} />
                 <section className="container">

@@ -11,6 +11,7 @@ import Company from '../components/Company';
 import Share from '../components/Share';
 import Tag from '../components/Tag';
 import Header from '../components/Header';
+import Meta from '../components/Meta';
 
 import config from '../config';
 
@@ -42,6 +43,11 @@ class Job extends Component {
 
         return (
             <Layout>
+                <Meta
+                    title={`${job.title} at ${job.company} | Remote Job Lists`}
+                    description={`${job.description}`}
+                    url={this.props.url}
+                />
                 <Header onSearch={this.onSearch} />
                 <div className="container" style={{ marginTop: 60 }}>
                     <div className="row">
