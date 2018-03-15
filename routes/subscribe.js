@@ -16,7 +16,9 @@ function subscribe(req, res) {
 
     // convert from empty array to empty string.
     if (tags.length !== 0) {
-        dbTags = tags.join(',');
+        dbTags = tags.map((t) => {
+            return t.value
+        }).join(',');
     }
 
     Users.findOrCreate({
