@@ -6,6 +6,8 @@ const getRelatedTags = require('./getRelatedTags');
 function updateTags(req, res) {
     models.job.findAll().then((jobs) => {
 
+        let savePromises = [];
+
         jobs.forEach((j) => {
             const tags = getRelatedTags({ title: j.title });
 
