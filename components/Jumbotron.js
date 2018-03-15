@@ -39,7 +39,7 @@ class Jumbotron extends Component {
                             and work from anywhere
                         </Typing>
                     </h1>
-                    <p className="lead">We crawl the internet for the latest remote job listings daily, <br />categorize them, and make it searchable in one place.</p>
+                    <p className="lead">We crawl the internet for the latest remote job listings daily, categorize them, and make it searchable in one place.</p>
                     <hr className="my-4" />
                     <p className="lead">
                         <SearchBar term={this.props.searchTerm} onSearch={this.props.onSearch} />
