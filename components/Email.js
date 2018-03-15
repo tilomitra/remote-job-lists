@@ -140,7 +140,7 @@ class Email extends Component {
                         {this.props.hideTitle ? null : <h5 className="card-title">{header}</h5>}
                         <form>
                             <div className="form-row align-items-center">
-                                <div className="col-sm-12 col-md-4 my-1">
+                                <div className="col-sm-12 col-md-12 my-1">
                                     <label className="mr-sm-2">Email me at</label>
                                     <input
                                         type="email"
@@ -150,12 +150,13 @@ class Email extends Component {
                                         onBlur={this.handleEmailBlur}
                                         onChange={this.handleEmailChange} />
                                 </div>
-                                <div className="col-sm-12 col-md-8 my-1">
+                                <div className="col-sm-12 col-md-12 my-1">
                                     <label>with new listings related to</label>
                                     <Creatable
                                         closeOnSelect={!stayOpen}
                                         disabled={disabled}
                                         multi
+                                        className="form-control"
                                         onChange={this.handleSelectChange}
                                         options={options}
                                         placeholder={`Type keywords to only receive alerts for relevant listings.`}
@@ -163,7 +164,6 @@ class Email extends Component {
                                         promptTextCreator={(label) => {
                                             return `Get notified for jobs with keyword: ${label}`
                                         }}
-                                        rtl={rtl}
                                         value={value}
                                     />
                                 </div>
