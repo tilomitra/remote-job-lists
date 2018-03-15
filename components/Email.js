@@ -45,14 +45,18 @@ class Email extends Component {
                     email: this.state.email,
                     tags: this.state.value
                 })
-            }).then((response) => {
-                response.json()
             })
-            .then((responseJson) => {
-                if (responseJson.success !== false) {
+            .then((response) => {
+                if (response.status === 200) {
                     this.setState({
                         componentState: 'sent'
                     });
+
+                    setTimeout(() => {
+                        this.setState({
+                            componentState: 'not-sent'
+                        })
+                    }, 3000);
                 } else {
                     this.setState({
                         componentState: 'error'

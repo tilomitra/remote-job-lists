@@ -19,6 +19,8 @@ function subscribe(req, res) {
         dbTags = tags.map((t) => {
             return t.value
         }).join(',');
+
+        console.log(dbTags);
     }
 
     Users.findOrCreate({
