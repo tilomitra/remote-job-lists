@@ -46,7 +46,7 @@ class Job extends Component {
                 <Meta
                     title={`${job.title} at ${job.company} | Remote Job Lists`}
                     description={`${job.company} is looking to hire a ${job.title}. This position is available to remote candidates.`}
-                    url={this.props.url}
+                    url={BASE_URL + this.props.url.asPath}
                 />
                 <Header onSearch={this.onSearch} />
                 <div className="container" style={{ marginTop: 60 }}>

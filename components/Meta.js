@@ -1,11 +1,13 @@
 import { Component } from 'react';
 import Head from 'next/head';
+import Router from 'next/router'
 import config from '../config';
 
 class Meta extends Component {
     render() {
         return (
             <Head>
+                <title>{this.props.title}</title>
                 <meta property="og:title" content={this.props.title} />
                 <meta property="og:description" content={this.props.description} />
                 <meta property="og:image" content={`${config.host}/static/screenshot.png`} />

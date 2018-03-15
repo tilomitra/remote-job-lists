@@ -61,13 +61,13 @@ class Index extends Component {
                 <JobTitle job={job} key={`job-item-${i}`} />
             )
         })
-
+        console.log(this.props.url);
         return (
             <Layout>
                 <Meta
                     title={"Remote Job Lists"}
                     description={"Remote Job Lists provides a daily updated list of all remote job listings from across the internet. We list remote jobs for engineering, software, marketing, accounting, media, design and more."}
-                    url={this.props.url}
+                    url={BASE_URL + this.props.url.asPath}
                 />
                 <Header searchTerm={this.props.url.query.search} onSearch={this.onSearch} />
                 <Jumbotron searchTerm={this.props.url.query.search} onSearch={this.onSearch} />
