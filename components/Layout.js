@@ -1,10 +1,11 @@
+import { Component } from 'react';
 import Header from './Header'
 import Footer from './Footer'
 import Email from './Email';
 import { initGA, logPageView } from '../utils/analytics'
 import "../assets/css/app.css";
 
-export default class Layout extends React.Component {
+class Layout extends Component {
     componentDidMount() {
         if (!window.GA_INITIALIZED) {
             initGA()
