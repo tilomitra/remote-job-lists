@@ -63,6 +63,7 @@ app.prepare()
         server.get('/api/jobs/:id', api.jobs.findOne);
 
         server.post('/api/subscribe', api.subscribe);
+        server.post('/api/updateTags', api.updateTags);
 
         server.get('/api/findJobs/weworkremotely', api.weworkremotely);
         server.get('/api/findJobs/stackoverflow', api.stackoverflow);

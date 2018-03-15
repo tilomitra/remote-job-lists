@@ -15,6 +15,7 @@ const apiRoutes = {
 
     jobs: require('./jobs'),
     subscribe: require('./subscribe'),
+    updateTags: require('./updateTags'),
 
     weworkremotely: (req, res) => {
         const urls = [

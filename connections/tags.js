@@ -3,31 +3,31 @@
 const tags = {
     'web': {
         icon: 'chrome',
-        keywords: ['javascript', 'css', 'html', 'react', 'angular', 'full stack', 'seo']
+        keywords: ['javascript', 'css', 'html', 'react', 'angular', 'full stack', 'seo', 'wordpress', 'webdev', 'front end', 'react', 'web']
     },
     'backend': {
         icon: 'server',
-        keywords: ['php', 'java', 'c++', 'ruby', 'ror', 'nodejs', 'full stack']
+        keywords: ['php', 'backend', 'java', 'c++', 'ruby', 'ror', 'nodejs', 'full stack', 'infrastructure']
     },
     'mobile': {
         icon: 'smartphone',
-        keywords: ['ios', 'android', 'java', 'objective c', 'swift'],
+        keywords: ['mobile', 'ios', 'android', 'java', 'objective c', 'swift', 'react native'],
     },
     'engineering': {
         icon: 'box',
-        keywords: ['engineer', 'developer']
+        keywords: ['engineering', 'engineer', 'developer', 'format', 'technical', 'architect', 'application', 'applications', 'data']
     },
     'networking': {
         icon: 'radio',
-        keywords: ['lan', 'wifi', 'tcp', 'devops']
+        keywords: ['networking', 'lan', 'wifi', 'tcp', 'devops', 'infrastructure']
     },
     'management': {
         icon: 'user',
-        keywords: ['project manager', 'product manager', 'supervisor', 'growth', 'scrum', 'agile', 'team lead', 'manager']
+        keywords: ['project manager', 'product manager', 'supervisor', 'growth', 'scrum', 'agile', 'team lead', 'manager', 'lead', 'senior']
     },
     'healthcare': {
         icon: 'activity',
-        keywords: ['pharmacy', 'health', 'therapist', 'social worker', 'nurse', 'medical', 'care']
+        keywords: ['healthcare', 'pharmacy', 'health', 'therapist', 'social worker', 'nurse', 'medical', 'care']
     },
     'quality assurance': {
         icon: 'check-circle',
@@ -35,11 +35,11 @@ const tags = {
     },
     'customer service': {
         icon: 'shield',
-        keywords: ['customer', 'representative', 'service']
+        keywords: ['customer', 'representative', 'service', 'support']
     },
     'media': {
         icon: 'film',
-        keywords: ['video', 'audio', 'pr', 'public relations', 'visual', 'news', 'entertainment', 'writer', 'script']
+        keywords: ['media', 'video', 'audio', 'pr', 'public relations', 'visual', 'news', 'entertainment', 'writer', 'script', 'email']
     },
     'finance': {
         icon: 'briefcase',
@@ -55,11 +55,11 @@ const tags = {
     },
     'administrative': {
         icon: 'message-circle',
-        keywords: ['administrative', 'assistant']
+        keywords: ['administrative', 'assistant', 'marketing', 'market', 'recruiting', 'recruiter', 'recruit']
     },
     'education': {
         icon: 'award',
-        keywords: ['learning', 'teacher', 'college', 'trainer', 'professor', 'educational', 'education', 'educator']
+        keywords: ['learning', 'teacher', 'college', 'trainer', 'professor', 'educational', 'education', 'educator', 'volunteer', 'volunteering', 'homeless']
     }
 }
 
