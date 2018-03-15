@@ -73,7 +73,7 @@ nav {
     color: #243B55 !important;
 }
 
-.app-search-input {
+.app-search-input.form-control-lg {
     width: 360px !important;
 }
 

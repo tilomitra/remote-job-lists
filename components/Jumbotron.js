@@ -4,7 +4,7 @@ import SearchBar from './SearchBar';
 import Typing from 'react-typing-animation';
 import Email from './Email';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-
+import { logEvent } from '../utils/analytics';
 
 class Jumbotron extends Component {
     constructor(props) {
@@ -16,6 +16,7 @@ class Jumbotron extends Component {
     }
 
     toggle = () => {
+        logEvent("Email", this.state.isModalOpen ? "modal closed" : "modal opened");
         this.setState({
             isModalOpen: !this.state.isModalOpen
         });
@@ -28,18 +29,18 @@ class Jumbotron extends Component {
                     <h1 className="display-4">
                         Find a remote job
                             <Typing>
-                            <span className="app-jumbotron-typing">as a Software Engineer</span>
+                            <span key={'t-1'} className="app-jumbotron-typing">as a Blockchain Engineer 👩‍💻</span>
                             <Typing.Backspace count={50} delay={2000} />
                             <Typing.Delay ms={500} />
-                            <span className="app-jumbotron-typing">as an Accountant</span>
+                            <span key={'t-2'} className="app-jumbotron-typing">as an Accountant 🏦</span>
                             <Typing.Backspace count={50} delay={2000} />
                             <Typing.Delay ms={500} />
-                            <span className="app-jumbotron-typing">as a Designer</span>
+                            <span key={'t-3'} className="app-jumbotron-typing">as a Designer 🖌️</span>
                             <Typing.Backspace count={50} delay={2000} />
-                            and work from anywhere
+                            and work from anywhere 🌎
                         </Typing>
                     </h1>
-                    <p className="lead">We crawl the internet for the latest remote job listings daily, categorize them, and make it searchable in one place.</p>
+                    <p className="lead">The best remote job listings on the internet in one easy-to-find place. Updated daily.</p>
                     <hr className="my-4" />
                     <p className="lead">
                         <SearchBar term={this.props.searchTerm} onSearch={this.props.onSearch} />
@@ -49,7 +50,9 @@ class Jumbotron extends Component {
                             <Button color="danger" onClick={this.toggle}>
                                 Get Weekly Job Notifications
                             </Button>
-                            <Modal fade={false} isOpen={this.state.isModalOpen} toggle={this.toggle} className={this.props.className}>
+                            <Modal onOpened={() => {
+                                this.forceUpdate();
+                            }} isOpen={this.state.isModalOpen} toggle={this.toggle} className={this.props.className}>
                                 <ModalHeader toggle={this.toggle}>Get Weekly Job Notifications</ModalHeader>
                                 <ModalBody>
                                     <Email type="expanded" noBackground hideTitle />

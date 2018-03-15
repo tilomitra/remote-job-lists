@@ -4,6 +4,7 @@ import Tags from '../connections/tags';
 import forEach from 'lodash/forEach';
 import cn from 'classnames';
 import config from '../config';
+import { logEvent } from '../utils/analytics';
 
 import 'react-select/dist/react-select.css';
 
@@ -31,6 +32,8 @@ class Email extends Component {
     }
     onSubmit = (e) => {
         e.preventDefault();
+        logEvent("Email", "subscribed");
+
         this.setState({
             componentState: 'is-sending'
         });
@@ -70,6 +73,7 @@ class Email extends Component {
     }
 
     handleEmailBlur = () => {
+        logEvent("Email", 'interacted with email box');
         let email = this.state.email;
         let isValidEmail = validateEmail(email);
         this.setState({ isValidEmail });
@@ -81,6 +85,8 @@ class Email extends Component {
     }
 
     handleSelectChange = (value) => {
+        logEvent("Email", JSON.stringify(value));
+
         this.setState({ componentState: 'not-sent', value });
     }
 
