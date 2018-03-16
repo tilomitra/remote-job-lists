@@ -85,7 +85,7 @@ class Header extends Component {
                                 </ul>
 
                                 <p>
-                                    Sounds good? <a className="btn btn-primary btn-sm" href="mailto?tilomitra@gmail.com">Send an email</a> to get started.
+                                    Sounds good? <a className="btn btn-primary btn-sm" href="mailto:tilomitra@gmail.com">Send an email</a> to get started.
                                 </p>
 
                             </ModalBody>
