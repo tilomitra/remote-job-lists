@@ -75,7 +75,7 @@ class Header extends Component {
 
                                 <p>Please note that we can only publish jobs that are 100% remote.</p>
 
-                                <h5>Visibility</h5>
+                                <h4>Visibility</h4>
                                 <p>A paid job posting will be visible in the following way:</p>
 
                                 <ul>
