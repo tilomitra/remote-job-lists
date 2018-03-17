@@ -16,6 +16,7 @@ const apiRoutes = {
     jobs: require('./jobs'),
     subscribe: require('./subscribe'),
     updateTags: require('./updateTags'),
+    removeDuplicates: require('./removeDuplicates'),
 
     weworkremotely: (req, res) => {
         const urls = [
