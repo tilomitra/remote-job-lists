@@ -41,7 +41,7 @@
     "react-select": "^1.2.1",
     "react-typing-animation": "^1.1.5",
     "reactstrap": "^5.0.0-beta",
-    "request": "^2.83.0",
+    "request": "^2.85.0",
     "sequelize": "^4.35.2",
     "sequelize-cli": "^4.0.0",
     "sqlite3": "^3.1.13",

@@ -6,6 +6,9 @@ const models = require('./connections/models');
 const tags = require('./connections/tags');
 const _ = require('lodash');
 const bodyParser = require('body-parser')
+const request = require('request');
+const async = require('async');
+const config = require('./config');
 
 const api = require('./routes/api');
 const routeMap = require('./routes/routeMap');
@@ -82,9 +85,47 @@ app.prepare()
             return handle(req, res)
         })
 
+
         server.listen(port, (err) => {
             if (err) throw err
             console.log(`> Ready on port:${port} with NODE_ENV:${process.env.NODE_ENV}`)
+
+            const BASE_URL = config.host;
+
+            // Set an interval to check jobs every 6 hours.
+            setInterval(() => {
+                console.log("Attempting to update jobs...");
+                async.series([
+                    (cb) => {
+                        request(BASE_URL + '/api/findJobs/remoteOk', cb);
+                    },
+                    (cb) => {
+                        request(BASE_URL + '/api/findJobs/weworkremotely', cb)
+                    },
+
+                    (cb) => {
+                        request(BASE_URL + '/api/findJobs/stackoverflow', cb)
+                    },
+
+                    (cb) => {
+                        request({
+                            uri: BASE_URL + '/api/removeDuplicates',
+                            method: "DELETE"
+                        }, cb)
+                    }
+                ], (err, results) => {
+                    if (err) {
+                        console.log(err);
+                        console.log("Error when running cron jobs.");
+                    }
+                    else {
+                        //console.log(results);
+                        console.log("Jobs updated successfully.")
+                    }
+                });
+
+            }, 60 * 60 * 1000 * 6) //this is 6 hours.
+
         })
     })
     .catch((ex) => {
