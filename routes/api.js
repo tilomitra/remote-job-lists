@@ -14,6 +14,7 @@ const bulkCreateJobsAndTags = require("./bulkCreateJobsAndTags");
 const apiRoutes = {
     jobs: require("./jobs"),
     subscribe: require("./subscribe"),
+    unsubscribe: require("./unsubscribe"),
     updateTags: require("./updateTags"),
     removeDuplicates: require("./removeDuplicates"),
     getJobListForUser: require("./generateJobListForUser"),

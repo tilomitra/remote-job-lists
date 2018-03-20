@@ -13,6 +13,7 @@ const Op = Sequelize.Op;
 function sendMailToUsers(req, res) {
     // find all users
     let whereOpts = {
+        subscribed: true,
         lastEmailSent: {
             [Op.or]: {
                 [Op.lte]: moment()

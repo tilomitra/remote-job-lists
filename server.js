@@ -65,10 +65,18 @@ app
             app.render(req, res, actualPage, queryParams);
         });
 
+        server.get("/unsubscribe", (req, res) => {
+            const actualPage = "/unsubscribe";
+            const parsedUrl = parse(req.url, true);
+            const { pathname, query = {} } = parsedUrl;
+            app.render(req, res, actualPage, query);
+        });
+
         server.get("/api/jobs", api.jobs.find);
         server.get("/api/jobs/:id", api.jobs.findOne);
 
         server.post("/api/subscribe", api.subscribe);
+        server.post("/api/unsubscribe", api.unsubscribe);
         server.post("/api/updateTags", api.updateTags);
         server.get("/api/getJobListForUser", api.getJobListForUser);
         server.delete("/api/removeDuplicates", api.removeDuplicates);
