@@ -1,6 +1,6 @@
-const Sequelize = require('sequelize');
-const models = require('../connections/models');
-const _ = require('lodash');
+const Sequelize = require("sequelize");
+const models = require("../connections/models");
+const _ = require("lodash");
 const Op = Sequelize.Op;
 
 // Capitalize first letter
@@ -14,17 +14,24 @@ module.exports = {
 
         let opts = {
             group: ["link", "id"],
-            attributes: ['id', 'title', 'link', 'publishDate', 'referrer', 'company', 'tags'],
+            attributes: [
+                "id",
+                "title",
+                "link",
+                "publishDate",
+                "referrer",
+                "company",
+                "tags"
+            ],
             order: [["publishDate", "DESC"]],
             offset: q.offset || 0,
             limit: q.limit || 25,
             where: {}
-        }
+        };
 
         let whereOr = {};
 
         if (q.search) {
-
             let lowercase = q.search.toLowerCase();
             let capitalized = cfl(lowercase);
             whereOr = {
@@ -35,47 +42,59 @@ module.exports = {
 
                     company: {
                         $iLike: `%${lowercase}%`
-                    },
+                    }
                 }
-            }
+            };
 
-            _.assignIn(opts.where, whereOr)
+            _.assignIn(opts.where, whereOr);
+        }
 
-
+        if (q.from && q.to) {
+            _.assignIn(opts.where, {
+                updatedAt: {
+                    [Op.and]: {
+                        [Op.lte]: q.to,
+                        [Op.gte]: q.from
+                    }
+                }
+            });
         }
 
         if (q.tags) {
-            let tagIds = q.tags.split(',');
-
+            let tagIds = q.tags.split(",");
 
             _.assignIn(opts.where, {
                 tags: {
                     $contains: tagIds
                 }
             });
-
         }
-
 
         if (Object.keys(opts.where).length === 0) {
             delete opts.where;
         }
 
-        models.job.findAndCountAll(opts).then((jobs) => {
-            return res.json(jobs);
-        }).catch((err) => {
-            return res.status(500).send(err);
-        });
+        models.job
+            .findAndCountAll(opts)
+            .then(jobs => {
+                return res.json(jobs);
+            })
+            .catch(err => {
+                return res.status(500).send(err);
+            });
     },
     findOne: (req, res) => {
-        models.job.findAll({
-            where: {
-                id: parseInt(req.params.id)
-            }
-        }).then((job) => {
-            return res.json(job);
-        }).catch((err) => {
-            return res.status(500).send(err);
-        });
+        models.job
+            .findAll({
+                where: {
+                    id: parseInt(req.params.id)
+                }
+            })
+            .then(job => {
+                return res.json(job);
+            })
+            .catch(err => {
+                return res.status(500).send(err);
+            });
     }
 };

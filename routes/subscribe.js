@@ -1,4 +1,4 @@
-const models = require('../connections/models');
+const models = require("../connections/models");
 
 function subscribe(req, res) {
     const Users = models.user;
@@ -11,16 +11,16 @@ function subscribe(req, res) {
     if (!email) {
         return res.status(401).send({
             message: "Please enter an email address"
-        })
+        });
     }
 
     // convert from empty array to empty string.
     if (tags.length !== 0) {
-        dbTags = tags.map((t) => {
-            return t.value
-        }).join(',');
-
-        console.log(dbTags);
+        dbTags = tags
+            .map(t => {
+                return t.value;
+            })
+            .join(",");
     }
 
     Users.findOrCreate({
@@ -28,25 +28,26 @@ function subscribe(req, res) {
         defaults: {
             email,
             tags: dbTags
-        },
+        }
     })
         .spread((user, created) => {
             if (!created) {
                 user.tags = dbTags;
             }
             return user.save();
-        }).then(() => {
+        })
+        .then(() => {
             return res.status(200).json({
                 success: true,
-                message: 'Subscribed user with tags.'
-            })
+                message: "Subscribed user with tags."
+            });
         })
-        .catch((err) => {
+        .catch(err => {
             return res.status(500).json({
                 success: false,
                 error: err
             });
-        })
-};
+        });
+}
 
 module.exports = subscribe;
