@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sendgrid/mail": "^6.2.1",
     "@zeit/next-css": "^0.1.4",
     "async": "^2.6.0",
     "body-parser": "^1.18.2",
@@ -25,6 +26,7 @@
     "express": "^4.16.2",
     "feather-icons": "^4.7.0",
     "feedme": "^1.2.0",
+    "handlebars": "^4.0.11",
     "isomorphic-unfetch": "^2.0.0",
     "lodash": "^4.17.5",
     "marked": "^0.3.17",
@@ -42,6 +44,7 @@
     "react-typing-animation": "^1.1.5",
     "reactstrap": "^5.0.0-beta",
     "request": "^2.85.0",
+    "sendgrid": "^5.2.3",
     "sequelize": "^4.35.2",
     "sequelize-cli": "^4.0.0",
     "sqlite3": "^3.1.13",
