@@ -12,18 +12,22 @@ const Op = Sequelize.Op;
 
 function sendMailToUsers(req, res) {
     // find all users
+    let whereOpts = {
+        lastEmailSent: {
+            [Op.or]: {
+                [Op.lte]: moment()
+                    .subtract(7, "days")
+                    .format(),
+                [Op.eq]: null
+            }
+        }
+    };
+    if (req.query.test) {
+        where.email = "tilomitra@gmail.com";
+    }
     models.user
         .findAll({
-            where: {
-                lastEmailSent: {
-                    [Op.or]: {
-                        [Op.lte]: moment()
-                            .subtract(7, "days")
-                            .format(),
-                        [Op.eq]: null
-                    }
-                }
-            }
+            where: whereOpts
         })
         .then(users => {
             //for each user, we need to know what mail to send them.
