@@ -23,7 +23,7 @@ function sendMailToUsers(req, res) {
         }
     };
     if (req.query.test) {
-        where.email = "tilomitra@gmail.com";
+        whereOpts.email = "tilomitra@gmail.com";
     }
     models.user
         .findAll({
