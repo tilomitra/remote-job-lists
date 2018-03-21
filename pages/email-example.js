@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Layout from "../components/Layout";
+import Meta from "../components/Meta";
 
 class EmailExample extends Component {
     render() {
@@ -63,6 +64,14 @@ class EmailExample extends Component {
 
         return (
             <Layout>
+                <Meta
+                    title={`A Sample Email Notification | Remote Job Lists`}
+                    description={`This is a sample email notification sent by Remote Job Lists.
+                    It's indicative of what a regular email looks like. I took
+                    out the links because the email is now stale.
+                    `}
+                    url={BASE_URL + this.props.url.asPath}
+                />
                 <div
                     className="container"
                     style={{ marginTop: 30, maxWidth: 750 }}
