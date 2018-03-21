@@ -128,34 +128,33 @@ var MyDocument = function (_Document) {
                             lineNumber: 8
                         }
                     }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("meta", { name: "viewport", content: "width=device-width, initial-scale=1", __source: {
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("meta", {
+                        name: "viewport",
+                        content: "width=device-width, initial-scale=1",
+                        __source: {
                             fileName: _jsxFileName,
                             lineNumber: 9
                         }
                     }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        "title",
-                        {
-                            __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 10
-                            }
-                        },
-                        "Remote Job Lists: Find your next remote job"
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", { href: "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css", rel: "stylesheet", __source: {
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
+                        href: "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css",
+                        rel: "stylesheet",
+                        __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 11
+                            lineNumber: 13
                         }
                     }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", { rel: "stylesheet", href: "https://use.typekit.net/pox4jyh.css", __source: {
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
+                        rel: "stylesheet",
+                        href: "https://use.typekit.net/pox4jyh.css",
+                        __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 12
+                            lineNumber: 17
                         }
                     }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", { rel: "stylesheet", href: "/_next/static/style.css", __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 15
+                            lineNumber: 23
                         }
                     })
                 ),
@@ -164,19 +163,19 @@ var MyDocument = function (_Document) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 17
+                            lineNumber: 25
                         }
                     },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_document__["Main"], {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 18
+                            lineNumber: 26
                         }
                     }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_document__["NextScript"], {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 19
+                            lineNumber: 27
                         }
                     })
                 )
