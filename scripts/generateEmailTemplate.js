@@ -58,7 +58,7 @@ const jobTemplate = `
         {{/each}}
 
         <p class="lead">
-            These are just 5 of the jobs that were matched against your preferences. To view all job listings, head over to Remote Job Lists.
+            These are just 3 of the jobs that were matched against your preferences. To view all job listings, head over to Remote Job Lists.
         </p>
         <p style="margin-top: 20px;">
             <a style="background: #333; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;" href="{{baseUrl}}/?{{{qs}}}">View All Relevant Remote Jobs</a>

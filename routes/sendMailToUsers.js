@@ -17,7 +17,7 @@ function sendMailToUsers(req, res) {
         lastEmailSent: {
             [Op.or]: {
                 [Op.lte]: moment()
-                    .subtract(7, "days")
+                    .subtract(2, "days")
                     .format(),
                 [Op.eq]: null
             }
@@ -73,7 +73,11 @@ function sendMailToUsers(req, res) {
                                 } with ${numJobsFound} jobs.`
                             );
 
-                            if (numJobsFound > 0) {
+                            if (numJobsFound > 3) {
+                                emailsSent.push({
+                                    email: u.email,
+                                    jobsFound: numJobsFound
+                                });
                                 return sendMail({
                                     to: u.email,
                                     from: {
@@ -104,13 +108,15 @@ function sendMailToUsers(req, res) {
                                     })
                                 });
                             } else {
-                                emailsSkipped.push(u.email);
+                                emailsSkipped.push({
+                                    email: u.email,
+                                    jobsFound: numJobsFound
+                                });
                                 return;
                             }
                         })
                         .then(({ response, to }) => {
                             if (to) {
-                                emailsSent.push(to);
                                 return models.user.findOne({
                                     where: {
                                         email: to

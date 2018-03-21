@@ -72,6 +72,13 @@ app
             app.render(req, res, actualPage, query);
         });
 
+        server.get("/email-example", (req, res) => {
+            const actualPage = "/email-example";
+            const parsedUrl = parse(req.url, true);
+            const { pathname, query = {} } = parsedUrl;
+            app.render(req, res, actualPage, query);
+        });
+
         server.get("/api/jobs", api.jobs.find);
         server.get("/api/jobs/:id", api.jobs.findOne);
 
