@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Layout from "../components/Layout";
 import Meta from "../components/Meta";
+import config from "../config";
 
 class EmailExample extends Component {
     render() {
@@ -48,11 +49,15 @@ class EmailExample extends Component {
 
         let jobsJsx = jobs.map(j => {
             let tagsJsx = j.tags.map(t => {
-                return <span style={tagStyle}>{t}</span>;
+                return (
+                    <span style={tagStyle} key={`${j.company}-${t}`}>
+                        {t}
+                    </span>
+                );
             });
 
             return (
-                <div style={{ marginTop: 20 }}>
+                <div style={{ marginTop: 20 }} key={j.company}>
                     <strong>
                         {j.title} <small>at {j.company}</small>
                     </strong>
@@ -70,7 +75,7 @@ class EmailExample extends Component {
                     It's indicative of what a regular email looks like. I took
                     out the links because the email is now stale.
                     `}
-                    url={BASE_URL + this.props.url.asPath}
+                    url={config.host + this.props.url.asPath}
                 />
                 <div
                     className="container"
